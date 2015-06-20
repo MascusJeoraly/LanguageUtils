@@ -1,0 +1,3 @@
+name: LangUtils
+version: ${version}
+main: com.meowj.langutils.LangUtils
