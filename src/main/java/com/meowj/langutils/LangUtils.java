@@ -1,13 +1,11 @@
 /*
+ * Copyright (c) 2015 Jerrell Fang
  *
- *  * Copyright (c) 2015 Jerrell Fang
- *  *
- *  * This project is Open Source and distributed under The MIT License (MIT)
- *  * (http://opensource.org/licenses/MIT)
- *  *
- *  * You should have received a copy of the The MIT License along with
- *  * this project.   If not, see <http://opensource.org/licenses/MIT>.
+ * This project is Open Source and distributed under The MIT License (MIT)
+ * (http://opensource.org/licenses/MIT)
  *
+ * You should have received a copy of the The MIT License along with
+ * this project.   If not, see <http://opensource.org/licenses/MIT>.
  */
 package com.meowj.langutils;
 
