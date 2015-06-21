@@ -31,6 +31,7 @@ public enum EnumLang {
     EN_US("en_US", new HashMap<String, String>()),
     AF_ZA("af_ZA", new HashMap<String, String>()),
     ZH_CN("zh_CN", new HashMap<String, String>());
+	//WIP Lazy, who can help me (;´Д`)
 
     public String getLocale() {
         return locale;
