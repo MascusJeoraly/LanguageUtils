@@ -49,4 +49,9 @@ public class ItemEntry {
         result = 31 * result + metadata;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return this.material.toString() + " " + this.metadata;
+    }
 }

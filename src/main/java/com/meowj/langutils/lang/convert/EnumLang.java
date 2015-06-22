@@ -31,7 +31,7 @@ public enum EnumLang {
     EN_US("en_US", new HashMap<String, String>()),
     AF_ZA("af_ZA", new HashMap<String, String>()),
     ZH_CN("zh_CN", new HashMap<String, String>());
-	//WIP Lazy, who can help me (;´Д`)
+    //WIP Lazy, who can help me (;´Д`)
 
     public String getLocale() {
         return locale;
@@ -70,7 +70,6 @@ public enum EnumLang {
                 temp = reader.readLine();
                 while (temp != null) {
                     if (temp.contains("=")) {
-                        LangUtils.plugin.info(temp);
                         tempStringArr = temp.split("=");
                         enumLang.map.put(tempStringArr[0], tempStringArr.length > 1 ? temp.split("=")[1] : "");
                     }
@@ -79,7 +78,7 @@ public enum EnumLang {
             } finally {
                 reader.close();
             }
-            LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
+//            LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
         }
     }
 }
