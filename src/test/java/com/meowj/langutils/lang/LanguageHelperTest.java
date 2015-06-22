@@ -35,7 +35,7 @@ public class LanguageHelperTest {
         when(metaTest.getType()).thenReturn(Material.STONE);
         when(metaTest.getItemMeta()).thenReturn(meta);
 
-        assertEquals(LanguageHelper.getItemDisplayName(metaTest, "en_US"), "testName");
+        assertEquals(LanguageHelper.getItemDisplayName(metaTest, "en_US"), "test Name");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class LanguageHelperTest {
 
         when(unlocalizedTest.getType()).thenReturn(Material.STONE);
         when(unlocalizedTest.getDurability()).thenReturn((short) 0);
-        assertEquals(LanguageHelper.getItemUnlocalizedName(unlocalizedTest), "tile.stone.name");
+        assertEquals(LanguageHelper.getItemUnlocalizedName(unlocalizedTest), "tile.stone.stone.name");
 
         ItemStack unlocalizedMetaTest = mock(ItemStack.class);
 
