@@ -25,6 +25,8 @@ Progress: ![Progress](http://progressed.io/bar/34)
 
 If you don't have [Gradle](http://gradle.org/ "Gradle") installed, you can download one or use `gradlew`(Windows) / `./gradlew`(Linux) instead of `gradle` in the commands.
 
+If you don't have permission when using `./gradlew`, run `chmod +x gradlew` and run the command again.
+
 ### Build
 
 	[Navigate to the project directory]
