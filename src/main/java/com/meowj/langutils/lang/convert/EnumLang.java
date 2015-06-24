@@ -136,13 +136,14 @@ public enum EnumLang {
         String temp;
         String[] tempStringArr;
         for (EnumLang enumLang : EnumLang.values()) {
+            //TODO encoding problems
             BufferedReader reader = new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang")));
             try {
                 temp = reader.readLine();
                 while (temp != null) {
                     if (temp.contains("=")) {
                         tempStringArr = temp.split("=");
-                        enumLang.map.put(tempStringArr[0], tempStringArr.length > 1 ? temp.split("=")[1] : "");
+                        enumLang.map.put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
                     }
                     temp = reader.readLine();
                 }
