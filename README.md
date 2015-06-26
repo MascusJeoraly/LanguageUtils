@@ -15,7 +15,7 @@ Progress: ![Progress](http://progressed.io/bar/67)
 
 - API: ![Progress](http://progressed.io/bar/99)
 - Language files: ![Progress](http://progressed.io/bar/100?title=75/75)
-- Items: ![Progress](http://progressed.io/bar/1?title=7/584)
+- Items: ![Progress](http://progressed.io/bar/1?title=7/556)
 
 <strike>Lazy</strike>
 
