@@ -45,7 +45,7 @@ public class LanguageHelper {
      *
      * @param item   The item
      * @param locale The language of the item
-     * @return The localized name. if the item don't have a localized name, this method will return the unlocalized name of it.
+     * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
      */
     public static String getItemName(ItemStack item, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();
@@ -58,9 +58,10 @@ public class LanguageHelper {
      * Return the unlocalized name of the item(Minecraft convention)
      *
      * @param item The item
-     * @return The unlocalized name
+     * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        return EnumItem.get(new ItemEntry(item.getType(), item.getDurability())).getUnlocalizedName();
+        EnumItem enumItem = EnumItem.get(new ItemEntry(item.getType(), item.getDurability()));
+        return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
     }
 }

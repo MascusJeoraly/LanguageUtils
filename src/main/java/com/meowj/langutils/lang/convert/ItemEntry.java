@@ -32,6 +32,14 @@ public class ItemEntry {
         this(material, 0);
     }
 
+    public Material getMaterial() {
+        return material;
+    }
+
+    public int getMetadata() {
+        return metadata;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

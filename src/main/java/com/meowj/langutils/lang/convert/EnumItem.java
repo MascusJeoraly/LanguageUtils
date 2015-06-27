@@ -35,7 +35,7 @@ public enum EnumItem {
     POLISHED_DIORITE(Material.STONE, 4, "tile.stone.dioriteSmooth.name"),
     ANDESITE(Material.STONE, 5, "tile.stone.andesite.name"),
     POLISHED_ANDESITE(Material.STONE, 6, "tile.stone.andesiteSmooth.name");
-	//WIP Lazy, who can help me? (;´Д`)
+    //WIP Lazy, who can help me? (;´Д`)
 
 
     private Material material;
