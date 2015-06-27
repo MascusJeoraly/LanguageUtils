@@ -10,6 +10,7 @@
 
 package com.meowj.langutils.lang;
 
+import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,12 +18,45 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 public class LanguageHelperTest {
+
+    @Test
+    public void testItemDisplayName() throws Exception {
+        initLangs(); // Only load en_US and zh_CN(Encoding test)
+
+        ItemStack test = mock(ItemStack.class);
+
+        when(test.hasItemMeta()).thenReturn(false);
+        when(test.getType()).thenReturn(Material.STONE);
+
+        assertEquals(LanguageHelper.getItemDisplayName(test, "en_US"), "Stone");
+
+        ItemStack damageTest = mock(ItemStack.class);
+
+        when(damageTest.hasItemMeta()).thenReturn(false);
+        when(damageTest.getType()).thenReturn(Material.STONE);
+        when(damageTest.getDurability()).thenReturn((short) 2);
+
+        assertEquals(LanguageHelper.getItemDisplayName(damageTest, "en_US"), "Polished Granite");
+
+        ItemStack UTF8Test = mock(ItemStack.class);
+
+        when(UTF8Test.hasItemMeta()).thenReturn(false);
+        when(UTF8Test.getType()).thenReturn(Material.STONE);
+        when(UTF8Test.getDurability()).thenReturn((short) 1);
+
+        assertEquals(LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"), "\u82b1\u5c97\u5ca9");
+    }
 
     @Test
     public void testItemMetaDisplayName() throws Exception {
@@ -51,6 +85,25 @@ public class LanguageHelperTest {
         when(unlocalizedMetaTest.getType()).thenReturn(Material.STONE);
         when(unlocalizedMetaTest.getDurability()).thenReturn((short) 1);
         assertEquals(LanguageHelper.getItemUnlocalizedName(unlocalizedMetaTest), "tile.stone.granite.name");
+    }
 
+    private void initLangs() throws IOException {
+        String temp;
+        String[] tempStringArr;
+        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
+            try {
+                temp = reader.readLine();
+                while (temp != null) {
+                    if (temp.contains("=")) {
+                        tempStringArr = temp.split("=");
+                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
+                    }
+                    temp = reader.readLine();
+                }
+            } finally {
+                reader.close();
+            }
+        }
     }
 }

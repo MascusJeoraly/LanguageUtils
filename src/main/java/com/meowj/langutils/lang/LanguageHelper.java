@@ -15,6 +15,8 @@ import com.meowj.langutils.lang.convert.EnumLang;
 import com.meowj.langutils.lang.convert.ItemEntry;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Map;
+
 /**
  * Created by Meow J on 6/20/2015.
  * <p/>
@@ -43,10 +45,13 @@ public class LanguageHelper {
      *
      * @param item   The item
      * @param locale The language of the item
-     * @return The localized name
+     * @return The localized name. if the item don't have a localized name, it will return the unlocalized name of it.
      */
     public static String getItemName(ItemStack item, String locale) {
-        return EnumLang.get(locale).getMap().get(getItemUnlocalizedName(item));
+        Map<String, String> map = EnumLang.get(locale).getMap();
+        String unlocalizedName = getItemUnlocalizedName(item);
+
+        return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) : unlocalizedName;
     }
 
     /**
