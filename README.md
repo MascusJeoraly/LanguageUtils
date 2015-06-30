@@ -5,7 +5,7 @@ Language Utils
 
 A Bukkit/Spigot API offering the ability to get the name of an item.
 
-Currently for Spigot 1.8.7.
+Loading language files may cost 1-2 seconds, but it should be fine.
 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
 
