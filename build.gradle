@@ -8,9 +8,9 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-group = 'com.meow-j'
+group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.0.1'
+version = '1.0.2'
 
 final def EULA_ACCEPT = true
 
@@ -191,7 +191,6 @@ publishing {
     }
     repositories {
         maven {
-            // change to point to your repo, e.g. http://my.org/repo
             url "$buildDir/repo"
         }
     }
