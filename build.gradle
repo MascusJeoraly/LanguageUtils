@@ -9,7 +9,7 @@ apply plugin: 'eclipse'
 
 group = 'com.meow-j'
 archivesBaseName = 'LangUtils'
-version = '0.0.1'
+version = '1.0.0'
 
 final def EULA_ACCEPT = true
 
