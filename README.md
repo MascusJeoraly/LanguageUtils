@@ -11,14 +11,11 @@ Status: [![Build Status](https://snap-ci.com/MeowInnovation/LanguageUtils/branch
 ----------
 
 
-Progress: ![Progress](http://progressed.io/bar/86)
+Progress: ![Progress](http://progressed.io/bar/99)
 
 - API: ![Progress](http://progressed.io/bar/99)
 - Language files: ![Progress](http://progressed.io/bar/100?title=75/75)
-- Items: ![Progress](http://progressed.io/bar/60?title=322/536)
-
-<strike>Lazy</strike>
-
+- Items: ![Progress](http://progressed.io/bar/100?title=538/538)
 
 ----------
 ## Contribute to this Project
