@@ -22,8 +22,8 @@ import java.util.Map;
 
 /**
  * Created by Meow J on 6/20/2015.
- * <p/>
- * Unlocalized Name -> Localized Name
+ * <p>
+ * Unlocalized Name to Localized Name
  *
  * @author Meow J
  */

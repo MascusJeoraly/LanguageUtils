@@ -14,7 +14,7 @@ import org.bukkit.Material;
 
 /**
  * Created by Meow J on 6/20/2015.
- * <p/>
+ * <p>
  * Used for search
  *
  * @author Meow J
@@ -48,7 +48,6 @@ public class ItemEntry {
         ItemEntry itemEntry = (ItemEntry) o;
 
         return metadata == itemEntry.metadata && material == itemEntry.material;
-
     }
 
     @Override

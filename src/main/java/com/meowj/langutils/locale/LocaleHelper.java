@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 
 /**
  * Created by Meow J on 6/20/2015.
- * <p/>
+ * <p>
  * Language helper
  *
  * @author Meow J

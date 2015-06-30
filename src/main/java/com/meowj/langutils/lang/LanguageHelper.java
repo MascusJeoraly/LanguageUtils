@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * Created by Meow J on 6/20/2015.
- * <p/>
+ * <p>
  * Some methods to get the name of a item.
  *
  * @author Meow J

@@ -19,8 +19,8 @@ import java.util.Map;
 
 /**
  * Created by Meow J on 6/20/2015.
- * <p/>
- * Material -> Unlocalized Name
+ * <p>
+ * Material to Unlocalized Name
  *
  * @author Meow J
  */
