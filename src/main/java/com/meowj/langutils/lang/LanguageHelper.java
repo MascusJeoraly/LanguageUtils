@@ -13,6 +13,8 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.lang.convert.EnumItem;
 import com.meowj.langutils.lang.convert.EnumLang;
 import com.meowj.langutils.lang.convert.ItemEntry;
+import com.meowj.langutils.locale.LocaleHelper;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
@@ -41,6 +43,17 @@ public class LanguageHelper {
     }
 
     /**
+     * Return the display name of the item.
+     *
+     * @param item   The item
+     * @param player The receiver of the name
+     * @return The name of the item
+     */
+    public static String getItemDisplayName(ItemStack item, Player player) {
+        return getItemDisplayName(item, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
      * Return the localized name of the item.
      *
      * @param item   The item
@@ -52,6 +65,17 @@ public class LanguageHelper {
         String unlocalizedName = getItemUnlocalizedName(item);
 
         return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) : unlocalizedName;
+    }
+
+    /**
+     * Return the localized name of the item.
+     *
+     * @param item   The item
+     * @param player The receiver of the name
+     * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getItemName(ItemStack item, Player player) {
+        return getItemName(item, LocaleHelper.getPlayerLanguage(player));
     }
 
     /**
