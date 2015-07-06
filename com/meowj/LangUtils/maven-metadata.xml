@@ -2,11 +2,12 @@
 <metadata>
   <groupId>com.meowj</groupId>
   <artifactId>LangUtils</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <versioning>
     <versions>
       <version>1.0.2</version>
+      <version>1.0.3</version>
     </versions>
-    <lastUpdated>20150630124335</lastUpdated>
+    <lastUpdated>20150706171624</lastUpdated>
   </versioning>
 </metadata>
