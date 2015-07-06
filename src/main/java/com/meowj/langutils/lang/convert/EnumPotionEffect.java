@@ -72,6 +72,7 @@ public enum EnumPotionEffect {
     }
 
     /**
+     * @param effectType The effect type.
      * @return The index of a potion based on locale.
      */
     public static EnumPotionEffect get(PotionType effectType) {
@@ -79,6 +80,7 @@ public enum EnumPotionEffect {
     }
 
     /**
+     * @param potion The potion to be processed.
      * @return The postfix of an potion(The actual name without Splash or what not).
      */
     public static String getPostfix(ItemStack potion) {

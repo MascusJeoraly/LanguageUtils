@@ -139,6 +139,7 @@ public enum EnumLang {
     }
 
     /**
+     * @param locale The locale of the language
      * @return The index of a lang file based on locale.
      */
     public static EnumLang get(String locale) {
@@ -147,6 +148,8 @@ public enum EnumLang {
 
     /**
      * Initialize this class, load all the languages to the corresponding HashMap.
+     *
+     * @throws IOException if lang files do not exist.
      */
     public static void init() throws IOException {
         String temp;

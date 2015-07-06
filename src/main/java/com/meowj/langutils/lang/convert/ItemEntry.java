@@ -35,6 +35,8 @@ public class ItemEntry {
 
     /**
      * Create an {@link ItemEntry} with {@link ItemStack}
+     *
+     * @param itemStack The ItemStack that is based on.
      */
     public ItemEntry(ItemStack itemStack) {
         this.material = itemStack.getType();

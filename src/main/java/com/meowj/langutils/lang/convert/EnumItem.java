@@ -618,8 +618,9 @@ public enum EnumItem {
     }
 
     /**
-     * Get the index of an item based on {@link ItemEntry}
+     * Get the index of an item based on {@link ItemEntry}.
      *
+     * @param entry The entry for search.
      * @return The index of the item.
      */
     public static EnumItem get(ItemEntry entry) {
