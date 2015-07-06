@@ -12,8 +12,10 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.lang.convert.EnumItem;
 import com.meowj.langutils.lang.convert.EnumLang;
+import com.meowj.langutils.lang.convert.EnumPotionEffect;
 import com.meowj.langutils.lang.convert.ItemEntry;
 import com.meowj.langutils.locale.LocaleHelper;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -62,6 +64,11 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();
+        // Potion
+        if (item.getType() == Material.POTION && item.getDurability() != 0) {
+            return EnumPotionEffect.getLocalizedName(item, locale);
+        }
+
         String unlocalizedName = getItemUnlocalizedName(item);
 
         return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) : unlocalizedName;
@@ -85,7 +92,19 @@ public class LanguageHelper {
      * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        EnumItem enumItem = EnumItem.get(new ItemEntry(item.getType(), item.getDurability()));
+        EnumItem enumItem = EnumItem.get(new ItemEntry(item));
         return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
+    }
+
+    /**
+     * Translate unlocalized name to localized name.
+     *
+     * @param unlocalizedName The unlocalized name.
+     * @param locale          The language to be translated to.
+     * @return The localized field.
+     */
+    public static String translateToLocal(String unlocalizedName, String locale) {
+        Map<String, String> map = EnumLang.get(locale).getMap();
+        return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) : unlocalizedName;
     }
 }

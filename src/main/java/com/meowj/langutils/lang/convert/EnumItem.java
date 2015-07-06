@@ -29,7 +29,6 @@ public enum EnumItem {
     /* TODO Current Known Issues:
                                  - Firework
                                  - SpawnEgg
-                                 - Potion
     */
 
     AIR(Material.AIR, "Air"),

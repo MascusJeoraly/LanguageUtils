@@ -11,6 +11,7 @@
 package com.meowj.langutils.lang.convert;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Created by Meow J on 6/20/2015.
@@ -30,6 +31,11 @@ public class ItemEntry {
 
     public ItemEntry(Material material) {
         this(material, 0);
+    }
+
+    public ItemEntry(ItemStack itemStack) {
+        this.material = itemStack.getType();
+        this.metadata = itemStack.getDurability();
     }
 
     public Material getMaterial() {

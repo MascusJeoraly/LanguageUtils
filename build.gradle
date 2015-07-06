@@ -10,7 +10,7 @@ apply plugin: 'maven-publish'
 
 group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.0.2'
+version = '1.0.3'
 
 final def EULA_ACCEPT = true
 

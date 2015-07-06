@@ -130,7 +130,7 @@ public enum EnumLang {
     }
 
     public static EnumLang get(String locale) {
-        return lookup.containsKey(locale) ? lookup.get(locale) : null;
+        return lookup.containsKey(locale) ? lookup.get(locale) : EN_US;
     }
 
     public static void init() throws IOException {
