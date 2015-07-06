@@ -53,14 +53,14 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.0.2' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.0.3' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
 
 	<repositories>
 	  <repository>
-	    <id>LangUtilsRepo</id>
+	    <id>lang-utils-repo</id>
 	    <url>https://raw.github.com/MeowInnovation/LanguageUtils/mvn-repo/</url>
 	  </repository>
 	</repository>
@@ -70,7 +70,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.0.2</version>
+	    <version>1.0.3</version>
 	  </dependency>
 	</dependencies>
 
