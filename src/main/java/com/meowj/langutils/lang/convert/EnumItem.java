@@ -560,7 +560,7 @@ public enum EnumItem {
     PUMPKIN_PIE(Material.PUMPKIN_PIE, "item.pumpkinPie.name"),
     ENCHANTED_BOOK(Material.ENCHANTED_BOOK, "item.enchantedBook.name"),
     FIREWORK_ROCKET(Material.FIREWORK, "item.fireworks.name"),
-    FIREWORK_ROCKET_CHARGE(Material.FIREWORK_CHARGE, "item.fireworks.name"),
+    FIREWORK_ROCKET_CHARGE(Material.FIREWORK_CHARGE, "item.fireworksCharge.name"),
     NETHER_BRICK(Material.NETHER_BRICK_ITEM, "item.netherbrick.name"),
     NETHER_QUARTZ(Material.QUARTZ, "item.netherquartz.name"),
     ARMOR_STAND(Material.ARMOR_STAND, "item.armorStand.name"),

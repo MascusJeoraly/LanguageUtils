@@ -56,6 +56,32 @@ public class LanguageHelperTest {
         when(UTF8Test.getDurability()).thenReturn((short) 1);
 
         assertEquals(LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"), "\u82b1\u5c97\u5ca9");
+
+
+        //Potion Test
+        ItemStack waterBottle = mock(ItemStack.class);
+        when(waterBottle.getType()).thenReturn(Material.POTION);
+        when(waterBottle.getDurability()).thenReturn((short) 0);
+
+        assertEquals(LanguageHelper.getItemDisplayName(waterBottle, "en_US"), "Water Bottle");
+
+        ItemStack awkwardPotion = mock(ItemStack.class);
+        when(awkwardPotion.getType()).thenReturn(Material.POTION);
+        when(awkwardPotion.getDurability()).thenReturn((short) 16);
+
+        assertEquals(LanguageHelper.getItemDisplayName(awkwardPotion, "en_US"), "Awkward Potion");
+
+        ItemStack regenPotion = mock(ItemStack.class);
+        when(regenPotion.getType()).thenReturn(Material.POTION);
+        when(regenPotion.getDurability()).thenReturn((short) 8193);
+
+        assertEquals(LanguageHelper.getItemDisplayName(regenPotion, "en_US"), "Potion of Regeneration");
+
+        ItemStack splashRegenPotion = mock(ItemStack.class);
+        when(splashRegenPotion.getType()).thenReturn(Material.POTION);
+        when(splashRegenPotion.getDurability()).thenReturn((short) 16385);
+
+        assertEquals(LanguageHelper.getItemDisplayName(splashRegenPotion, "en_US"), "Splash Potion of Regeneration");
     }
 
     @Test
