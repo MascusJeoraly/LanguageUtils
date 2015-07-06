@@ -56,9 +56,12 @@ public class LanguageHelperTest {
         when(UTF8Test.getDurability()).thenReturn((short) 1);
 
         assertEquals(LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"), "\u82b1\u5c97\u5ca9");
+    }
 
+    @Test
+    public void testPotionDisplayName() throws Exception {
+        initLangs();
 
-        //Potion Test
         ItemStack waterBottle = mock(ItemStack.class);
         when(waterBottle.getType()).thenReturn(Material.POTION);
         when(waterBottle.getDurability()).thenReturn((short) 0);
