@@ -575,18 +575,30 @@ public enum EnumItem {
     private int metadata;
     private String unlocalizedName;
 
+    /**
+     * @return The unlocalized name of the item.
+     */
     public String getUnlocalizedName() {
         return unlocalizedName;
     }
 
+    /**
+     * @return The metadata(damage value, durability) of the item.
+     */
     public int getMetadata() {
         return metadata;
     }
 
+    /**
+     * @return The {@link Material} of the item.
+     */
     public Material getMaterial() {
         return material;
     }
 
+    /**
+     * Create an index of an item
+     */
     EnumItem(Material material, int metadata, String unlocalizedName) {
         this.material = material;
         this.metadata = metadata;
@@ -605,6 +617,11 @@ public enum EnumItem {
             lookup.put(new ItemEntry(item.material, item.getMetadata()), item);
     }
 
+    /**
+     * Get the index of an item based on {@link ItemEntry}
+     *
+     * @return The index of the item.
+     */
     public static EnumItem get(ItemEntry entry) {
         ItemEntry ignoreMeta = new ItemEntry(entry.getMaterial());
         return lookup.containsKey(entry) ? lookup.get(entry) : (lookup.containsKey(ignoreMeta) ? lookup.get(ignoreMeta) : null);

@@ -42,15 +42,24 @@ public enum EnumPotionEffect {
     NIGHT_VISION(PotionType.NIGHT_VISION, "potion.nightVision.postfix"),
     POISON(PotionType.POISON, "potion.poison.postfix");
 
+    /**
+     * Create an index of potion effects.
+     */
     EnumPotionEffect(PotionType potionType, String unlocalizedName) {
         this.potionType = potionType;
         this.unlocalizedName = unlocalizedName;
     }
 
+    /**
+     * @return The type of the potion
+     */
     public PotionType getPotionType() {
         return potionType;
     }
 
+    /**
+     * @return The unlocalized name of the potion
+     */
     public String getUnlocalizedName() {
         return unlocalizedName;
     }
@@ -62,15 +71,26 @@ public enum EnumPotionEffect {
             lookup.put(effect.getPotionType(), effect);
     }
 
+    /**
+     * @return The index of a potion based on locale.
+     */
     public static EnumPotionEffect get(PotionType effectType) {
         return lookup.containsKey(effectType) ? lookup.get(effectType) : null;
     }
 
+    /**
+     * @return The postfix of an potion(The actual name without Splash or what not).
+     */
     public static String getPostfix(ItemStack potion) {
         Potion p = Potion.fromItemStack(potion);
         return get(p.getType()).getUnlocalizedName();
     }
 
+    /**
+     * @param potion The potion.
+     * @param locale The language of the name.
+     * @return The localized name of an potion.
+     */
     public static String getLocalizedName(ItemStack potion, String locale) {
         switch (potion.getDurability()) {
             case 16:

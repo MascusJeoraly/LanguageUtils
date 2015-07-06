@@ -33,15 +33,24 @@ public class ItemEntry {
         this(material, 0);
     }
 
+    /**
+     * Create an {@link ItemEntry} with {@link ItemStack}
+     */
     public ItemEntry(ItemStack itemStack) {
         this.material = itemStack.getType();
         this.metadata = itemStack.getDurability();
     }
 
+    /**
+     * @return The {@link Material} of the item.
+     */
     public Material getMaterial() {
         return material;
     }
 
+    /**
+     * @return The metadata(damage value,durability) of the item.
+     */
     public int getMetadata() {
         return metadata;
     }

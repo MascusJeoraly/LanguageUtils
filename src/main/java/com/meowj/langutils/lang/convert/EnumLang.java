@@ -105,10 +105,16 @@ public enum EnumLang {
     ZH_CN("zh_CN", new HashMap<String, String>()),
     ZH_TW("zh_TW", new HashMap<String, String>());
 
+    /**
+     * @return The locale of the language
+     */
     public String getLocale() {
         return locale;
     }
 
+    /**
+     * @return The HashMap of the language.
+     */
     public Map<String, String> getMap() {
         return map;
     }
@@ -116,6 +122,9 @@ public enum EnumLang {
     private final String locale;
     private final Map<String, String> map;
 
+    /**
+     * Create an index of lang file.
+     */
     EnumLang(String locale, Map<String, String> map) {
         this.locale = locale;
         this.map = map;
@@ -129,10 +138,16 @@ public enum EnumLang {
             lookup.put(lang.getLocale(), lang);
     }
 
+    /**
+     * @return The index of a lang file based on locale.
+     */
     public static EnumLang get(String locale) {
         return lookup.containsKey(locale) ? lookup.get(locale) : EN_US;
     }
 
+    /**
+     * Initialize this class, load all the languages to the corresponding HashMap.
+     */
     public static void init() throws IOException {
         String temp;
         String[] tempStringArr;
