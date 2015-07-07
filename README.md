@@ -5,7 +5,7 @@ Language Utils
 
 A Bukkit/Spigot API offering the ability to get the name of an item.
 
-Loading language files may cost 1-2 seconds, but it should be fine.
+Loading language files may cost 100-250 ms, but it should be fine.
 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
 
