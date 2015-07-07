@@ -26,10 +26,6 @@ import java.util.Map;
  */
 public enum EnumItem {
 
-    /* TODO Current Known Issues:
-                                 - SpawnEgg
-    */
-
     AIR(Material.AIR, "Air"),
     STONE(Material.STONE, "tile.stone.stone.name"),
     GRANITE(Material.STONE, 1, "tile.stone.granite.name"),

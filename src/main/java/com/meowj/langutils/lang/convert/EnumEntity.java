@@ -27,6 +27,7 @@ import java.util.Map;
  * @author Meow J
  */
 public enum EnumEntity {
+
     ITEM(EntityType.DROPPED_ITEM, "entity.Item.name"),
     EXPERIENCE_ORB(EntityType.EXPERIENCE_ORB, "entity.XPOrb.name"),
     SMALL_FIREBALL(EntityType.SMALL_FIREBALL, "entity.SmallFireball.name"),
