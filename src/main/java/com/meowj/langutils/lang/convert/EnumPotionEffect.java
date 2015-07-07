@@ -73,7 +73,7 @@ public enum EnumPotionEffect {
 
     /**
      * @param effectType The effect type.
-     * @return The index of a potion based on locale.
+     * @return The index of a potion based on effect.
      */
     public static EnumPotionEffect get(PotionType effectType) {
         return lookup.containsKey(effectType) ? lookup.get(effectType) : null;

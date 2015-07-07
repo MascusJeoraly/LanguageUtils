@@ -12,8 +12,10 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.SpawnEgg;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -85,6 +87,20 @@ public class LanguageHelperTest {
         when(splashRegenPotion.getDurability()).thenReturn((short) 16385);
 
         assertEquals(LanguageHelper.getItemDisplayName(splashRegenPotion, "en_US"), "Splash Potion of Regeneration");
+    }
+
+    @Test
+    public void testMonsterEggDisplayName() throws Exception {
+        initLangs();
+
+        ItemStack creeperEgg = mock(ItemStack.class);
+        SpawnEgg egg = mock(SpawnEgg.class);
+        when(egg.getSpawnedType()).thenReturn(EntityType.CREEPER);
+
+        when(creeperEgg.getType()).thenReturn(Material.MONSTER_EGG);
+        when(creeperEgg.getData()).thenReturn(egg);
+
+        assertEquals(LanguageHelper.getItemDisplayName(creeperEgg, "en_US"), "Spawn Creeper");
     }
 
     @Test

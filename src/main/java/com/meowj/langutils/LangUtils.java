@@ -37,6 +37,7 @@ public class LangUtils extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        EnumLang.clean();
         info("Language Utils has been disabled.");
     }
 

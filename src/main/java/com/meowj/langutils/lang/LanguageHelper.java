@@ -10,10 +10,7 @@
 
 package com.meowj.langutils.lang;
 
-import com.meowj.langutils.lang.convert.EnumItem;
-import com.meowj.langutils.lang.convert.EnumLang;
-import com.meowj.langutils.lang.convert.EnumPotionEffect;
-import com.meowj.langutils.lang.convert.ItemEntry;
+import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -64,10 +61,11 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();
-        // Potion
-        if (item.getType() == Material.POTION && item.getDurability() != 0) {
+        // Potion & SpawnEgg
+        if (item.getType() == Material.POTION && item.getDurability() != 0)
             return EnumPotionEffect.getLocalizedName(item, locale);
-        }
+        else if (item.getType() == Material.MONSTER_EGG)
+            return EnumEntity.getSpawnEggName(item, locale);
 
         String unlocalizedName = getItemUnlocalizedName(item);
 
@@ -97,9 +95,9 @@ public class LanguageHelper {
     }
 
     /**
-     * Translate unlocalized name to localized name.
+     * Translate unlocalized field to localized field.
      *
-     * @param unlocalizedName The unlocalized name.
+     * @param unlocalizedName The unlocalized field.
      * @param locale          The language to be translated to.
      * @return The localized field.
      */

@@ -568,7 +568,23 @@ public enum EnumItem {
     GOLD_HORSE_ARMOR(Material.GOLD_BARDING, "item.horsearmorgold.name"),
     DIAMOND_HORSE_ARMOR(Material.DIAMOND_BARDING, "item.horsearmordiamond.name"),
     PRISMARINE_SHARD(Material.PRISMARINE_SHARD, "item.prismarineShard.name"),
-    PRISMARINE_CRYSTALS(Material.PRISMARINE_CRYSTALS, "item.prismarineCrystals.name");
+    PRISMARINE_CRYSTALS(Material.PRISMARINE_CRYSTALS, "item.prismarineCrystals.name"),
+    BLACK_BANNER(Material.BANNER, "item.banner.black.name"),
+    RED_BANNER(Material.BANNER, 1, "item.banner.red.name"),
+    GREEN_BANNER(Material.BANNER, 2, "item.banner.green.name"),
+    BROWN_BANNER(Material.BANNER, 3, "item.banner.brown.name"),
+    BLUE_BANNER(Material.BANNER, 4, "item.banner.blue.name"),
+    PURPLE_BANNER(Material.BANNER, 5, "item.banner.purple.name"),
+    CYAN_BANNER(Material.BANNER, 6, "item.banner.cyan.name"),
+    LIGHT_GRAY_BANNER(Material.BANNER, 7, "item.banner.silver.name"),
+    GRAY_BANNER(Material.BANNER, 8, "item.banner.gray.name"),
+    PINK_BANNER(Material.BANNER, 9, "item.banner.pink.name"),
+    LIME_BANNER(Material.BANNER, 10, "item.banner.lime.name"),
+    YELLOW_BANNER(Material.BANNER, 11, "item.banner.yellow.name"),
+    LIGHT_BLUE_BANNER(Material.BANNER, 12, "item.banner.lightBlue.name"),
+    MAGENTA_BANNER(Material.BANNER, 13, "item.banner.magenta.name"),
+    ORANGE_BANNER(Material.BANNER, 14, "item.banner.orange.name"),
+    WHITE_BANNER(Material.BANNER, 15, "item.banner.white.name");
 
 
     private Material material;

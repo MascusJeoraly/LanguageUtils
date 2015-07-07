@@ -171,4 +171,13 @@ public enum EnumLang {
             LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
         }
     }
+
+    /**
+     * Clean all the HashMap
+     */
+    public static void clean() {
+        for (EnumLang enumLang : EnumLang.values()) {
+            enumLang.getMap().clear();
+        }
+    }
 }
