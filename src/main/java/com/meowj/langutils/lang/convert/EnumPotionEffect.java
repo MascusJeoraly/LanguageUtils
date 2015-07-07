@@ -102,6 +102,11 @@ public enum EnumPotionEffect {
             case 64:
             case 8192:
                 return LanguageHelper.translateToLocal("potion.prefix.mundane", locale) + " " + LanguageHelper.translateToLocal("item.potion.name", locale);
+            // Fix Instant Health Potion problem
+            case 16453:
+                return LanguageHelper.translateToLocal("potion.prefix.grenade", locale) + " " + LanguageHelper.translateToLocal("potion.heal.postfix", locale);
+            case 8261:
+                return LanguageHelper.translateToLocal("potion.heal.postfix", locale);
             default:
                 if (Potion.fromItemStack(potion).isSplash())
                     return LanguageHelper.translateToLocal("potion.prefix.grenade", locale) + " " + LanguageHelper.translateToLocal(getPostfix(potion), locale);
