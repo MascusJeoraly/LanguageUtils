@@ -19,7 +19,9 @@ Progress: ![Progress](http://progressed.io/bar/99)
 
 - API: ![Progress](http://progressed.io/bar/99)
 - Language files: ![Progress](http://progressed.io/bar/100?title=75/75)
-- Items: ![Progress](http://progressed.io/bar/100?title=538/538)
+- Items: ![Progress](http://progressed.io/bar/100?title=555/555)
+- Potion Effects: ![Progress](http://progressed.io/bar/100?title=13/13)
+- Entities: ![Progress](http://progressed.io/bar/100?title=45/45)
 
 ----------
 
