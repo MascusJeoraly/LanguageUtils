@@ -28,8 +28,9 @@ public class LangUtils extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         try {
+            final long startTime = System.currentTimeMillis();
             EnumLang.init();
-            info("Language Utils has been enabled.");
+            info("Language Utils has been enabled." + "(" + (System.currentTimeMillis() - startTime) + "ms)");
         } catch (IOException e) {
             e.printStackTrace();
         }
