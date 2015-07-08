@@ -11,7 +11,10 @@
 package com.meowj.langutils.lang.convert;
 
 
+import com.meowj.langutils.lang.LanguageHelper;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -549,7 +552,7 @@ public enum EnumItem {
     SKELETON_SKULL(Material.SKULL_ITEM, "item.skull.skeleton.name"),
     WITHER_SKELETON_SKULL(Material.SKULL_ITEM, 1, "item.skull.wither.name"),
     ZOMBIE_HEAD(Material.SKULL_ITEM, 2, "item.skull.zombie.name"),
-    PLAYER_HEAD(Material.SKULL_ITEM, 3, "item.skull.player.name"),
+    PLAYER_HEAD(Material.SKULL_ITEM, 3, "item.skull.char.name"),
     CREEPER_HEAD(Material.SKULL_ITEM, 4, "item.skull.creeper.name"),
     CARROT_ON_A_STICK(Material.CARROT_STICK, "item.carrotOnAStick.name"),
     NETHER_STAR(Material.NETHER_STAR, "item.netherStar.name"),
@@ -638,5 +641,13 @@ public enum EnumItem {
     public static EnumItem get(ItemEntry entry) {
         ItemEntry ignoreMeta = new ItemEntry(entry.getMaterial());
         return lookup.containsKey(entry) ? lookup.get(entry) : (lookup.containsKey(ignoreMeta) ? lookup.get(ignoreMeta) : null);
+    }
+
+    public static String getPlayerSkullName(ItemStack skull, String locale) {
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        if (meta.hasOwner()) {
+            return String.format(LanguageHelper.translateToLocal("item.skull.player.name", locale),
+                    meta.getOwner());
+        } else return LanguageHelper.translateToLocal("item.skull.char.name", locale);
     }
 }

@@ -61,11 +61,13 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();
-        // Potion & SpawnEgg
+        // Potion & SpawnEgg & Player Skull
         if (item.getType() == Material.POTION && item.getDurability() != 0)
             return EnumPotionEffect.getLocalizedName(item, locale);
         else if (item.getType() == Material.MONSTER_EGG)
             return EnumEntity.getSpawnEggName(item, locale);
+        else if (item.getType() == Material.SKULL_ITEM && item.getDurability() == 3) // is player's skull
+            return EnumItem.getPlayerSkullName(item, locale);
 
         String unlocalizedName = getItemUnlocalizedName(item);
 
