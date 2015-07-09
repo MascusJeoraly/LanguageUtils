@@ -55,7 +55,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.1.0' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.1.1' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -72,7 +72,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.1.0</version>
+	    <version>1.1.1</version>
 	  </dependency>
 	</dependencies>
 
@@ -129,7 +129,7 @@ If you are using Eclipse(not tested)
 
 ### Pull Request
 
-If you want to contribute to this project, please send me PR.
+If you find any problems or want to improve the efficiency, please send me PR or issues.
 
 ----------
 
