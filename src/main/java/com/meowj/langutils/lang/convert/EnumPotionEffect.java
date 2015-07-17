@@ -34,7 +34,6 @@ public enum EnumPotionEffect {
     WEAKNESS(PotionType.WEAKNESS, "potion.weakness.postfix"),
     HEAL(PotionType.INSTANT_HEAL, "potion.heal.postfix"),
     HARM(PotionType.INSTANT_DAMAGE, "potion.harm.postfix"),
-    JUMP(PotionType.JUMP, "potion.jump.postfix"),
     REGENERATION(PotionType.REGEN, "potion.regeneration.postfix"),
     FIRE_RESISTANCE(PotionType.FIRE_RESISTANCE, "potion.fireResistance.postfix"),
     WATER_BREATHING(PotionType.WATER_BREATHING, "potion.waterBreathing.postfix"),

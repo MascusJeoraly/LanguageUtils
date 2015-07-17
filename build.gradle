@@ -10,12 +10,12 @@ apply plugin: 'maven-publish'
 
 group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.1.1'
+version = '1.1.1-1.7.10'
 
 final def EULA_ACCEPT = true
 
 final def BUKKIT_ARGS = []
-final def BUKKIT_VERSION = '1.8.7-R0.1-SNAPSHOT'
+final def BUKKIT_VERSION = '1.7.9-R0.3-SNAPSHOT'
 
 final def LINUX_TERMINAL_COMMAND = ''
 final def LINUX_TERMINAL_ARGS = ['-e']
@@ -184,6 +184,9 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 publishing {
     publications {
         maven(MavenPublication) {
+            artifactId 'LangUtils'
+            version '1.1.1-1.7.10'
+		
             from components.java
             artifact sourcesJar
             artifact javadocJar
@@ -219,7 +222,7 @@ repositories {
     mavenLocal()
 
     maven {
-        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+        url 'http://repo.md-5.net/content/groups/public/'
     }
     maven {
         url 'https://oss.sonatype.org/content/groups/public/'
