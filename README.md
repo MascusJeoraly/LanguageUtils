@@ -3,9 +3,12 @@ Language Utils
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MeowInnovation/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items. Currently, this API does **not** support MCPC+/Cauldron/KCauldron environment.
 
-Loading language files may cost 100-250 ms, but it should be fine to wait.
+The major version of this API supports 1.8.7. If you are using 1.7.10, please download versions with the suffix `-1.7.10`.
+
+Loading language files may cost 100-300 ms, but it should be fine to wait.
 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
 
