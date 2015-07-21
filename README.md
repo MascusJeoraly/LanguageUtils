@@ -38,7 +38,7 @@ First, you need to add LangUtils as a dependency in your `plugin.yml` file:
 
 	depend: [LangUtils]
 
-If you have multiple dependencies, add `,` between them:
+If you have multiple dependencies, add `,` between each of them:
 
 	depend: [LangUtils, Vault]
 
