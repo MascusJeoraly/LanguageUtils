@@ -10,6 +10,7 @@
 
 package com.meowj.langutils.locale;
 
+import com.meowj.langutils.LangUtils;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -36,6 +37,7 @@ public class LocaleHelper {
             f.setAccessible(true);
             return (String) f.get(handle);
         } catch (Exception e) {
+            LangUtils.plugin.warn("Cannot find the locale of " + player.getName() + ", please check your server environment.");
             e.printStackTrace();
             return "en_US";
         }

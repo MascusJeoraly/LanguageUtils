@@ -12,7 +12,9 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.SpawnEgg;
@@ -41,7 +43,7 @@ public class LanguageHelperTest {
         when(test.hasItemMeta()).thenReturn(false);
         when(test.getType()).thenReturn(Material.STONE);
 
-        assertEquals(LanguageHelper.getItemDisplayName(test, "en_US"), "Stone");
+        assertEquals("Stone", LanguageHelper.getItemDisplayName(test, "en_US"));
 
         ItemStack damageTest = mock(ItemStack.class);
 
@@ -49,7 +51,7 @@ public class LanguageHelperTest {
         when(damageTest.getType()).thenReturn(Material.STONE);
         when(damageTest.getDurability()).thenReturn((short) 2);
 
-        assertEquals(LanguageHelper.getItemDisplayName(damageTest, "en_US"), "Polished Granite");
+        assertEquals("Polished Granite", LanguageHelper.getItemDisplayName(damageTest, "en_US"));
 
         ItemStack UTF8Test = mock(ItemStack.class);
 
@@ -57,7 +59,7 @@ public class LanguageHelperTest {
         when(UTF8Test.getType()).thenReturn(Material.STONE);
         when(UTF8Test.getDurability()).thenReturn((short) 1);
 
-        assertEquals(LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"), "\u82b1\u5c97\u5ca9");
+        assertEquals("\u82b1\u5c97\u5ca9", LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"));
     }
 
     @Test
@@ -68,25 +70,25 @@ public class LanguageHelperTest {
         when(waterBottle.getType()).thenReturn(Material.POTION);
         when(waterBottle.getDurability()).thenReturn((short) 0);
 
-        assertEquals(LanguageHelper.getItemDisplayName(waterBottle, "en_US"), "Water Bottle");
+        assertEquals("Water Bottle", LanguageHelper.getItemDisplayName(waterBottle, "en_US"));
 
         ItemStack awkwardPotion = mock(ItemStack.class);
         when(awkwardPotion.getType()).thenReturn(Material.POTION);
         when(awkwardPotion.getDurability()).thenReturn((short) 16);
 
-        assertEquals(LanguageHelper.getItemDisplayName(awkwardPotion, "en_US"), "Awkward Potion");
+        assertEquals("Awkward Potion", LanguageHelper.getItemDisplayName(awkwardPotion, "en_US"));
 
         ItemStack regenPotion = mock(ItemStack.class);
         when(regenPotion.getType()).thenReturn(Material.POTION);
         when(regenPotion.getDurability()).thenReturn((short) 8193);
 
-        assertEquals(LanguageHelper.getItemDisplayName(regenPotion, "en_US"), "Potion of Regeneration");
+        assertEquals("Potion of Regeneration", LanguageHelper.getItemDisplayName(regenPotion, "en_US"));
 
         ItemStack splashRegenPotion = mock(ItemStack.class);
         when(splashRegenPotion.getType()).thenReturn(Material.POTION);
         when(splashRegenPotion.getDurability()).thenReturn((short) 16385);
 
-        assertEquals(LanguageHelper.getItemDisplayName(splashRegenPotion, "en_US"), "Splash Potion of Regeneration");
+        assertEquals("Splash Potion of Regeneration", LanguageHelper.getItemDisplayName(splashRegenPotion, "en_US"));
     }
 
     @Test
@@ -100,7 +102,7 @@ public class LanguageHelperTest {
         when(creeperEgg.getType()).thenReturn(Material.MONSTER_EGG);
         when(creeperEgg.getData()).thenReturn(egg);
 
-        assertEquals(LanguageHelper.getItemDisplayName(creeperEgg, "en_US"), "Spawn Creeper");
+        assertEquals("Spawn Creeper", LanguageHelper.getItemDisplayName(creeperEgg, "en_US"));
     }
 
     @Test
@@ -114,7 +116,7 @@ public class LanguageHelperTest {
         when(metaTest.getType()).thenReturn(Material.STONE);
         when(metaTest.getItemMeta()).thenReturn(meta);
 
-        assertEquals(LanguageHelper.getItemDisplayName(metaTest, "en_US"), "test Name");
+        assertEquals("test Name", LanguageHelper.getItemDisplayName(metaTest, "en_US"));
     }
 
     @Test
@@ -123,13 +125,56 @@ public class LanguageHelperTest {
 
         when(unlocalizedTest.getType()).thenReturn(Material.STONE);
         when(unlocalizedTest.getDurability()).thenReturn((short) 0);
-        assertEquals(LanguageHelper.getItemUnlocalizedName(unlocalizedTest), "tile.stone.stone.name");
+        assertEquals("tile.stone.stone.name", LanguageHelper.getItemUnlocalizedName(unlocalizedTest));
 
         ItemStack unlocalizedMetaTest = mock(ItemStack.class);
 
         when(unlocalizedMetaTest.getType()).thenReturn(Material.STONE);
         when(unlocalizedMetaTest.getDurability()).thenReturn((short) 1);
-        assertEquals(LanguageHelper.getItemUnlocalizedName(unlocalizedMetaTest), "tile.stone.granite.name");
+        assertEquals("tile.stone.granite.name", LanguageHelper.getItemUnlocalizedName(unlocalizedMetaTest));
+    }
+
+    @Test
+    public void testGetEntityUnlocalizedName() {
+        Entity entity1 = mock(Entity.class);
+
+        when(entity1.getType()).thenReturn(EntityType.CREEPER);
+        assertEquals("entity.Creeper.name", LanguageHelper.getEntityUnlocalizedName(entity1));
+
+        assertEquals("entity.Bat.name", LanguageHelper.getEntityUnlocalizedName(EntityType.BAT));
+    }
+
+    @Test
+    public void testGetEntityName() throws IOException {
+        initLangs();
+        Entity entity1 = mock(Entity.class);
+
+        when(entity1.getType()).thenReturn(EntityType.CREEPER);
+        assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_US"));
+
+        assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
+    }
+
+    @Test
+    public void testGetEntityDisplayName() throws IOException {
+        initLangs();
+        LivingEntity entity1 = mock(LivingEntity.class);
+
+        when(entity1.getType()).thenReturn(EntityType.CREEPER);
+        when(entity1.getCustomName()).thenReturn("Ssssssssss");
+        assertEquals("Ssssssssss", LanguageHelper.getEntityDisplayName(entity1, "en_US"));
+
+        Entity entity2 = mock(Entity.class);
+
+        when(entity2.getType()).thenReturn(EntityType.BOAT);
+        assertEquals("Boat", LanguageHelper.getEntityDisplayName(entity2, "en_US"));
+    }
+
+    @Test
+    public void testTranslateToLocale() throws IOException {
+        initLangs();
+        assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
+        assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_US"));
     }
 
     private void initLangs() throws IOException {

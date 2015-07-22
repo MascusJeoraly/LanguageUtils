@@ -10,7 +10,7 @@ apply plugin: 'maven-publish'
 
 group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.1.1-1.7.10'
+version = '1.2.0-1.7.10'
 
 final def EULA_ACCEPT = true
 
@@ -185,7 +185,6 @@ publishing {
     publications {
         maven(MavenPublication) {
             artifactId 'LangUtils'
-            version '1.1.1-1.7.10'
 		
             from components.java
             artifact sourcesJar
