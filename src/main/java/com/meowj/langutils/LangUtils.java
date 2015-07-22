@@ -23,12 +23,15 @@ import java.util.logging.Level;
 public class LangUtils extends JavaPlugin {
 
     public static LangUtils plugin;
+    private static boolean isCauldron = false;
 
     @Override
     public void onEnable() {
         plugin = this;
-        if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC"))
-            warn("Unsupported environment! Currently, Language Utils does NOT support Cauldron/KCauldron environment!");
+        if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC")) {
+            isCauldron = true;
+            warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
+        }
         try {
             final long startTime = System.currentTimeMillis();
             EnumLang.init();
@@ -60,5 +63,9 @@ public class LangUtils extends JavaPlugin {
      */
     public void warn(String msg) {
         getLogger().log(Level.WARNING, msg);
+    }
+
+    public boolean isCauldron() {
+        return isCauldron;
     }
 }

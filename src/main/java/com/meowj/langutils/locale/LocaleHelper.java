@@ -33,7 +33,7 @@ public class LocaleHelper {
     public static String getPlayerLanguage(Player player) {
         try {
             Object handle = player.getClass().getDeclaredMethod("getHandle").invoke(player, (Object[]) null);
-            Field f = handle.getClass().getDeclaredField("locale");
+            Field f = LangUtils.plugin.isCauldron() ? handle.getClass().getDeclaredField("field_71148_cg") : handle.getClass().getDeclaredField("locale");
             f.setAccessible(true);
             return (String) f.get(handle);
         } catch (Exception e) {
