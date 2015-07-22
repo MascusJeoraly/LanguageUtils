@@ -4,13 +4,15 @@ Language Utils
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MeowInnovation/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
-A Bukkit/Spigot API offering the ability to get the name of **vanilla** items and entities. Currently, this API does **not** support MCPC+/Cauldron/KCauldron environment.
+A Bukkit/Spigot API offering the ability to get the name of **vanilla** items and entities. 
 
 The major version of this API supports 1.8.7. If you are using 1.7.10, please download versions with the suffix `-1.7.10`.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait.
 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
+
+You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0.1-1.7.10+ version of this plugin. Again, the API only supports **vanilla** items/entities. It will just return the auto-generated material name of an item in mods.
 
 Status: [![Build Status](https://snap-ci.com/MeowInnovation/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MeowInnovation/LanguageUtils/branch/master) [![Build Status](https://drone.io/github.com/MeowInnovation/LanguageUtils/status.png)](https://drone.io/github.com/MeowInnovation/LanguageUtils/latest)
 
