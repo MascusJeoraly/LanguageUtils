@@ -27,6 +27,8 @@ public class LangUtils extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC"))
+            warn("Unsupported environment! Currently, Language Utils does NOT support Cauldron/KCauldron environment!");
         try {
             final long startTime = System.currentTimeMillis();
             EnumLang.init();
@@ -49,5 +51,14 @@ public class LangUtils extends JavaPlugin {
      */
     public void info(String msg) {
         getLogger().log(Level.INFO, msg);
+    }
+
+    /**
+     * Display a warning message
+     *
+     * @param msg message to be sent
+     */
+    public void warn(String msg) {
+        getLogger().log(Level.WARNING, msg);
     }
 }

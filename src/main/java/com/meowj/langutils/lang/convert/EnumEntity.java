@@ -112,7 +112,6 @@ public enum EnumEntity {
     }
 
     EnumEntity(EntityType type, String unlocalizedName) {
-
         this.type = type;
         this.unlocalizedName = unlocalizedName;
     }
