@@ -37,7 +37,7 @@ public class LocaleHelper {
             f.setAccessible(true);
             return (String) f.get(handle);
         } catch (Exception e) {
-            LangUtils.plugin.info("Cannot find the locale of " + player.getName() + ", please check your server environment.");
+            LangUtils.plugin.warn("Cannot find the locale of " + player.getName() + ", please check your server environment.");
             e.printStackTrace();
             return "en_US";
         }

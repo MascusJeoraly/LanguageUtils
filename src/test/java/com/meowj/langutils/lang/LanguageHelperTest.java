@@ -151,7 +151,6 @@ public class LanguageHelperTest {
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
         assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_US"));
 
-
         assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
     }
 
