@@ -13,6 +13,7 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -185,6 +186,100 @@ public class LanguageHelper {
     public static String getEntityName(EntityType entityType, Player player) {
         return getEntityName(entityType, LocaleHelper.getPlayerLanguage(player));
     }
+
+
+    /**
+     * Return the unlocalized name of the enchantment level(Minecraft convention)
+     *
+     * @param level The enchantment level
+     * @return The unlocalized name.
+     */
+    public static String getEnchantmentLevelUnlocalizedName(int level) {
+        EnumEnchantementLevel enumEnchLevel = EnumEnchantementLevel.get(level);
+        return (enumEnchLevel != null ? enumEnchLevel.getUnlocalizedName() : Integer.toString(level));
+    }
+
+    /**
+     * Return the unlocalized name of the enchantment level(Minecraft convention)
+     *
+     * @param level The enchantment level
+     * @param player The language of the level
+     * @return The unlocalized name.
+     */
+    public static String getEnchantmentLevelName(int level, Player player) {
+        return translateToLocal(getEnchantmentLevelUnlocalizedName(level), LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the unlocalized name of the enchantment level(Minecraft convention)
+     *
+     * @param level The enchantment level
+     * @param locale The language of the level
+     * @return The unlocalized name.
+     */
+    public static String getEnchantmentLevelName(int level, String locale) {
+        return translateToLocal(getEnchantmentLevelUnlocalizedName(level), locale);
+    }
+
+    /**
+     * Return the unlocalized name of the enchantment(Minecraft convention)
+     *
+     * @param ench The enchantment
+     * @return The unlocalized name.
+     */
+    public static String getEnchantmentUnlocalizedName(Enchantment ench) {
+        EnumEnchantement enumEnch = EnumEnchantement.get(ench);
+        return (enumEnch != null ? enumEnch.getUnlocalizedName() : ench.getName());
+    }
+
+    /**
+     * Return the display name of the enchantement.
+     *
+     * @param ench   The enchantment
+     * @param player The receiver of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentName(Enchantment ench, Player player) {
+        return getEnchantmentName(ench, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the display name of the item.
+     *
+     * @param ench   The enchantment
+     * @param locale The language of the item(if the item doesn't have a customized name, the method will return the name of the item in this language)
+     * @return The name of the item
+     */
+    public static String getEnchantmentName(Enchantment ench, String locale) {
+        return translateToLocal(getEnchantmentUnlocalizedName(ench), locale);
+    }
+
+    /**
+     * Return the display name of the enchantement.
+     *
+     * @param ench   The enchantment
+     * @param level The enchantment level
+     * @param player The receiver of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentName(Enchantment ench, int level, Player player) {
+        return getEnchantmentName(ench, level, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the display name of the item.
+     *
+     * @param ench   The enchantment
+     * @param level The enchantment level
+     * @param locale The language of the item(if the item doesn't have a customized name, the method will return the name of the item in this language)
+     * @return The name of the item
+     */
+    public static String getEnchantmentName(Enchantment ench, int level, String locale) {
+        String enchantment = getEnchantmentName(ench, locale);
+        String enchLevel = getEnchantmentLevelName(level, locale);
+        return enchantment + (enchLevel.length()>0 ? " " + enchLevel : "");
+    }
+
 
     /**
      * Translate unlocalized field to localized field.
