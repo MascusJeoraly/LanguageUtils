@@ -12,6 +12,8 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
@@ -151,7 +153,7 @@ public class LanguageHelperTest {
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
         assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_US"));
 
-        assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
+        assertEquals("arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
     }
 
     @Test
@@ -170,6 +172,21 @@ public class LanguageHelperTest {
     }
 
     @Test
+    public void testEnchantmentDisplayName() throws Exception {
+        /*initLangs();
+
+        Enchantment ench = mock(Enchantment.class);
+
+        when(ench.getId()).thenReturn((int) 0);
+        when(ench.getName()).thenReturn((String) "PROTECTION_ENVIRONMENTAL");
+        when(ench.toString()).thenReturn("Enchantment[" + 0 + ", " + "protection" + "]");
+
+        assertEquals("Protection", LanguageHelper.getEnchantementUnlocalizedName(ench));
+        assertEquals("Protection", LanguageHelper.getEnchantmentName(ench, "fr_FR"));
+        assertEquals("Protection IV", LanguageHelper.getEnchantmentName(ench, 4, "fr_FR"));*/
+    }
+
+    @Test
     public void testTranslateToLocale() throws IOException {
         initLangs();
         assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
@@ -179,7 +196,7 @@ public class LanguageHelperTest {
     private void initLangs() throws IOException {
         String temp;
         String[] tempStringArr;
-        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
+        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN, EnumLang.FR_FR}) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
             try {
                 temp = reader.readLine();
