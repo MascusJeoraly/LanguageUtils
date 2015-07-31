@@ -15,7 +15,7 @@ version = '1.2.0'
 final def EULA_ACCEPT = true
 
 final def BUKKIT_ARGS = []
-final def BUKKIT_VERSION = '1.8.7-R0.1-SNAPSHOT'
+final def BUKKIT_VERSION = '1.8.8-R0.1-SNAPSHOT'
 
 final def LINUX_TERMINAL_COMMAND = ''
 final def LINUX_TERMINAL_ARGS = ['-e']
