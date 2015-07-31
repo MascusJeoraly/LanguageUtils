@@ -102,7 +102,7 @@ public enum EnumPotionEffect {
             case 64:
             case 8192:
                 return LanguageHelper.translateToLocal("potion.prefix.mundane", locale) + " " + LanguageHelper.translateToLocal("item.potion.name", locale);
-            // Fix Instant Health Potion problem
+            // Fix Instant Health Potion problem(This problem has been fixed in the latest version of the Bukkit, but I'll still leave it here in case many people don't update their server very often. Indeed, I highly recommend updating the servers)
             case 16453:
                 return LanguageHelper.translateToLocal("potion.prefix.grenade", locale) + " " + LanguageHelper.translateToLocal("potion.heal.postfix", locale);
             case 8261:

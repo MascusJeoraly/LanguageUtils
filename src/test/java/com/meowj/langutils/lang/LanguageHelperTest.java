@@ -13,12 +13,13 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.SpawnEgg;
+import org.bukkit.potion.PotionEffectType;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -35,9 +36,49 @@ import static org.mockito.Mockito.when;
 @RunWith(PowerMockRunner.class)
 public class LanguageHelperTest {
 
+
+    @BeforeClass
+    public static void setup() throws IOException {
+        PotionEffectType.registerPotionEffectType(new PotionEffectType(10) {
+            @Override
+            public double getDurationModifier() {
+                return 1;
+            }
+
+            @Override
+            public String getName() {
+                return "Regeneration";
+            }
+
+            @Override
+            public boolean isInstant() {
+                return false;
+            }
+        });
+
+        //Init Lang(Only English and Chinese(for UTF-8 Test))
+        String temp;
+        String[] tempStringArr;
+        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(LanguageHelperTest.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
+            try {
+                temp = reader.readLine();
+                while (temp != null) {
+                    if (temp.contains("=")) {
+                        tempStringArr = temp.split("=");
+                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
+                    }
+                    temp = reader.readLine();
+                }
+            } finally {
+                reader.close();
+            }
+        }
+    }
+
     @Test
     public void testItemDisplayName() throws Exception {
-        initLangs(); // Only load en_US and zh_CN(Encoding test)
+        // Only load en_US and zh_CN(Encoding test)
 
         ItemStack test = mock(ItemStack.class);
 
@@ -63,9 +104,9 @@ public class LanguageHelperTest {
         assertEquals("\u82b1\u5c97\u5ca9", LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"));
     }
 
+
     @Test
     public void testPotionDisplayName() throws Exception {
-        initLangs();
 
         ItemStack waterBottle = mock(ItemStack.class);
         when(waterBottle.getType()).thenReturn(Material.POTION);
@@ -94,7 +135,6 @@ public class LanguageHelperTest {
 
     @Test
     public void testMonsterEggDisplayName() throws Exception {
-        initLangs();
 
         ItemStack creeperEgg = mock(ItemStack.class);
         SpawnEgg egg = mock(SpawnEgg.class);
@@ -147,18 +187,16 @@ public class LanguageHelperTest {
 
     @Test
     public void testGetEntityName() throws IOException {
-        initLangs();
         Entity entity1 = mock(Entity.class);
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
         assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_US"));
 
-        assertEquals("arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
+        assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
     }
 
     @Test
     public void testGetEntityDisplayName() throws IOException {
-        initLangs();
         Entity entity1 = mock(Entity.class);
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
@@ -173,43 +211,17 @@ public class LanguageHelperTest {
 
     @Test
     public void testEnchantmentDisplayName() throws Exception {
-        /*initLangs();
-
-        Enchantment ench = mock(Enchantment.class);
-
-        when(ench.getId()).thenReturn((int) 0);
-        when(ench.getName()).thenReturn((String) "PROTECTION_ENVIRONMENTAL");
-        when(ench.toString()).thenReturn("Enchantment[" + 0 + ", " + "protection" + "]");
-
-        assertEquals("Protection", LanguageHelper.getEnchantementUnlocalizedName(ench));
-        assertEquals("Protection", LanguageHelper.getEnchantmentName(ench, "fr_FR"));
-        assertEquals("Protection IV", LanguageHelper.getEnchantmentName(ench, 4, "fr_FR"));*/
+        assertEquals("enchantment.protect.all", LanguageHelper.getEnchantmentUnlocalizedName(Enchantment.PROTECTION_ENVIRONMENTAL));
+        assertEquals("X", LanguageHelper.getEnchantmentLevelName(10, "en_US"));
+        assertEquals("Protection", LanguageHelper.getEnchantmentName(Enchantment.PROTECTION_ENVIRONMENTAL, "en_US"));
+        assertEquals("Protection IV", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 4, "en_US"));
+        assertEquals("Protection 11", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 11, "en_US"));
     }
 
     @Test
     public void testTranslateToLocale() throws IOException {
-        initLangs();
         assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
         assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_US"));
     }
 
-    private void initLangs() throws IOException {
-        String temp;
-        String[] tempStringArr;
-        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN, EnumLang.FR_FR}) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
-            try {
-                temp = reader.readLine();
-                while (temp != null) {
-                    if (temp.contains("=")) {
-                        tempStringArr = temp.split("=");
-                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
-                    }
-                    temp = reader.readLine();
-                }
-            } finally {
-                reader.close();
-            }
-        }
-    }
 }
