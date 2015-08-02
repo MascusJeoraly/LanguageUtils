@@ -1,3 +1,13 @@
+enchantment.level.1=I
+enchantment.level.10=X
+enchantment.level.2=II
+enchantment.level.3=III
+enchantment.level.4=IV
+enchantment.level.5=V
+enchantment.level.6=VI
+enchantment.level.7=VII
+enchantment.level.8=VIII
+enchantment.level.9=IX
 entity.Boat.name=Fanas
 entity.Cat.name=Bussá
 entity.Chicken.name=Vuonccis

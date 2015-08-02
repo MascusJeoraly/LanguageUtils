@@ -12,12 +12,14 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.SpawnEgg;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -34,10 +36,30 @@ import static org.mockito.Mockito.when;
 @RunWith(PowerMockRunner.class)
 public class LanguageHelperTest {
 
+    @BeforeClass
+    public static void setup() throws IOException {
+        //Init Lang(Only English and Chinese(for UTF-8 Test))
+        String temp;
+        String[] tempStringArr;
+        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(LanguageHelperTest.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
+            try {
+                temp = reader.readLine();
+                while (temp != null) {
+                    if (temp.contains("=")) {
+                        tempStringArr = temp.split("=");
+                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
+                    }
+                    temp = reader.readLine();
+                }
+            } finally {
+                reader.close();
+            }
+        }
+    }
+
     @Test
     public void testItemDisplayName() throws Exception {
-        initLangs(); // Only load en_US and zh_CN(Encoding test)
-
         ItemStack test = mock(ItemStack.class);
 
         when(test.hasItemMeta()).thenReturn(false);
@@ -64,8 +86,6 @@ public class LanguageHelperTest {
 
     @Test
     public void testPotionDisplayName() throws Exception {
-        initLangs();
-
         ItemStack waterBottle = mock(ItemStack.class);
         when(waterBottle.getType()).thenReturn(Material.POTION);
         when(waterBottle.getDurability()).thenReturn((short) 0);
@@ -93,8 +113,6 @@ public class LanguageHelperTest {
 
     @Test
     public void testMonsterEggDisplayName() throws Exception {
-        initLangs();
-
         ItemStack creeperEgg = mock(ItemStack.class);
         SpawnEgg egg = mock(SpawnEgg.class);
         when(egg.getSpawnedType()).thenReturn(EntityType.CREEPER);
@@ -146,7 +164,6 @@ public class LanguageHelperTest {
 
     @Test
     public void testGetEntityName() throws IOException {
-        initLangs();
         Entity entity1 = mock(Entity.class);
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
@@ -157,7 +174,6 @@ public class LanguageHelperTest {
 
     @Test
     public void testGetEntityDisplayName() throws IOException {
-        initLangs();
         LivingEntity entity1 = mock(LivingEntity.class);
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
@@ -171,29 +187,18 @@ public class LanguageHelperTest {
     }
 
     @Test
+    public void testEnchantmentDisplayName() throws Exception {
+        assertEquals("enchantment.protect.all", LanguageHelper.getEnchantmentUnlocalizedName(Enchantment.PROTECTION_ENVIRONMENTAL));
+        assertEquals("X", LanguageHelper.getEnchantmentLevelName(10, "en_US"));
+        assertEquals("Protection", LanguageHelper.getEnchantmentName(Enchantment.PROTECTION_ENVIRONMENTAL, "en_US"));
+        assertEquals("Protection IV", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 4, "en_US"));
+        assertEquals("Protection 11", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 11, "en_US"));
+    }
+
+    @Test
     public void testTranslateToLocale() throws IOException {
-        initLangs();
         assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
         assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_US"));
     }
 
-    private void initLangs() throws IOException {
-        String temp;
-        String[] tempStringArr;
-        for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
-            try {
-                temp = reader.readLine();
-                while (temp != null) {
-                    if (temp.contains("=")) {
-                        tempStringArr = temp.split("=");
-                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
-                    }
-                    temp = reader.readLine();
-                }
-            } finally {
-                reader.close();
-            }
-        }
-    }
 }

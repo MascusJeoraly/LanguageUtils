@@ -13,6 +13,7 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -41,7 +42,7 @@ public class LanguageHelper {
         if (item.hasItemMeta() && item.getItemMeta().hasDisplayName())
             return item.getItemMeta().getDisplayName();
         else
-            return LanguageHelper.getItemName(item, locale);
+            return getItemName(item, locale);
     }
 
     /**
@@ -128,7 +129,8 @@ public class LanguageHelper {
      * @return The name of the entity
      */
     public static String getEntityDisplayName(Entity entity, String locale) {
-        return (entity instanceof LivingEntity) && ((LivingEntity) entity).getCustomName() != null ? ((LivingEntity) entity).getCustomName() :
+        return (entity instanceof LivingEntity) && ((LivingEntity) entity).getCustomName() != null ?
+                ((LivingEntity) entity).getCustomName() :
                 getEntityName(entity, locale);
     }
 
@@ -185,6 +187,121 @@ public class LanguageHelper {
      */
     public static String getEntityName(EntityType entityType, Player player) {
         return getEntityName(entityType, LocaleHelper.getPlayerLanguage(player));
+    }
+
+
+    /**
+     * Return the unlocalized name of the enchantment level(Minecraft convention)
+     *
+     * @param level The enchantment level
+     * @return The unlocalized name.(if level is greater than 10, it will only return the number of the level)
+     */
+    public static String getEnchantmentLevelUnlocalizedName(int level) {
+        EnumEnchantmentLevel enumEnchLevel = EnumEnchantmentLevel.get(level);
+        return enumEnchLevel != null ? enumEnchLevel.getUnlocalizedName() : Integer.toString(level);
+    }
+
+    /**
+     * Return the name of the enchantment level
+     *
+     * @param level  The enchantment level
+     * @param player The language of the level
+     * @return The name of the level.(if level is greater than 10, it will only return the number of the level)
+     */
+    public static String getEnchantmentLevelName(int level, Player player) {
+        return translateToLocal(getEnchantmentLevelUnlocalizedName(level), LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the name of the enchantment level
+     *
+     * @param level  The enchantment level
+     * @param locale The language of the level
+     * @return The name of the level.(if level is greater than 10, it will only return the number of the level)
+     */
+    public static String getEnchantmentLevelName(int level, String locale) {
+        return translateToLocal(getEnchantmentLevelUnlocalizedName(level), locale);
+    }
+
+    /**
+     * Return the unlocalized name of the enchantment(Minecraft convention)
+     *
+     * @param enchantment The enchantment
+     * @return The unlocalized name.
+     */
+    public static String getEnchantmentUnlocalizedName(Enchantment enchantment) {
+        EnumEnchantment enumEnch = EnumEnchantment.get(enchantment);
+        return (enumEnch != null ? enumEnch.getUnlocalizedName() : enchantment.getName());
+    }
+
+    /**
+     * Return the name of the enchantment.
+     *
+     * @param enchantment The enchantment
+     * @param player      The receiver of the name
+     * @return The name of the enchantment
+     */
+    public static String getEnchantmentName(Enchantment enchantment, Player player) {
+        return getEnchantmentName(enchantment, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the name of the enchantment.
+     *
+     * @param enchantment The enchantment
+     * @param locale      The language of the name
+     * @return The name of the enchantment
+     */
+    public static String getEnchantmentName(Enchantment enchantment, String locale) {
+        return translateToLocal(getEnchantmentUnlocalizedName(enchantment), locale);
+    }
+
+    /**
+     * Return the display name of the enchantment(with level).
+     *
+     * @param enchantment The enchantment
+     * @param level       The enchantment level
+     * @param player      The receiver of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentDisplayName(Enchantment enchantment, int level, Player player) {
+        return getEnchantmentDisplayName(enchantment, level, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the display name of the enchantment(with level).
+     *
+     * @param enchantment The enchantment
+     * @param level       The enchantment level
+     * @param locale      The language of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentDisplayName(Enchantment enchantment, int level, String locale) {
+        String name = getEnchantmentName(enchantment, locale);
+        String enchLevel = getEnchantmentLevelName(level, locale);
+        return name + (enchLevel.length() > 0 ? " " + enchLevel : "");
+    }
+
+    /**
+     * Return the display name of the enchantment(with level).
+     *
+     * @param entry  The Entry of an enchantment with level The type is {@code Map.Entry<Enchantment, Integer>}
+     * @param locale The language of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentDisplayName(Map.Entry<Enchantment, Integer> entry, String locale) {
+        return getEnchantmentDisplayName(entry.getKey(), entry.getValue(), locale);
+    }
+
+    /**
+     * Return the display name of the enchantment(with level).
+     *
+     * @param entry  The Entry of an enchantment with level The type is {@code Map.Entry<Enchantment, Integer>}
+     * @param player The receiver of the name
+     * @return The name of the item
+     */
+    public static String getEnchantmentDisplayName(Map.Entry<Enchantment, Integer> entry, Player player) {
+        return getEnchantmentDisplayName(entry.getKey(), entry.getValue(), player);
     }
 
     /**
