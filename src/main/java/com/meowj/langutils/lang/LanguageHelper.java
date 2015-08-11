@@ -63,8 +63,6 @@ public class LanguageHelper {
      * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
      */
     public static String getItemName(ItemStack item, String locale) {
-        Map<String, String> map = EnumLang.get(locale).getMap();
-
         // Potion & SpawnEgg & Player Skull
         if (item.getType() == Material.POTION && item.getDurability() != 0)
             return EnumPotionEffect.getLocalizedName(item, locale);

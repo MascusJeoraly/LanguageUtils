@@ -9,6 +9,7 @@
  */
 package com.meowj.langutils;
 
+import com.meowj.langutils.lang.LanguageRegistry;
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,6 +30,8 @@ public class LangUtils extends JavaPlugin {
         plugin = this;
         if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC"))
             warn("Unsupported environment! Currently, Language Utils does NOT support Cauldron/KCauldron environment!");
+
+        // Init default lang
         try {
             final long startTime = System.currentTimeMillis();
             EnumLang.init();
@@ -36,6 +39,8 @@ public class LangUtils extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        LanguageRegistry.INSTANCE = new LanguageRegistry();
     }
 
     @Override

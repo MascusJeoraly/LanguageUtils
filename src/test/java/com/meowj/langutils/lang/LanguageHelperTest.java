@@ -223,5 +223,4 @@ public class LanguageHelperTest {
         assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
         assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_US"));
     }
-
 }
