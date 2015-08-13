@@ -12,9 +12,7 @@ package com.meowj.langutils.lang.convert;
 
 import com.meowj.langutils.LangUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -105,18 +103,11 @@ public enum EnumLang {
     ZH_CN("zh_CN", new HashMap<String, String>()),
     ZH_TW("zh_TW", new HashMap<String, String>());
 
-    /**
-     * @return The locale of the language
-     */
-    public String getLocale() {
-        return locale;
-    }
+    private static final Map<String, EnumLang> lookup = new HashMap<String, EnumLang>();
 
-    /**
-     * @return The HashMap of the language.
-     */
-    public Map<String, String> getMap() {
-        return map;
+    static {
+        for (EnumLang lang : EnumSet.allOf(EnumLang.class))
+            lookup.put(lang.getLocale(), lang);
     }
 
     private final String locale;
@@ -128,14 +119,6 @@ public enum EnumLang {
     EnumLang(String locale, Map<String, String> map) {
         this.locale = locale;
         this.map = map;
-    }
-
-
-    private static final Map<String, EnumLang> lookup = new HashMap<String, EnumLang>();
-
-    static {
-        for (EnumLang lang : EnumSet.allOf(EnumLang.class))
-            lookup.put(lang.getLocale(), lang);
     }
 
     /**
@@ -152,23 +135,25 @@ public enum EnumLang {
      * @throws IOException if lang files do not exist.
      */
     public static void init() throws IOException {
-        String temp;
-        String[] tempStringArr;
         for (EnumLang enumLang : EnumLang.values()) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang"), Charset.forName("UTF-8")));
-            try {
-                temp = reader.readLine();
-                while (temp != null) {
-                    if (temp.contains("=")) {
-                        tempStringArr = temp.split("=");
-                        enumLang.map.put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
-                    }
-                    temp = reader.readLine();
-                }
-            } finally {
-                reader.close();
-            }
+            readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang"), Charset.forName("UTF-8"))));
             LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
+        }
+        File customizedLangDir = new File(LangUtils.plugin.getDataFolder(), "lang");
+        if (!customizedLangDir.exists()) customizedLangDir.mkdirs();
+
+        for (File file : customizedLangDir.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".lang");
+            }
+        })) {
+            EnumLang enumLang = get(file.getName().replace(".lang", ""));
+            if (enumLang.getLocale().equals("en_US") && !file.getName().contains("en_US")) {
+                LangUtils.plugin.warn("Failed to load file " + file.getName());
+            } else {
+                readFile(enumLang, new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))));
+            }
         }
     }
 
@@ -179,5 +164,37 @@ public enum EnumLang {
         for (EnumLang enumLang : EnumLang.values()) {
             enumLang.getMap().clear();
         }
+    }
+
+    public static void readFile(EnumLang enumLang, BufferedReader reader) throws IOException {
+        String temp;
+        String[] tempStringArr;
+        try {
+            temp = reader.readLine();
+            while (temp != null) {
+                if (temp.startsWith("#")) continue;
+                if (temp.contains("=")) {
+                    tempStringArr = temp.split("=");
+                    enumLang.map.put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
+                }
+                temp = reader.readLine();
+            }
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * @return The locale of the language
+     */
+    public String getLocale() {
+        return locale;
+    }
+
+    /**
+     * @return The HashMap of the language.
+     */
+    public Map<String, String> getMap() {
+        return map;
     }
 }

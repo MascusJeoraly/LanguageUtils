@@ -531,9 +531,48 @@ public enum EnumItem {
     GOLD_HORSE_ARMOR(Material.GOLD_BARDING, "item.horsearmorgold.name"),
     DIAMOND_HORSE_ARMOR(Material.DIAMOND_BARDING, "item.horsearmordiamond.name");
 
+    private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
+
+    static {
+        for (EnumItem item : EnumSet.allOf(EnumItem.class))
+            lookup.put(new ItemEntry(item.material, item.getMetadata()), item);
+    }
+
     private Material material;
     private int metadata;
     private String unlocalizedName;
+
+    /**
+     * Create an index of an item
+     */
+    EnumItem(Material material, int metadata, String unlocalizedName) {
+        this.material = material;
+        this.metadata = metadata;
+        this.unlocalizedName = unlocalizedName;
+    }
+
+    EnumItem(Material material, String unlocalizedName) {
+        this(material, 0, unlocalizedName);
+    }
+
+    /**
+     * Get the index of an item based on {@link ItemEntry}.
+     *
+     * @param entry The entry for search.
+     * @return The index of the item.
+     */
+    public static EnumItem get(ItemEntry entry) {
+        ItemEntry ignoreMeta = new ItemEntry(entry.getMaterial());
+        return lookup.containsKey(entry) ? lookup.get(entry) : (lookup.containsKey(ignoreMeta) ? lookup.get(ignoreMeta) : null);
+    }
+
+    public static String getPlayerSkullName(ItemStack skull, String locale) {
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        if (meta.hasOwner()) {
+            return String.format(LanguageHelper.translateToLocal("item.skull.player.name", locale),
+                    meta.getOwner());
+        } else return LanguageHelper.translateToLocal("item.skull.char.name", locale);
+    }
 
     /**
      * @return The unlocalized name of the item.
@@ -554,45 +593,5 @@ public enum EnumItem {
      */
     public Material getMaterial() {
         return material;
-    }
-
-    /**
-     * Create an index of an item
-     */
-    EnumItem(Material material, int metadata, String unlocalizedName) {
-        this.material = material;
-        this.metadata = metadata;
-        this.unlocalizedName = unlocalizedName;
-    }
-
-    EnumItem(Material material, String unlocalizedName) {
-        this(material, 0, unlocalizedName);
-    }
-
-
-    private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
-
-    static {
-        for (EnumItem item : EnumSet.allOf(EnumItem.class))
-            lookup.put(new ItemEntry(item.material, item.getMetadata()), item);
-    }
-
-    /**
-     * Get the index of an item based on {@link ItemEntry}.
-     *
-     * @param entry The entry for search.
-     * @return The index of the item.
-     */
-    public static EnumItem get(ItemEntry entry) {
-        ItemEntry ignoreMeta = new ItemEntry(entry.getMaterial());
-        return lookup.containsKey(entry) ? lookup.get(entry) : (lookup.containsKey(ignoreMeta) ? lookup.get(ignoreMeta) : null);
-    }
-
-    public static String getPlayerSkullName(ItemStack skull, String locale) {
-        SkullMeta meta = (SkullMeta) skull.getItemMeta();
-        if (meta.hasOwner()) {
-            return String.format(LanguageHelper.translateToLocal("item.skull.player.name", locale),
-                    meta.getOwner());
-        } else return LanguageHelper.translateToLocal("item.skull.char.name", locale);
     }
 }

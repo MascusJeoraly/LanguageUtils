@@ -70,19 +70,19 @@ public enum EnumEntity {
     MINECART(EntityType.MINECART, "entity.Minecart.name"),
     BOAT(EntityType.BOAT, "entity.Boat.name");
 
-    public String getUnlocalizedName() {
-        return unlocalizedName;
-    }
-
-    public EntityType getType() {
-        return type;
-    }
-
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
 
     static {
         for (EnumEntity entity : EnumSet.allOf(EnumEntity.class))
             lookup.put(entity.getType(), entity);
+    }
+
+    private EntityType type;
+    private String unlocalizedName;
+
+    EnumEntity(EntityType type, String unlocalizedName) {
+        this.type = type;
+        this.unlocalizedName = unlocalizedName;
     }
 
     /**
@@ -107,12 +107,12 @@ public enum EnumEntity {
                 : LanguageHelper.translateToLocal("item.monsterPlacer.name", locale);
     }
 
-    EnumEntity(EntityType type, String unlocalizedName) {
-        this.type = type;
-        this.unlocalizedName = unlocalizedName;
+    public String getUnlocalizedName() {
+        return unlocalizedName;
     }
 
-    private EntityType type;
-    private String unlocalizedName;
+    public EntityType getType() {
+        return type;
+    }
 
 }

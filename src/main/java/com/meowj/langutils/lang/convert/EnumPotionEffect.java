@@ -41,33 +41,22 @@ public enum EnumPotionEffect {
     NIGHT_VISION(PotionType.NIGHT_VISION, "potion.nightVision.postfix"),
     POISON(PotionType.POISON, "potion.poison.postfix");
 
+    private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<PotionType, EnumPotionEffect>();
+
+    static {
+        for (EnumPotionEffect effect : EnumSet.allOf(EnumPotionEffect.class))
+            lookup.put(effect.getPotionType(), effect);
+    }
+
+    private PotionType potionType;
+    private String unlocalizedName;
+
     /**
      * Create an index of potion effects.
      */
     EnumPotionEffect(PotionType potionType, String unlocalizedName) {
         this.potionType = potionType;
         this.unlocalizedName = unlocalizedName;
-    }
-
-    /**
-     * @return The type of the potion
-     */
-    public PotionType getPotionType() {
-        return potionType;
-    }
-
-    /**
-     * @return The unlocalized name of the potion
-     */
-    public String getUnlocalizedName() {
-        return unlocalizedName;
-    }
-
-    private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<PotionType, EnumPotionEffect>();
-
-    static {
-        for (EnumPotionEffect effect : EnumSet.allOf(EnumPotionEffect.class))
-            lookup.put(effect.getPotionType(), effect);
     }
 
     /**
@@ -114,6 +103,17 @@ public enum EnumPotionEffect {
         }
     }
 
-    private PotionType potionType;
-    private String unlocalizedName;
+    /**
+     * @return The type of the potion
+     */
+    public PotionType getPotionType() {
+        return potionType;
+    }
+
+    /**
+     * @return The unlocalized name of the potion
+     */
+    public String getUnlocalizedName() {
+        return unlocalizedName;
+    }
 }

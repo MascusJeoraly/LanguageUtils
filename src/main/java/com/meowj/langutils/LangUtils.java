@@ -9,6 +9,7 @@
  */
 package com.meowj.langutils;
 
+import com.meowj.langutils.lang.LanguageRegistry;
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -32,6 +33,10 @@ public class LangUtils extends JavaPlugin {
             isCauldron = true;
             warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
         }
+
+        saveResource("lang/README.txt", false);
+
+        // Init default lang
         try {
             final long startTime = System.currentTimeMillis();
             EnumLang.init();
@@ -39,6 +44,8 @@ public class LangUtils extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        LanguageRegistry.INSTANCE = new LanguageRegistry();
     }
 
     @Override
@@ -65,6 +72,11 @@ public class LangUtils extends JavaPlugin {
         getLogger().log(Level.WARNING, msg);
     }
 
+    /**
+     * Return true if Cauldron environment is detected
+     *
+     * @return true if Cauldron environment is detected
+     */
     public boolean isCauldron() {
         return isCauldron;
     }

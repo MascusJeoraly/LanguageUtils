@@ -50,20 +50,15 @@ public enum EnumEnchantment {
     LUCK(Enchantment.LUCK, "enchantment.lootBonusFishing"),
     LURE(Enchantment.LURE, "enchantment.fishingSpeed");
 
-    /**
-     * @return The {@link Enchantment} of the enchantment.
-     */
-    public Enchantment getEnchantment() {
-        return enchantment;
+    private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
+
+    static {
+        for (EnumEnchantment enchantment : EnumSet.allOf(EnumEnchantment.class))
+            lookup.put(enchantment.enchantment, enchantment);
     }
 
-    /**
-     * @return The unlocalized name of the enchantment.
-     */
-    public String getUnlocalizedName() {
-        return unlocalizedName;
-    }
-
+    private Enchantment enchantment;
+    private String unlocalizedName;
 
     /**
      * Create an index of enchantments.
@@ -80,13 +75,6 @@ public enum EnumEnchantment {
         this.unlocalizedName = unlocalizedName;
     }
 
-    private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
-
-    static {
-        for (EnumEnchantment enchantment : EnumSet.allOf(EnumEnchantment.class))
-            lookup.put(enchantment.enchantment, enchantment);
-    }
-
     /**
      * Get the index of an enchantment based on {@link EnumEnchantment}.
      *
@@ -97,6 +85,17 @@ public enum EnumEnchantment {
         return lookup.containsKey(enchantment) ? lookup.get(enchantment) : null;
     }
 
-    private Enchantment enchantment;
-    private String unlocalizedName;
+    /**
+     * @return The {@link Enchantment} of the enchantment.
+     */
+    public Enchantment getEnchantment() {
+        return enchantment;
+    }
+
+    /**
+     * @return The unlocalized name of the enchantment.
+     */
+    public String getUnlocalizedName() {
+        return unlocalizedName;
+    }
 }
