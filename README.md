@@ -3,12 +3,13 @@ Language Utils
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MeowInnovation/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
 The major version of this API supports 1.8.8. If you are using 1.7.10, please download versions with the suffix `-1.7.10`.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait.
+
+Also, if you want to know how to add customized language entries, just read the `README.txt` inside `lang/` folder.
 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
 
@@ -44,6 +45,10 @@ If you have multiple dependencies, add `,` between each of them:
 
 	depend: [LangUtils, Vault]
 
+Instead of adding LangUtils as a dependency, you can just add it as a soft dependency:
+
+	softdepend: [LangUtils]
+
 ### Build Path
 
 Just add this library to your build path.
@@ -60,7 +65,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.3.0' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.4.0' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -77,7 +82,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.3.0</version>
+	    <version>1.4.0</version>
 	  </dependency>
 	</dependencies>
 
