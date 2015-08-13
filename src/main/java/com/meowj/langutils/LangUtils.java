@@ -31,6 +31,8 @@ public class LangUtils extends JavaPlugin {
         if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC"))
             warn("Unsupported environment! Currently, Language Utils does NOT support Cauldron/KCauldron environment!");
 
+        saveResource("lang/README.txt", false);
+
         // Init default lang
         try {
             final long startTime = System.currentTimeMillis();

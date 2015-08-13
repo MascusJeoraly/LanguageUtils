@@ -34,12 +34,30 @@ public enum EnumEnchantmentLevel {
     LEVEL9(9, "enchantment.level.9"),
     LEVEL10(10, "enchantment.level.10"),;
 
+    private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<Integer, EnumEnchantmentLevel>();
+
+    static {
+        for (EnumEnchantmentLevel level : EnumSet.allOf(EnumEnchantmentLevel.class))
+            lookup.put(level.getLevel(), level);
+    }
+
+    private int level;
+    private String unlocalizedName;
+
     /**
      * Create an index of enchantments.
      */
     EnumEnchantmentLevel(int level, String unlocalizedName) {
         this.level = level;
         this.unlocalizedName = unlocalizedName;
+    }
+
+    /**
+     * @param level Enchantment level.
+     * @return The index of a level.
+     */
+    public static EnumEnchantmentLevel get(Integer level) {
+        return lookup.containsKey(level) ? lookup.get(level) : null;
     }
 
     /**
@@ -55,22 +73,4 @@ public enum EnumEnchantmentLevel {
     public String getUnlocalizedName() {
         return unlocalizedName;
     }
-
-    private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<Integer, EnumEnchantmentLevel>();
-
-    static {
-        for (EnumEnchantmentLevel level : EnumSet.allOf(EnumEnchantmentLevel.class))
-            lookup.put(level.getLevel(), level);
-    }
-
-    /**
-     * @param level Enchantment level.
-     * @return The index of a level.
-     */
-    public static EnumEnchantmentLevel get(Integer level) {
-        return lookup.containsKey(level) ? lookup.get(level) : null;
-    }
-
-    private int level;
-    private String unlocalizedName;
 }

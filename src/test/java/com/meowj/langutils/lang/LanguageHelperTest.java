@@ -57,22 +57,8 @@ public class LanguageHelperTest {
         });
 
         //Init Lang(Only English and Chinese(for UTF-8 Test))
-        String temp;
-        String[] tempStringArr;
         for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(LanguageHelperTest.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8")));
-            try {
-                temp = reader.readLine();
-                while (temp != null) {
-                    if (temp.contains("=")) {
-                        tempStringArr = temp.split("=");
-                        enumLang.getMap().put(tempStringArr[0], tempStringArr.length > 1 ? tempStringArr[1] : "");
-                    }
-                    temp = reader.readLine();
-                }
-            } finally {
-                reader.close();
-            }
+            EnumLang.readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8"))));
         }
     }
 
