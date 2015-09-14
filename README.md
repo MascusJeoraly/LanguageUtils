@@ -21,9 +21,9 @@ Status: [![Build Status](https://snap-ci.com/MeowInnovation/LanguageUtils/branch
 ----------
 
 
-Progress: ![Progress](http://progressed.io/bar/99)
+Progress: ![Progress](http://progressed.io/bar/100)
 
-- API: ![Progress](http://progressed.io/bar/99)
+- API: ![Progress](http://progressed.io/bar/100)
 - Language files: ![Progress](http://progressed.io/bar/100?title=75/75)
 - Items: ![Progress](http://progressed.io/bar/100?title=555/555)
 - Potion Effects: ![Progress](http://progressed.io/bar/100?title=13/13)
