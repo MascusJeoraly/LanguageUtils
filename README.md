@@ -1,7 +1,7 @@
 Language Utils
 =================
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MeowInnovation/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
@@ -26,7 +26,7 @@ Planned to have a refactoring and add mod support.
 
 ## Use Language Utils
 
-You can also see this [Example](https://github.com/MeowInnovation/LangUtilsExample "Example") for detailed usage.
+You can also see this [Example](https://github.com/MascusJeoraly/LangUtilsExample "Example") for detailed usage.
 
 ### Plugin dependency
 
@@ -48,13 +48,13 @@ Just add this library to your build path.
 
 ### Maven/Gradle dependency
 
-This plugin is hosting on [Github](https://github.com/MeowInnovation/LanguageUtils/tree/mvn-repo "Github") cause I don't have a server.
+This plugin is hosting on [Github](https://github.com/MascusJeoraly/LanguageUtils/tree/mvn-repo "Github") cause I don't have a server.
 
 If you are using Gradle, add the following to you `build.gradle`:
 
 	repositories {
 	    maven {
-	        url 'https://raw.github.com/MeowInnovation/LanguageUtils/mvn-repo/'
+	        url 'https://raw.github.com/MascusJeoraly/LanguageUtils/mvn-repo/'
 	    }
 	}
 	dependencies {
@@ -66,7 +66,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	<repositories>
 	  <repository>
 	    <id>lang-utils-repo</id>
-	    <url>https://raw.github.com/MeowInnovation/LanguageUtils/mvn-repo/</url>
+	    <url>https://raw.github.com/MascusJeoraly/LanguageUtils/mvn-repo/</url>
 	  </repository>
 	</repository>
 	
@@ -81,7 +81,7 @@ If you are using Maven, add the following to your `pom.xml`:
 
 ### Usage
 
-For further information, see the [Example](https://github.com/MeowInnovation/LangUtilsExample "Example") plugin or `LanguageHelper` and `LocaleHelper`.
+For further information, see the [Example](https://github.com/MascusJeoraly/LangUtilsExample "Example") plugin or `LanguageHelper` and `LocaleHelper`.
 
 ----------
 
@@ -133,10 +133,3 @@ If you are using Eclipse(not tested)
 ### Pull Request
 
 If you find any problems or want to improve the efficiency, please send me PR or issues.
-
-----------
-
-Donate:
-
-- Dogecoin(Just for fun, actually): `DNfZ4MxdvTrP3DFWvGXBEMXu9wfUAR3pLh`
-
