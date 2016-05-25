@@ -11,7 +11,9 @@
 package com.meowj.langutils.lang.convert;
 
 import com.meowj.langutils.lang.LanguageHelper;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
@@ -28,19 +30,25 @@ import java.util.Map;
  */
 public enum EnumPotionEffect {
 
-    SPEED(PotionType.SPEED, "potion.moveSpeed.postfix"),
-    SLOW(PotionType.SLOWNESS, "potion.moveSlowdown.postfix"),
-    INCREASE_DAMAGE(PotionType.STRENGTH, "potion.damageBoost.postfix"),
-    WEAKNESS(PotionType.WEAKNESS, "potion.weakness.postfix"),
-    HEAL(PotionType.INSTANT_HEAL, "potion.heal.postfix"),
-    HARM(PotionType.INSTANT_DAMAGE, "potion.harm.postfix"),
-    JUMP(PotionType.JUMP, "potion.jump.postfix"),
-    REGENERATION(PotionType.REGEN, "potion.regeneration.postfix"),
-    FIRE_RESISTANCE(PotionType.FIRE_RESISTANCE, "potion.fireResistance.postfix"),
-    WATER_BREATHING(PotionType.WATER_BREATHING, "potion.waterBreathing.postfix"),
-    INVISIBILITY(PotionType.INVISIBILITY, "potion.invisibility.postfix"),
-    NIGHT_VISION(PotionType.NIGHT_VISION, "potion.nightVision.postfix"),
-    POISON(PotionType.POISON, "potion.poison.postfix");
+    UNCRAFTABLE(PotionType.UNCRAFTABLE, "potion.effect.empty", "splash_potion.effect.empty", "lingering_potion.effect.empty"),
+    WATER(PotionType.WATER, "potion.effect.water", "splash_potion.effect.water", "lingering_potion.effect.water"),
+    MUNDANE(PotionType.MUNDANE, "potion.effect.mundane", "splash_potion.effect.mundane", "lingering_potion.effect.mundane"),
+    THICK(PotionType.THICK, "potion.effect.thick", "splash_potion.effect.thick", "lingering_potion.effect.thick"),
+    AWKWARD(PotionType.AWKWARD, "potion.effect.awkward", "splash_potion.effect.awkward", "lingering_potion.effect.awkward"),
+    NIGHT_VISION(PotionType.NIGHT_VISION, "potion.effect.night_vision", "splash_potion.effect.night_vision", "lingering_potion.effect.night_vision"),
+    INVISIBILITY(PotionType.INVISIBILITY, "potion.effect.invisibility", "splash_potion.effect.invisibility", "lingering_potion.effect.invisibility"),
+    JUMP(PotionType.JUMP, "potion.effect.leaping", "splash_potion.effect.leaping", "lingering_potion.effect.leaping"),
+    FIRE_RESISTANCE(PotionType.FIRE_RESISTANCE, "potion.effect.fire_resistance", "splash_potion.effect.fire_resistance", "lingering_potion.effect.fire_resistance"),
+    SPEED(PotionType.SPEED, "potion.effect.swiftness", "splash_potion.effect.swiftness", "lingering_potion.effect.swiftness"),
+    SLOW(PotionType.SLOWNESS, "potion.effect.slowness", "splash_potion.effect.slowness", "lingering_potion.effect.slowness"),
+    WATER_BREATHING(PotionType.WATER_BREATHING, "potion.effect.water_breathing", "splash_potion.effect.water_breathing", "lingering_potion.effect.water_breathing"),
+    HEAL(PotionType.INSTANT_HEAL, "potion.effect.healing", "splash_potion.effect.healing", "lingering_potion.effect.healing"),
+    HARM(PotionType.INSTANT_DAMAGE, "potion.effect.harming", "splash_potion.effect.harming", "lingering_potion.effect.harming"),
+    POISON(PotionType.POISON, "potion.effect.poison", "splash_potion.effect.poison", "lingering_potion.effect.poison"),
+    REGENERATION(PotionType.REGEN, "potion.effect.regeneration", "splash_potion.effect.regeneration", "lingering_potion.effect.regeneration"),
+    INCREASE_DAMAGE(PotionType.STRENGTH, "potion.effect.strength", "splash_potion.effect.strength", "lingering_potion.effect.strength"),
+    WEAKNESS(PotionType.WEAKNESS, "potion.effect.weakness", "splash_potion.effect.weakness", "lingering_potion.effect.weakness"),
+    LUCK(PotionType.LUCK, "potion.effect.luck", "splash_potion.effect.luck", "lingering_potion.effect.luck");
 
     private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<PotionType, EnumPotionEffect>();
 
@@ -51,13 +59,17 @@ public enum EnumPotionEffect {
 
     private PotionType potionType;
     private String unlocalizedName;
+    private String unlocalizedSplashName;
+    private String unlocalizedLingeringName;
 
     /**
      * Create an index of potion effects.
      */
-    EnumPotionEffect(PotionType potionType, String unlocalizedName) {
+    EnumPotionEffect(PotionType potionType, String unlocalizedName, String unlocalizedSplashName, String unlocalizedLingeringName) {
         this.potionType = potionType;
         this.unlocalizedName = unlocalizedName;
+        this.unlocalizedSplashName = unlocalizedSplashName;
+        this.unlocalizedLingeringName = unlocalizedLingeringName;
     }
 
     /**
@@ -70,11 +82,29 @@ public enum EnumPotionEffect {
 
     /**
      * @param potion The potion to be processed.
-     * @return The postfix of an potion(The actual name without Splash or what not).
      */
-    public static String getPostfix(ItemStack potion) {
-        Potion p = Potion.fromItemStack(potion);
-        return get(p.getType()).getUnlocalizedName();
+    public static String getUnlocalizedName(ItemStack potion) {
+        PotionMeta meta = (PotionMeta) potion.getItemMeta();
+        PotionType type = meta.getBasePotionData().getType();
+        return get(type).getUnlocalizedName();
+    }
+
+    /**
+     * @param potion The potion to be processed.
+     */
+    public static String getUnlocalizedSplashName(ItemStack potion) {
+        PotionMeta meta = (PotionMeta) potion.getItemMeta();
+        PotionType type = meta.getBasePotionData().getType();
+        return get(type).getUnlocalizedSplashName();
+    }
+
+    /**
+     * @param potion The potion to be processed.
+     */
+    public static String getUnlocalizedLingeringName(ItemStack potion) {
+        PotionMeta meta = (PotionMeta) potion.getItemMeta();
+        PotionType type = meta.getBasePotionData().getType();
+        return get(type).getUnlocalizedLingeringName();
     }
 
     /**
@@ -83,25 +113,12 @@ public enum EnumPotionEffect {
      * @return The localized name of an potion.
      */
     public static String getLocalizedName(ItemStack potion, String locale) {
-        switch (potion.getDurability()) {
-            case 16:
-                return LanguageHelper.translateToLocal("potion.prefix.awkward", locale) + " " + LanguageHelper.translateToLocal("item.potion.name", locale);
-            case 32:
-                return LanguageHelper.translateToLocal("potion.prefix.thick", locale) + " " + LanguageHelper.translateToLocal("item.potion.name", locale);
-            case 64:
-            case 8192:
-                return LanguageHelper.translateToLocal("potion.prefix.mundane", locale) + " " + LanguageHelper.translateToLocal("item.potion.name", locale);
-            // Fix Instant Health Potion problem(This problem has been fixed in the latest version of the Bukkit, but I'll still leave it here in case many people don't update their server very often. Indeed, I highly recommend updating the servers)
-            case 16453:
-                return LanguageHelper.translateToLocal("potion.prefix.grenade", locale) + " " + LanguageHelper.translateToLocal("potion.heal.postfix", locale);
-            case 8261:
-                return LanguageHelper.translateToLocal("potion.heal.postfix", locale);
-            default:
-                if (Potion.fromItemStack(potion).isSplash())
-                    return LanguageHelper.translateToLocal("potion.prefix.grenade", locale) + " " + LanguageHelper.translateToLocal(getPostfix(potion), locale);
-                else
-                    return LanguageHelper.translateToLocal(getPostfix(potion), locale);
-        }
+        if(potion.getType() == Material.SPLASH_POTION)
+            return LanguageHelper.translateToLocal(getUnlocalizedSplashName(potion), locale);
+        else if(potion.getType() == Material.LINGERING_POTION)
+            return LanguageHelper.translateToLocal(getUnlocalizedLingeringName(potion), locale);
+        else
+            return LanguageHelper.translateToLocal(getUnlocalizedName(potion), locale);
     }
 
     /**
@@ -116,5 +133,19 @@ public enum EnumPotionEffect {
      */
     public String getUnlocalizedName() {
         return unlocalizedName;
+    }
+
+    /**
+     * @return The unlocalized name of the splash potion
+     */
+    public String getUnlocalizedSplashName() {
+        return unlocalizedSplashName;
+    }
+
+    /**
+     * @return The unlocalized name of the lingering potion
+     */
+    public String getUnlocalizedLingeringName() {
+        return unlocalizedLingeringName;
     }
 }
