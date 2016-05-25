@@ -32,6 +32,7 @@ public enum EnumEntity {
     EXPERIENCE_ORB(EntityType.EXPERIENCE_ORB, "entity.XPOrb.name"),
     SMALL_FIREBALL(EntityType.SMALL_FIREBALL, "entity.SmallFireball.name"),
     FIREBALL(EntityType.FIREBALL, "entity.Fireball.name"),
+    DRAGON_FIREBALL(EntityType.DRAGON_FIREBALL, "entity.DragonFireball.name"),
     POTION(EntityType.SPLASH_POTION, "entity.ThrownPotion.name"),
     ARROW(EntityType.ARROW, "entity.Arrow.name"),
     SNOWBALL(EntityType.SNOWBALL, "entity.Snowball.name"),
@@ -59,6 +60,7 @@ public enum EnumEntity {
     WITHER(EntityType.WITHER, "entity.WitherBoss.name"),
     WITCH(EntityType.WITCH, "entity.Witch.name"),
     GUARDIAN(EntityType.GUARDIAN, "entity.Guardian.name"),
+    SHULKER(EntityType.SHULKER, "entity.Shulker.name"),
     PIG(EntityType.PIG, "entity.Pig.name"),
     SHEEP(EntityType.SHEEP, "entity.Sheep.name"),
     COW(EntityType.COW, "entity.Cow.name"),
@@ -72,7 +74,10 @@ public enum EnumEntity {
     BLOCK_OF_TNT(EntityType.PRIMED_TNT, "entity.PrimedTnt.name"),
     FALLING_BLOCK(EntityType.FALLING_BLOCK, "entity.FallingSand.name"),
     MINECART(EntityType.MINECART, "entity.Minecart.name"),
+    MINECART_WITH_HOPPER(EntityType.MINECART_HOPPER, "entity.MinecartHopper.name"),
+    MINECART_WITH_CHEST(EntityType.MINECART_CHEST, "entity.MinecartChest.name"),
     BOAT(EntityType.BOAT, "entity.Boat.name");
+
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
 

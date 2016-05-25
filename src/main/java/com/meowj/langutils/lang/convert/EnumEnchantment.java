@@ -34,6 +34,7 @@ public enum EnumEnchantment {
     WATER_WORKER(Enchantment.WATER_WORKER, "enchantment.waterWorker"),
     THORNS(Enchantment.THORNS, "enchantment.thorns"),
     DEPTH_STRIDER(Enchantment.DEPTH_STRIDER, "enchantment.waterWalker"),
+    FROST_WALKER(Enchantment.FROST_WALKER, "enchantment.frostWalker"),
     DAMAGE_ALL(Enchantment.DAMAGE_ALL, "enchantment.damage.all"),
     DAMAGE_UNDEAD(Enchantment.DAMAGE_UNDEAD, "enchantment.damage.undead"),
     DAMAGE_ARTHROPODS(Enchantment.DAMAGE_ARTHROPODS, "enchantment.damage.arthropods"),
@@ -49,7 +50,8 @@ public enum EnumEnchantment {
     ARROW_FIRE(Enchantment.ARROW_FIRE, "enchantment.arrowFire"),
     ARROW_INFINITE(Enchantment.ARROW_INFINITE, "enchantment.arrowInfinite"),
     LUCK(Enchantment.LUCK, "enchantment.lootBonusFishing"),
-    LURE(Enchantment.LURE, "enchantment.fishingSpeed");
+    LURE(Enchantment.LURE, "enchantment.fishingSpeed"),
+    MENDING(Enchantment.MENDING, "enchantment.mending");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
 

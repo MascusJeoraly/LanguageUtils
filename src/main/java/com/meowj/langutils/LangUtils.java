@@ -9,12 +9,21 @@
  */
 package com.meowj.langutils;
 
+import com.meowj.langutils.lang.LanguageHelper;
 import com.meowj.langutils.lang.LanguageRegistry;
 import com.meowj.langutils.lang.convert.EnumLang;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 import java.io.IOException;
 import java.util.logging.Level;
+
+import static com.meowj.langutils.lang.LanguageHelper.getItemDisplayName;
 
 /**
  * Created by Meow J on 6/20/2015.
@@ -46,6 +55,23 @@ public class LangUtils extends JavaPlugin {
         }
 
         LanguageRegistry.INSTANCE = new LanguageRegistry();
+
+        /*      Test        */
+        ItemStack waterBottle = new Potion(PotionType.WATER).toItemStack(1);
+        String sWaterBottle = LanguageHelper.getItemDisplayName(waterBottle,  "en_US");
+
+        ItemStack awkwardPotion = new Potion(PotionType.AWKWARD).toItemStack(1);
+        String sawkwardPotion = LanguageHelper.getItemDisplayName(awkwardPotion,  "en_US");
+
+        ItemStack nightVisionPotion = new Potion(PotionType.NIGHT_VISION).toItemStack(1);;
+        String sNightVisionPotion = LanguageHelper.getItemDisplayName(nightVisionPotion,  "en_US");
+
+        Potion nightVisionPotionSplashP = new Potion(PotionType.NIGHT_VISION);
+        nightVisionPotionSplashP.setSplash(true);
+        ItemStack nightVisionPotionSplash = nightVisionPotionSplashP.toItemStack(1);;
+        String sNightVisionPotionSplash = LanguageHelper.getItemDisplayName(nightVisionPotionSplash,  "en_US");
+
+        int toto=0;
     }
 
     @Override
