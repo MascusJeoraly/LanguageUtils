@@ -83,6 +83,7 @@ public enum EnumPotionEffect {
 
     /**
      * @param potion The potion to be processed.
+     * @return the unlocalized name of the potion.
      */
     public static String getUnlocalizedName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -93,6 +94,7 @@ public enum EnumPotionEffect {
 
     /**
      * @param potion The potion to be processed.
+     * @return the unlocalized name of the potion.
      */
     public static String getUnlocalizedSplashName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -103,6 +105,7 @@ public enum EnumPotionEffect {
 
     /**
      * @param potion The potion to be processed.
+     * @return the unlocalized name of the potion.
      */
     public static String getUnlocalizedLingeringName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -113,6 +116,7 @@ public enum EnumPotionEffect {
 
     /**
      * @param arrow The tipped arrow to be processed.
+     * @return the unlocalized name of the arrow.
      */
     public static String getUnlocalizedArrowName(ItemStack arrow) {
         PotionMeta meta = (PotionMeta) arrow.getItemMeta();

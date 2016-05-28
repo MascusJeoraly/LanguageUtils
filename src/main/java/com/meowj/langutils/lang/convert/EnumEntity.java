@@ -11,10 +11,11 @@
 package com.meowj.langutils.lang.convert;
 
 import com.meowj.langutils.lang.LanguageHelper;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.SpawnEgg;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,11 +111,36 @@ public enum EnumEntity {
      * @return The name of the monster egg.
      */
     public static String getSpawnEggName(ItemStack egg, String locale) {
-        // TODO may need to fix this.
-        return get(((SpawnEgg) egg.getData()).getSpawnedType()) != null ?
+        EntityType type = null;
+        try {
+            type = getEntityType(egg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        EnumEntity entity = get(type);
+        return entity != null ?
                 LanguageHelper.translateToLocal("item.monsterPlacer.name", locale) + " "
-                        + LanguageHelper.translateToLocal(get(((SpawnEgg) egg.getData()).getSpawnedType()).getUnlocalizedName(), locale)
+                        + LanguageHelper.translateToLocal(entity.getUnlocalizedName(), locale)
                 : LanguageHelper.translateToLocal("item.monsterPlacer.name", locale);
+    }
+
+    /**
+     * A temporary solution to monster egg change. To be replaced with spigot API.
+     *
+     * @param egg The monster egg to be processed.
+     * @return the {@link org.bukkit.entity.EntityType} of the monster egg.
+     * @throws ClassNotFoundException    when CraftItemStack is not found.
+     * @throws NoSuchMethodException     when either of asNMSCopy(), getTag(), getCompound(), getString() is not found.
+     * @throws InvocationTargetException when either method throws an exception.
+     * @throws IllegalAccessException    when does not have access to these methods.
+     */
+    public static EntityType getEntityType(ItemStack egg) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Object nmsStack = Class.forName("org.bukkit.craftbukkit." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + "." + "inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, egg);
+        Object tag = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
+        Object entityTag = tag.getClass().getMethod("getCompound", String.class).invoke(tag, "EntityTag");
+        String id = (String) entityTag.getClass().getMethod("getString", String.class).invoke(entityTag, "id");
+
+        return EntityType.fromName(id);
     }
 
     public String getUnlocalizedName() {
