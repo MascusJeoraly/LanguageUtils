@@ -17,7 +17,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.SpawnEgg;
 import org.bukkit.potion.PotionEffectType;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -88,48 +87,6 @@ public class LanguageHelperTest {
         when(UTF8Test.getDurability()).thenReturn((short) 1);
 
         assertEquals("\u82b1\u5c97\u5ca9", LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"));
-    }
-
-
-    @Test
-    public void testPotionDisplayName() throws Exception {
-
-        ItemStack waterBottle = mock(ItemStack.class);
-        when(waterBottle.getType()).thenReturn(Material.POTION);
-        when(waterBottle.getDurability()).thenReturn((short) 0);
-
-        //assertEquals("Water Bottle", LanguageHelper.getItemDisplayName(waterBottle, "en_US"));
-
-        ItemStack awkwardPotion = mock(ItemStack.class);
-        when(awkwardPotion.getType()).thenReturn(Material.POTION);
-        when(awkwardPotion.getDurability()).thenReturn((short) 16);
-
-        //assertEquals("Awkward Potion", LanguageHelper.getItemDisplayName(awkwardPotion, "en_US"));
-
-        ItemStack regenPotion = mock(ItemStack.class);
-        when(regenPotion.getType()).thenReturn(Material.POTION);
-        when(regenPotion.getDurability()).thenReturn((short) 8193);
-
-        //assertEquals("Potion of Regeneration", LanguageHelper.getItemDisplayName(regenPotion, "en_US"));
-
-        ItemStack splashRegenPotion = mock(ItemStack.class);
-        when(splashRegenPotion.getType()).thenReturn(Material.POTION);
-        when(splashRegenPotion.getDurability()).thenReturn((short) 16385);
-
-        //assertEquals("Splash Potion of Regeneration", LanguageHelper.getItemDisplayName(splashRegenPotion, "en_US"));
-    }
-
-    @Test
-    public void testMonsterEggDisplayName() throws Exception {
-
-        ItemStack creeperEgg = mock(ItemStack.class);
-        SpawnEgg egg = mock(SpawnEgg.class);
-        when(egg.getSpawnedType()).thenReturn(EntityType.CREEPER);
-
-        when(creeperEgg.getType()).thenReturn(Material.MONSTER_EGG);
-        when(creeperEgg.getData()).thenReturn(egg);
-
-        assertEquals("Spawn Creeper", LanguageHelper.getItemDisplayName(creeperEgg, "en_US"));
     }
 
     @Test
