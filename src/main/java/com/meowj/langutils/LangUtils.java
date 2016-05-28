@@ -13,6 +13,7 @@ import com.meowj.langutils.lang.LanguageRegistry;
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
@@ -34,7 +35,9 @@ public class LangUtils extends JavaPlugin {
             warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
         }
 
-        saveResource("lang/README.txt", false);
+        File readme = new File(this.getDataFolder(), "lang/README.txt");
+        if (!readme.exists())
+            saveResource("lang/README.txt", false);
 
         // Init default lang
         try {
