@@ -1,7 +1,7 @@
 Language Utils
 =================
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/MascusJeoraly/LanguageUtils.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
@@ -15,7 +15,7 @@ You can get the latest build [here](https://drone.io/github.com/MeowInnovation/L
 
 You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0.1-1.7.10+ version of this plugin. Again, the API only supports **vanilla** language entries. It will just return the auto-generated material name of an item in mods.
 
-Status: [![Build Status](https://snap-ci.com/MeowInnovation/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MeowInnovation/LanguageUtils/branch/master) [![Build Status](https://drone.io/github.com/MeowInnovation/LanguageUtils/status.png)](https://drone.io/github.com/MeowInnovation/LanguageUtils/latest)
+Status: [![Build Status](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master)
 
 
 ----------
