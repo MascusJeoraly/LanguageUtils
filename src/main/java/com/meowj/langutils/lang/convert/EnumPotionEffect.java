@@ -70,7 +70,7 @@ public enum EnumPotionEffect {
         this.unlocalizedName = unlocalizedName;
         this.unlocalizedSplashName = unlocalizedSplashName;
         this.unlocalizedLingeringName = unlocalizedLingeringName;
-        this.unlocalizedLingeringName = unlocalizedArrowName;
+        this.unlocalizedArrowName = unlocalizedArrowName;
     }
 
     /**
@@ -131,12 +131,12 @@ public enum EnumPotionEffect {
      * @return The localized name of an potion.
      */
     public static String getLocalizedName(ItemStack itemStack, String locale) {
-        if (itemStack.getType() == Material.TIPPED_ARROW) {
-            return LanguageHelper.translateToLocal(getUnlocalizedArrowName(itemStack), locale);
-        } else if (itemStack.getType() == Material.SPLASH_POTION)
+        if (itemStack.getType() == Material.SPLASH_POTION)
             return LanguageHelper.translateToLocal(getUnlocalizedSplashName(itemStack), locale);
         else if (itemStack.getType() == Material.LINGERING_POTION)
             return LanguageHelper.translateToLocal(getUnlocalizedLingeringName(itemStack), locale);
+        else if (itemStack.getType() == Material.TIPPED_ARROW)
+            return LanguageHelper.translateToLocal(getUnlocalizedArrowName(itemStack), locale);
         else
             return LanguageHelper.translateToLocal(getUnlocalizedName(itemStack), locale);
     }
