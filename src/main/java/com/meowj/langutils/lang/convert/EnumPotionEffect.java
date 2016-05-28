@@ -106,7 +106,7 @@ public enum EnumPotionEffect {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
         PotionType type = meta.getBasePotionData().getType();
         EnumPotionEffect effect = get(type);
-        return effect != null ? effect.unlocalizedSplashName : "LINGERING_" + type.name();
+        return effect != null ? effect.unlocalizedLingeringName : "LINGERING_" + type.name();
     }
 
     /**
