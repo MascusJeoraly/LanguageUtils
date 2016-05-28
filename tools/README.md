@@ -5,6 +5,8 @@ Lang files are **not** a part of the project.
 
 If you want to use the code of these tools, feel free to decompile and use  them without restrictions.(Though the code is messy and bad)
 
+hexosse wrote his own version of these tools, check it out: https://github.com/hexosse/LanguageUtilsTools
+
 
 ## Export Lang files
 

@@ -5,7 +5,7 @@ Language Utils
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
-The major version of this API supports 1.8.8. If you are using 1.7.10, please download versions with the suffix `-1.7.10`.
+The major version of this API supports 1.9.4. If you are using 1.7.10 or 1.8.9, please download versions with the suffix `-1.7.10` or `-1.8.9` accordingly.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait.
 
@@ -58,7 +58,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.4.0' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.5.0' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -75,7 +75,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.4.0</version>
+	    <version>1.5.0</version>
 	  </dependency>
 	</dependencies>
 
@@ -103,7 +103,7 @@ You can find the output in the `build/libs` folder.
 
 Before you run the command, you need to build Bukkit/Spigot server using [BuildTools](https://hub.spigotmc.org/jenkins/job/BuildTools/ "BuildTools") or download it [here](http://www.spigotdl.com/ "here"). (Powered by [spigotdl.com](spigotdl.com))
 
-You should get something like `spigot-1.8.8-R0.1-SNAPSHOT.jar`. Rename it to `Server.jar`, and put it in the `run/` folder.(if not existed, create one in the project directory)
+You should get something like `spigot-1.9.4-R0.1-SNAPSHOT.jar`. Rename it to `Server.jar`, and put it in the `run/` folder.(if not existed, create one in the project directory)
 
 Then:
 

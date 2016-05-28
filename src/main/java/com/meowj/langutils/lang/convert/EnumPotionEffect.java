@@ -14,7 +14,6 @@ import com.meowj.langutils.lang.LanguageHelper;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
 import java.util.EnumSet;
@@ -86,7 +85,8 @@ public enum EnumPotionEffect {
     public static String getUnlocalizedName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
         PotionType type = meta.getBasePotionData().getType();
-        return get(type).getUnlocalizedName();
+        EnumPotionEffect effect = get(type);
+        return effect != null ? effect.unlocalizedName : type.name();
     }
 
     /**
@@ -95,7 +95,8 @@ public enum EnumPotionEffect {
     public static String getUnlocalizedSplashName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
         PotionType type = meta.getBasePotionData().getType();
-        return get(type).getUnlocalizedSplashName();
+        EnumPotionEffect effect = get(type);
+        return effect != null ? effect.unlocalizedSplashName : "SPLASH_" + type.name();
     }
 
     /**
@@ -104,7 +105,8 @@ public enum EnumPotionEffect {
     public static String getUnlocalizedLingeringName(ItemStack potion) {
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
         PotionType type = meta.getBasePotionData().getType();
-        return get(type).getUnlocalizedLingeringName();
+        EnumPotionEffect effect = get(type);
+        return effect != null ? effect.unlocalizedSplashName : "LINGERING_" + type.name();
     }
 
     /**
@@ -113,9 +115,9 @@ public enum EnumPotionEffect {
      * @return The localized name of an potion.
      */
     public static String getLocalizedName(ItemStack potion, String locale) {
-        if(potion.getType() == Material.SPLASH_POTION)
+        if (potion.getType() == Material.SPLASH_POTION)
             return LanguageHelper.translateToLocal(getUnlocalizedSplashName(potion), locale);
-        else if(potion.getType() == Material.LINGERING_POTION)
+        else if (potion.getType() == Material.LINGERING_POTION)
             return LanguageHelper.translateToLocal(getUnlocalizedLingeringName(potion), locale);
         else
             return LanguageHelper.translateToLocal(getUnlocalizedName(potion), locale);

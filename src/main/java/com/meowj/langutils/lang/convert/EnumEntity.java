@@ -110,6 +110,7 @@ public enum EnumEntity {
      * @return The name of the monster egg.
      */
     public static String getSpawnEggName(ItemStack egg, String locale) {
+        // TODO may need to fix this.
         return get(((SpawnEgg) egg.getData()).getSpawnedType()) != null ?
                 LanguageHelper.translateToLocal("item.monsterPlacer.name", locale) + " "
                         + LanguageHelper.translateToLocal(get(((SpawnEgg) egg.getData()).getSpawnedType()).getUnlocalizedName(), locale)

@@ -64,7 +64,7 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         // Potion & SpawnEgg & Player Skull
-        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION)
+        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION) // TODO should test item.getDurability() != 0 for Water Bottle, but not sure
             return EnumPotionEffect.getLocalizedName(item, locale);
         else if (item.getType() == Material.MONSTER_EGG)
             return EnumEntity.getSpawnEggName(item, locale);

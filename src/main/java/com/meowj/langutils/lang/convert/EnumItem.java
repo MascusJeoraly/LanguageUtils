@@ -20,8 +20,6 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javax.swing.text.html.HTML.Tag.TH;
-
 /**
  * Created by Meow J on 6/20/2015.
  * <p>
