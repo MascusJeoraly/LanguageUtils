@@ -1,7 +1,7 @@
 Language Utils
 =================
 
-[![Gitter](https://badges.gitter.im/MascusJeoraly/LanguageUtils.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/MascusJeoraly/LanguageUtils.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master)
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
@@ -14,9 +14,6 @@ Also, if you want to know how to add customized language entries, just read the 
 You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
 
 You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0.1-1.7.10+ version of this plugin. Again, the API only supports **vanilla** language entries. It will just return the auto-generated material name of an item in mods.
-
-Status: [![Build Status](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master)
-
 
 ## Configuration
 
