@@ -14,7 +14,7 @@ Copy `ExportLangFiles.py` to `.minecraft\assets` folder and run it with Python 3
 
 ## Simplify Lang Files
 
-Modify the lang files(Reduce useless parts) to achieve higher efficiency. Just run it in this folder. Generated files will locate at `lang/modified/`. If you want to just export Item names, add argument, `onlyItems`.
+Modify the lang files(Reduce useless parts) to achieve higher efficiency. Just run it in this folder. You will find simplified language files in `lang/simplified/`.
 
 ## Generate Lang Code
 

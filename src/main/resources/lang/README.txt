@@ -48,6 +48,7 @@ ga_IE.lang
 gd_GB.lang
 gl_ES.lang
 gv_IM.lang
+haw_US.lang
 he_IL.lang
 hi_IN.lang
 hr_HR.lang
@@ -70,6 +71,7 @@ lt_LT.lang
 lv_LV.lang
 mi_NZ.lang
 mk_MK.lang
+mn_MN.lang
 ms_MY.lang
 mt_MT.lang
 nds_DE.lang
@@ -90,6 +92,7 @@ so_SO.lang
 sq_AL.lang
 sr_SP.lang
 sv_SE.lang
+swg_de.lang
 th_TH.lang
 tlh_AA.lang
 tr_TR.lang
