@@ -1,8 +1,3 @@
-/**
- * author: Barteks2x
- * Edited
- **/
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
@@ -10,29 +5,9 @@ apply plugin: 'maven-publish'
 
 group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.5.0'
+version = '1.6.0'
 
-final def EULA_ACCEPT = true
-
-final def BUKKIT_ARGS = []
-final def BUKKIT_VERSION = '1.9.4-R0.1-SNAPSHOT'
-
-final def LINUX_TERMINAL_COMMAND = ''
-final def LINUX_TERMINAL_ARGS = ['-e']
-//args for some terminal emulators:
-//xfce4-terminal, terminator: ['-x']
-//konsole, roxterm, Eterm, rxvt, lxterminal: ['-e']
-//tilda, guake and yakuake, gnome-terminal: didn't work
-
-final def SERVER_DIR = 'run/'
-
-final def PLUGINS_DIR = SERVER_DIR + 'plugins/'
-final def OUT_DIR = 'build/libs/'
-final def OS_NAME = System.getProperty("os.name").toLowerCase()
-
-final def IS_WINDOWS = OS_NAME.contains('win')
-final def IS_LINUX = OS_NAME.contains('linux')
-final def IS_MAC = OS_NAME.contains('mac')
+final def BUKKIT_VERSION = '1.10.2-R0.1-SNAPSHOT'
 
 sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -45,129 +20,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'plugin.yml'
         expand 'version': project.version
-    }
-}
-
-def cfgOsSpecific = {
-    //hack to workaround gradle bug: https://issues.gradle.org/browse/GRADLE-2462
-    if (IS_WINDOWS) {
-        //start server in cmd window
-        executable 'cmd'
-        jvmArgs '/K'
-        jvmArgs 'start'//without this new window won't be created
-        jvmArgs 'java'
-    } else if (IS_LINUX) {
-        //on linux it seems to work correctly
-        if (!LINUX_TERMINAL_COMMAND.isEmpty()) {
-            executable LINUX_TERMINAL_COMMAND
-            for (arg in LINUX_TERMINAL_ARGS) {
-                jvmArgs arg
-            }
-            jvmArgs 'java'
-        }
-    } else if (IS_MAC) {
-        println "It may not work correctly on mac... "
-    } else {
-        println "Unknown OS: " + OS_NAME
-    }
-}
-/**
- * Set up classpath, working directory and arguments
- */
-def runCfgPre = {
-    configure cfgOsSpecific
-    workingDir = SERVER_DIR
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'org.bukkit.craftbukkit.Main'
-//    jvmArgs JAVA_ARGS
-    args(BUKKIT_ARGS)
-
-    classpath = classpath.filter { File file ->
-        !file.absolutePath.replace('\\', '/').contains('/build/') && //generated class files
-                !file.name.contains(archivesBaseName) && //generated jar
-                !file.name.contains("spigot-api") && //spigot api jar, spigot server jar contains it
-                !(file.name.toLowerCase().contains("bukkit") && !file.name.toLowerCase().contains('craftbukkit')) //bukkit api jar, craftbukkit jar contains it
-    }
-
-    ignoreExitValue = true
-    enableAssertions = true
-}
-
-def acceptEula = {
-    if (!EULA_ACCEPT) {
-        throw new Error('Minecraft EULA not accepted! Change EULA_ACCEPT to true to accept Minecraft EULA.')
-    }
-    //automatically accept eula
-    File eulaFile = file(SERVER_DIR + 'eula.txt')
-
-    if (eulaFile.isDirectory()) {
-        eulaFile.deleteDir()
-    }
-    if (!eulaFile.exists()) {
-        eulaFile.getParentFile().mkdirs()
-        eulaFile.createNewFile()
-    }
-    eulaFile.text = 'eula=' + EULA_ACCEPT
-}
-
-def createPluginsDir = {
-    //make sure that plugins directory exists
-    File pluginsFolder = file(PLUGINS_DIR)
-    if (pluginsFolder.exists() && !pluginsFolder.isDirectory()) {
-        delete pluginsFolder
-        assert !pluginsFolder.exists()
-    }
-    if (!pluginsFolder.exists()) {
-        pluginsFolder.mkdirs()
-        assert pluginsFolder.exists() && pluginsFolder.isDirectory()
-    }
-}
-
-def copyPlugin = {
-    //copy the plugin to plugins folder
-    String jarName = archivesBaseName + '-' + version + '.jar'
-    if (OS_NAME.contains('linux')) {
-        File from = file(OUT_DIR + jarName)
-        File to = file(PLUGINS_DIR + jarName)
-        exec {
-            //on linux we can create symlink
-            executable 'ln'
-            args = ["-s", from, to]
-        }
-    } else {
-        //on windows (and mac?) we need to copy...
-        copy {
-            from OUT_DIR
-            into PLUGINS_DIR
-            include jarName
-        }
-    }
-}
-/**
- * Set up server workspace (copy plugin, accept eula...
- */
-def runCfg = {
-    configure acceptEula
-    configure createPluginsDir
-    configure copyPlugin
-}
-
-/**
- * Run and debug tasks. Without diFirst ther are started before evaluation (at least in Netbeans)
- */
-task run(type: JavaExec, dependsOn: build) {
-    doFirst {
-        configure runCfgPre
-        configure runCfg
-        standardInput = System.in
-    }
-
-}
-task debug(type: JavaExec, dependsOn: build) {
-    debug = true
-    doFirst {
-        configure runCfgPre
-        configure runCfg
     }
 }
 
@@ -196,22 +48,6 @@ publishing {
     }
 }
 
-/**
- * Delete previous versions of the plugin from plugins folder. 
- * Don't delete other plugins to allow installing other plugins.
- */
-task cleanUpPluginsDir << {
-    if (!file(PLUGINS_DIR).exists()) {
-        println 'Nothing to delete!'
-        return
-    }
-    println 'Deleting old plugin...'
-    ant.delete(includeEmptyDirs: 'false') {
-        fileset(dir: file(PLUGINS_DIR), includes: archivesBaseName + '*.jar')
-    }
-}
-
-compileJava.dependsOn cleanUpPluginsDir
 build.dependsOn sourcesJar, javadocJar
 
 repositories {
@@ -234,8 +70,4 @@ dependencies {
 
     //Bukkit API and libraries
     compile group: 'org.spigotmc', name: 'spigot-api', version: BUKKIT_VERSION
-    //other libs
-
-    //Craftbukkit server(not available on maven repo)
-    runtime files('run/Server.jar')//You should have a spigot in the run/ dir to use "run" command
 }
