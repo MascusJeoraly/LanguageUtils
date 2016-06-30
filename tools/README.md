@@ -1,7 +1,7 @@
 Tools
 =================
 
-Lang files are **not** a part of the project.
+Language files are **not** licensed under LangUtils. They are owned by Mojang.
 
 If you want to use the code of these tools, feel free to decompile and use  them without restrictions.(Though the code is messy and bad)
 
@@ -10,7 +10,7 @@ hexosse wrote his own version of these tools, check it out: https://github.com/h
 
 ## Export Lang files
 
-Copy `ExportLangFiles.jar` to `.minecraft\assets` folder and run the program. It will generate a `output/` folder with lang files in it.
+Copy `ExportLangFiles.py` to `.minecraft\assets` folder and run it with Python 3.4+. Enter the version name of indexes file. It will generate a `lang/` folder with all the lang files in it.
 
 ## Simplify Lang Files
 

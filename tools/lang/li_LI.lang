@@ -296,6 +296,7 @@ selectWorld.resultFolder=Waerdj bewaardj in:
 selectWorld.select=Sjpieël
 selectWorld.title=Waereldj selectere
 selectWorld.version=Verzie:
+selectWorld.versionJoinButton=Toch gebruiken
 selectWorld.versionQuestion=Wil se deze waereld ech laje?
 selectWorld.versionUnknown=ónbekènd
 selectWorld.world=Welt
