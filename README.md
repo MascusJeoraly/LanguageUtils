@@ -5,7 +5,7 @@ Language Utils
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
-The major version of this API supports 1.9.4. If you are using 1.7.10 or 1.8.9, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or 1.8.9(no suffix) accordingly.
+The major version of this API supports 1.10.2. If you are using 1.7.10, 1.8.9, or 1.9.4, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), or `1.5.0` for 1.9.4 accordingly.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait.
 
