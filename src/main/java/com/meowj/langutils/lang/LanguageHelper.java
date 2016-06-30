@@ -10,6 +10,7 @@
 
 package com.meowj.langutils.lang;
 
+import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
@@ -305,11 +306,15 @@ public class LanguageHelper {
      *
      * @param unlocalizedName The unlocalized field.
      * @param locale          The language to be translated to.
-     * @return The localized field. If the localized field doesn't exist, it will first look up the English map. If the entry still doesn't exist, then return the unlocalized name.
+     * @return The localized field. If the localized field doesn't exist, it will first look up the fallback language map. If the entry still doesn't exist, then return the unlocalized name.
      */
     public static String translateToLocal(String unlocalizedName, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();
-        return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) :
-                (EnumLang.EN_US.getMap().containsKey(unlocalizedName) ? EnumLang.EN_US.getMap().get(unlocalizedName) : unlocalizedName);
+        try {
+            return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) :
+                    (EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().containsKey(unlocalizedName) ? EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().get(unlocalizedName) : unlocalizedName);
+        } catch (Exception e) {// when fallback language doesn't exist(and make sure test works)
+            return EnumLang.EN_US.getMap().containsKey(unlocalizedName) ? EnumLang.EN_US.getMap().get(unlocalizedName) : unlocalizedName;
+        }
     }
 }
