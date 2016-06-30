@@ -39,7 +39,7 @@ public class LocaleHelper {
         } catch (Exception e) {
             LangUtils.plugin.warn("Cannot find the locale of " + player.getName() + ", please check your server environment.");
             e.printStackTrace();
-            return "en_US";
+            return LangUtils.plugin.config.getString("FallbackLanguage");
         }
     }
 }

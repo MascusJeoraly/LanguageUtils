@@ -11,6 +11,7 @@ package com.meowj.langutils;
 
 import com.meowj.langutils.lang.LanguageRegistry;
 import com.meowj.langutils.lang.convert.EnumLang;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -26,10 +27,12 @@ public class LangUtils extends JavaPlugin {
 
     public static LangUtils plugin;
     private static boolean isCauldron = false;
+    public FileConfiguration config;
 
     @Override
     public void onEnable() {
         plugin = this;
+        this.config = getConfig();
         if (getServer().getName().contains("Cauldron") || getServer().getName().contains("MCPC")) {
             isCauldron = true;
             warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
@@ -47,6 +50,10 @@ public class LangUtils extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        config.addDefault("FallbackLanguage", "en_US");
+        config.options().copyDefaults(true);
+        saveConfig();
 
         LanguageRegistry.INSTANCE = new LanguageRegistry();
     }
