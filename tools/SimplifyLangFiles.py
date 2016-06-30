@@ -8,7 +8,7 @@ The output files are in "lang/simplified"
 import sys
 import os
 
-keep = ('tile.', 'item.', 'potion.', 'entity.', 'enchantment.', 'splash_potion.', 'lingering_potion', 'tipped_arrow')
+keep = ('tile.', 'item.', 'potion.', 'entity.', 'enchantment.', 'splash_potion.', 'lingering_potion.', 'tipped_arrow.')
 
 try:
     os.makedirs("lang/simplified", exist_ok=True)
