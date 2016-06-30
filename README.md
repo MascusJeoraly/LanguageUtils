@@ -18,11 +18,11 @@ You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0
 Status: [![Build Status](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master)
 
 
-----------
+## Configuration
 
-Planned to have a refactoring and add mod support.
+	# When a name in the language requested does not exist, the name will be retrieved in this language. The default fall back language is English.
+	FallbackLanguage=en_US
 
-----------
 
 ## Use Language Utils
 
