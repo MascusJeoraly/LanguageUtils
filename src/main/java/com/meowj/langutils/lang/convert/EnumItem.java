@@ -314,7 +314,7 @@ public enum EnumItem {
     NETHER_BRICK_BLOCK(Material.NETHER_BRICK, "tile.netherBrick.name"),
     NETHER_BRICK_FENCE(Material.NETHER_FENCE, "tile.netherFence.name"),
     NETHER_BRICK_STAIRS(Material.NETHER_BRICK_STAIRS, "tile.stairsNetherBrick.name"),
-    NETHER_WART_BLOCK(Material.NETHER_WARTS, "tile.netherStalk.name"),
+    NETHER_WART_STALK(Material.NETHER_WARTS, "tile.netherStalk.name"),
     CAULDRON_BLOCK(Material.CAULDRON, "tile.cauldron.name"),
     ENCHANTMENT_TABLE(Material.ENCHANTMENT_TABLE, "tile.enchantmentTable.name"),
     ANVIL(Material.ANVIL, 0, "tile.anvil.intact.name"),
@@ -367,6 +367,7 @@ public enum EnumItem {
     BEETROOTS(Material.BEETROOT_BLOCK, "tile.beetroots.name"),
     GRASS_PATH(Material.GRASS_PATH, "tile.grassPath.name"),
     STRUCTURE_BLOCK(Material.STRUCTURE_BLOCK, "tile.structureBlock.name"),
+    STRUCTURE_VOID(Material.STRUCTURE_VOID, "tile.structureVoid.name"),
     NAME_TAG(Material.NAME_TAG, "item.nameTag.name"),
     LEAD(Material.LEASH, "item.leash.name"),
     IRON_SHOVEL(Material.IRON_SPADE, "item.shovelIron.name"),
@@ -631,7 +632,12 @@ public enum EnumItem {
     LIGHT_BLUE_SHIELD(Material.SHIELD, 13, "item.shield.lightBlue.name"),
     MAGENTA_SHIELD(Material.SHIELD, 14, "item.shield.magenta.name"),
     ORANGE_SHIELD(Material.SHIELD, 15, "item.shield.orange.name"),
-    WHITE_SHIELD(Material.SHIELD, 16, "item.shield.white.name");
+    WHITE_SHIELD(Material.SHIELD, 16, "item.shield.white.name"),
+    MAGMA_BLOCK(Material.MAGMA, "tile.magma.name"),
+    NETHER_WART_BLOCK(Material.NETHER_WART_BLOCK, "tile.netherWartBlock.name"),
+    RED_NETHER_BRICK(Material.RED_NETHER_BRICK, "tile.redNetherBrick.name"),
+    BONE_BLOCK(Material.BONE_BLOCK, "tile.boneBlock.name");
+
 
     private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
 

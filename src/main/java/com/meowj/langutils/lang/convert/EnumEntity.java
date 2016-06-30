@@ -77,8 +77,9 @@ public enum EnumEntity {
     MINECART(EntityType.MINECART, "entity.Minecart.name"),
     MINECART_WITH_HOPPER(EntityType.MINECART_HOPPER, "entity.MinecartHopper.name"),
     MINECART_WITH_CHEST(EntityType.MINECART_CHEST, "entity.MinecartChest.name"),
-    BOAT(EntityType.BOAT, "entity.Boat.name");
-
+    BOAT(EntityType.BOAT, "entity.Boat.name"),
+    POLAR_BEAR(EntityType.POLAR_BEAR, "entity.PolarBear.name");
+    // Subtype entities not included
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
 
