@@ -36,6 +36,8 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 publishing {
     publications {
         maven(MavenPublication) {
+            artifactId 'LangUtils'
+
             from components.java
             artifact sourcesJar
             artifact javadocJar
