@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Export all the language files in Minecraft
+Export all the language files in Minecraft.
 Please copy this program to ".minecraft/assets/" directory and use Python 3.4+ to run this program.
 """
 
@@ -33,3 +33,5 @@ for line in version_file:
         except OSError as err:
             print(lang_name + ":")
             print(err)
+
+version_file.close()

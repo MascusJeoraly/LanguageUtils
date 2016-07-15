@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 """
-Simplify all the language files to reduce memory use and efficiency
-The output files are in "lang/simplified"
+Simplify all the language files to reduce memory use and improve efficiency.
+The output files are in "lang/simplified".
 """
 
 import sys
@@ -27,3 +27,5 @@ for lang_filename in os.listdir('lang'):
         if line.startswith(keep) and not (line.startswith('item.') and '.name' not in line):
             simplified_version_file.write(line)
     print("Processed " + lang_filename)
+    version_file.close()
+    simplified_version_file.close()
