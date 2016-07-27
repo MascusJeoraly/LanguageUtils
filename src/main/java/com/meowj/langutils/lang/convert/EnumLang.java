@@ -150,13 +150,16 @@ public enum EnumLang {
 
     /**
      * Initialize this class, load all the languages to the corresponding HashMap.
-     *
-     * @throws IOException if lang files do not exist.
      */
-    public static void init() throws IOException {
+    public static void init() {
         for (EnumLang enumLang : EnumLang.values()) {
-            readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang"), Charset.forName("UTF-8"))));
-            LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
+            try {
+                readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang"), Charset.forName("UTF-8"))));
+                LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
+            } catch (Exception e) {
+                LangUtils.plugin.info("Fail to load language file " + enumLang.getLocale());
+                e.printStackTrace();
+            }
         }
         File customizedLangDir = new File(LangUtils.plugin.getDataFolder(), "lang");
         if (!customizedLangDir.exists()) customizedLangDir.mkdirs();
@@ -167,11 +170,16 @@ public enum EnumLang {
                 return name.toLowerCase().endsWith(".lang");
             }
         })) {
-            EnumLang enumLang = get(file.getName().replace(".lang", ""));
-            if (enumLang.getLocale().equals("en_US") && !file.getName().contains("en_US")) {
-                LangUtils.plugin.warn("Failed to load file " + file.getName());
+            EnumLang enumLang = get(file.getName().replace(".lang", "")); // Returns EN_US when language not found.
+            if (enumLang.getLocale().equals(EN_US.locale) && !file.getName().contains(EN_US.locale)) {
+                LangUtils.plugin.warn("Failed to load customized language file " + file.getName()); // Language not present
             } else {
-                readFile(enumLang, new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))));
+                try {
+                    readFile(enumLang, new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))));
+                    LangUtils.plugin.warn("Failed to load customized language file " + file.getName()); // Error loading language files
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

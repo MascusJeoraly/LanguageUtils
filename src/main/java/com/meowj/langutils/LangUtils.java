@@ -15,7 +15,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.logging.Level;
 
 /**
@@ -43,13 +42,9 @@ public class LangUtils extends JavaPlugin {
             saveResource("lang/README.txt", false);
 
         // Init default lang
-        try {
-            final long startTime = System.currentTimeMillis();
-            EnumLang.init();
-            info("Language Utils has been enabled." + "(" + (System.currentTimeMillis() - startTime) + "ms)");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        final long startTime = System.currentTimeMillis();
+        EnumLang.init();
+        info("Language Utils has been enabled." + "(" + (System.currentTimeMillis() - startTime) + "ms)");
 
         config.addDefault("FallbackLanguage", "en_US");
         config.options().copyDefaults(true);
