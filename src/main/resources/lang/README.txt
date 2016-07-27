@@ -20,6 +20,7 @@ ca_ES.lang
 cs_CZ.lang
 cy_GB.lang
 da_DK.lang
+de_AT.lang
 de_DE.lang
 el_GR.lang
 en_AU.lang

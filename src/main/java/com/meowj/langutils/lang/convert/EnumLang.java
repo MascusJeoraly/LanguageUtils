@@ -38,6 +38,7 @@ public enum EnumLang {
     CS_CZ("cs_CZ", new HashMap<String, String>()),
     CY_GB("cy_GB", new HashMap<String, String>()),
     DA_DK("da_DK", new HashMap<String, String>()),
+    DE_AT("de_AT", new HashMap<String, String>()),
     DE_DE("de_DE", new HashMap<String, String>()),
     EL_GR("el_GR", new HashMap<String, String>()),
     EN_AU("en_AU", new HashMap<String, String>()),
