@@ -5,7 +5,7 @@ Language Utils
 
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels. 
 
-The major version of this API supports 1.10.2. If you are using 1.7.10, 1.8.9, or 1.9.4, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), or `1.5.0` for 1.9.4 accordingly.
+The major version of this API supports 1.10.x. If you are using 1.7.10, 1.8.9, or 1.9.4, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), or `1.5.0` for 1.9.4 accordingly.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait.
 
@@ -55,7 +55,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.6.0' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.6.1' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -72,7 +72,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.6.0</version>
+	    <version>1.6.1</version>
 	  </dependency>
 	</dependencies>
 
@@ -82,7 +82,6 @@ For further information, see the [Example](https://github.com/MascusJeoraly/Lang
 
 ----------
 
-
 ## Contribute to this Project
 
 If you don't have [Gradle](http://gradle.org/ "Gradle") installed, you can download one or use `gradlew`(Windows) / `./gradlew`(Linux) instead of `gradle` in the commands.
@@ -91,10 +90,7 @@ If you don't have permission when using `./gradlew`, run `chmod +x gradlew` and 
 
 ### Setup Dev Environment
 
-If you are using IntelliJ IDEA(recommended):
-
-	[Navigate to the project directory]
-	$ gradle idea
+If you are using IntelliJ IDEA(recommended), just import the `build.gradle` file. IntelliJ should automatically handle the dependencies.
 
 If you just want to create a Module instead of a Project, run `gradle ideaModule` instead, or just directly import `build.gradle` file to IntelliJ.
 
