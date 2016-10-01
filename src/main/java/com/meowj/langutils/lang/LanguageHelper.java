@@ -309,12 +309,14 @@ public class LanguageHelper {
      * @return The localized entry. If the localized entry doesn't exist, it will first look up the fallback language map. If the entry still doesn't exist, then return the unlocalized name.
      */
     public static String translateToLocal(String unlocalizedName, String locale) {
-        Map<String, String> map = EnumLang.get(locale).getMap();
-        try {
-            return map.containsKey(unlocalizedName) ? map.get(unlocalizedName) :
-                    (EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().containsKey(unlocalizedName) ? EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().get(unlocalizedName) : unlocalizedName);
-        } catch (Exception e) {// when fallback language doesn't exist(and make sure test works)
-            return EnumLang.EN_US.getMap().containsKey(unlocalizedName) ? EnumLang.EN_US.getMap().get(unlocalizedName) : unlocalizedName;
+        String result = EnumLang.get(locale).getMap().get(unlocalizedName);
+        if (result != null)
+            return result;
+        else {
+            result = EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().get(unlocalizedName);
+            if (result == null)// when fallback language doesn't exist
+                result = EnumLang.EN_US.getMap().get(unlocalizedName);
         }
+        return result == null ? unlocalizedName : result;
     }
 }

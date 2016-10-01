@@ -10,8 +10,10 @@
 
 package com.meowj.langutils.lang;
 
+import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -59,6 +61,10 @@ public class LanguageHelperTest {
         for (EnumLang enumLang : new EnumLang[]{EnumLang.EN_US, EnumLang.ZH_CN}) {
             EnumLang.readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8"))));
         }
+        FileConfiguration config = mock(FileConfiguration.class);
+        when(config.getString("FallbackLanguage")).thenReturn("en_US");
+        LangUtils.plugin = mock(LangUtils.class);
+        LangUtils.plugin.config = config;
     }
 
     @Test
