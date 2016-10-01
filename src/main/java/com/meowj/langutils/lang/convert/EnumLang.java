@@ -153,6 +153,10 @@ public enum EnumLang {
      */
     public static void init() {
         for (EnumLang enumLang : EnumLang.values()) {
+            if (LangUtils.plugin.config.getStringList("SkipLanguage").contains(enumLang.getLocale())) {
+                LangUtils.plugin.info("Skipped " + enumLang.getLocale());
+                continue;
+            }
             try {
                 readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".lang"), Charset.forName("UTF-8"))));
                 LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");

@@ -15,6 +15,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
@@ -47,6 +48,7 @@ public class LangUtils extends JavaPlugin {
         info("Language Utils has been enabled." + "(" + (System.currentTimeMillis() - startTime) + "ms)");
 
         config.addDefault("FallbackLanguage", "en_US");
+        config.addDefault("SkipLanguage", new ArrayList<String>());
         config.options().copyDefaults(true);
         saveConfig();
 
