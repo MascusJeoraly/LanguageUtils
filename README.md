@@ -27,6 +27,9 @@ LoadLanguage:
 - en_US
 - zh_CN
 - zh_TW
+# If you want to load all the languages, add "all" to the list:
+LoadLanguage:
+- all
 ```
 
 ## Use Language Utils
