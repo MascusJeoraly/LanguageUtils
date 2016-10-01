@@ -17,9 +17,16 @@ You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0
 
 ## Configuration
 
-	# When a name in the language requested does not exist, the name will be retrieved in this language. The default fall back language is English.
-	FallbackLanguage=en_US
-
+```
+# When a name in the language requested does not exist, the name will be retrieved in this language. The default fall back language is English.
+FallbackLanguage=en_US
+# If you want to disable the loading of a language, add it to the following list
+SkipLanguage= [zh_CN, zh_TW]
+# Or
+SkipLanguage:
+- zh_CN
+- zh_TW
+```
 
 ## Use Language Utils
 
@@ -55,7 +62,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.6.1' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '1.6.2' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -72,7 +79,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.6.1</version>
+	    <version>1.6.2</version>
 	  </dependency>
 	</dependencies>
 
