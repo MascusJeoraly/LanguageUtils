@@ -302,11 +302,11 @@ public class LanguageHelper {
     }
 
     /**
-     * Translate unlocalized field to localized field.
+     * Translate unlocalized entry to localized entry.
      *
-     * @param unlocalizedName The unlocalized field.
+     * @param unlocalizedName The unlocalized entry.
      * @param locale          The language to be translated to.
-     * @return The localized field. If the localized field doesn't exist, it will first look up the fallback language map. If the entry still doesn't exist, then return the unlocalized name.
+     * @return The localized entry. If the localized entry doesn't exist, it will first look up the fallback language map. If the entry still doesn't exist, then return the unlocalized name.
      */
     public static String translateToLocal(String unlocalizedName, String locale) {
         Map<String, String> map = EnumLang.get(locale).getMap();

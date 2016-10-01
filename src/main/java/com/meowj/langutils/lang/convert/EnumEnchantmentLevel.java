@@ -57,7 +57,7 @@ public enum EnumEnchantmentLevel {
      * @return The index of a level.
      */
     public static EnumEnchantmentLevel get(Integer level) {
-        return lookup.containsKey(level) ? lookup.get(level) : null;
+        return lookup.get(level);
     }
 
     /**

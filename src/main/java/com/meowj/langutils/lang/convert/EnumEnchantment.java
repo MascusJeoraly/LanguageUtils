@@ -85,7 +85,7 @@ public enum EnumEnchantment {
      * @return The index of the item.
      */
     public static EnumEnchantment get(Enchantment enchantment) {
-        return lookup.containsKey(enchantment) ? lookup.get(enchantment) : null;
+        return lookup.get(enchantment);
     }
 
     /**

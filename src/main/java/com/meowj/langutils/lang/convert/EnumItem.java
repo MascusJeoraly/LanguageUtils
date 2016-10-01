@@ -670,8 +670,10 @@ public enum EnumItem {
      * @return The index of the item.
      */
     public static EnumItem get(ItemEntry entry) {
-        ItemEntry ignoreMeta = new ItemEntry(entry.getMaterial());
-        return lookup.containsKey(entry) ? lookup.get(entry) : (lookup.containsKey(ignoreMeta) ? lookup.get(ignoreMeta) : null);
+        EnumItem result = lookup.get(entry);
+        if (result == null)
+            result = lookup.get(new ItemEntry(entry.getMaterial()));
+        return result;
     }
 
     public static String getPlayerSkullName(ItemStack skull, String locale) {

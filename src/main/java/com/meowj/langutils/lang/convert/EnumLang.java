@@ -145,7 +145,8 @@ public enum EnumLang {
      * @return The index of a lang file based on locale.
      */
     public static EnumLang get(String locale) {
-        return lookup.containsKey(locale) ? lookup.get(locale) : EN_US;
+        EnumLang result = lookup.get(locale);
+        return result == null ? EN_US : result;
     }
 
     /**
@@ -153,7 +154,7 @@ public enum EnumLang {
      */
     public static void init() {
         for (EnumLang enumLang : EnumLang.values()) {
-            if (LangUtils.plugin.config.getStringList("SkipLanguage").contains(enumLang.getLocale())) {
+            if (!LangUtils.plugin.config.getStringList("LoadLanguage").contains(enumLang.getLocale())) {
                 LangUtils.plugin.info("Skipped " + enumLang.getLocale());
                 continue;
             }

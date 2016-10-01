@@ -16,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -42,15 +43,18 @@ public class LangUtils extends JavaPlugin {
         if (!readme.exists())
             saveResource("lang/README.txt", false);
 
+        config.addDefault("FallbackLanguage", "en_US");
+        List<String> defaultLang = new ArrayList<String>();
+        defaultLang.add("en_US");
+        config.addDefault("LoadLanguage", defaultLang);
+        config.options().copyDefaults(true);
+        saveConfig();
+
         // Init default lang
         final long startTime = System.currentTimeMillis();
         EnumLang.init();
         info("Language Utils has been enabled." + "(" + (System.currentTimeMillis() - startTime) + "ms)");
 
-        config.addDefault("FallbackLanguage", "en_US");
-        config.addDefault("SkipLanguage", new ArrayList<String>());
-        config.options().copyDefaults(true);
-        saveConfig();
 
         LanguageRegistry.INSTANCE = new LanguageRegistry();
     }

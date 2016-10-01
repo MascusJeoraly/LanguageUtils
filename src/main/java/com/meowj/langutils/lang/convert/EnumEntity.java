@@ -101,7 +101,7 @@ public enum EnumEntity {
      * @return The index of an entity based on entity type
      */
     public static EnumEntity get(EntityType entityType) {
-        return lookup.containsKey(entityType) ? lookup.get(entityType) : null;
+        return lookup.get(entityType);
     }
 
     /**
