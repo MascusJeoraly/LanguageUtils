@@ -677,7 +677,7 @@ public enum EnumItem {
     }
 
 //    public static EnumItem get(ItemEntry entry) {
-//        for (EnumItem item : EnumSet.allOf(EnumItem.class))
+//        for (EnumItem item : EnumItem.values())
 //            if (item.material == entry.getMaterial() && item.metadata == entry.getMetadata())
 //                return item;
 //        return null;
