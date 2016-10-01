@@ -20,10 +20,11 @@ You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0
 ```
 # When a name in the language requested does not exist, the name will be retrieved in this language. The default fall back language is English.
 FallbackLanguage=en_US
-# If you want to disable the loading of a language, add it to the following list
-SkipLanguage= [zh_CN, zh_TW]
+# If you want to enable the loading of a language, add it to the following list
+LoadLanguage= [en_US, zh_CN, zh_TW]
 # Or
-SkipLanguage:
+LoadLanguage:
+- en_US
 - zh_CN
 - zh_TW
 ```
