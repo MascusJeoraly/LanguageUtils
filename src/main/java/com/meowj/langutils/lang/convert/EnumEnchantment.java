@@ -67,13 +67,6 @@ public enum EnumEnchantment {
      * Create an index of enchantments.
      */
     EnumEnchantment(Enchantment enchantment, String unlocalizedName) {
-        this(enchantment, 0, unlocalizedName);
-    }
-
-    /**
-     * Create an index of enchantments.
-     */
-    EnumEnchantment(Enchantment enchantment, int level, String unlocalizedName) {
         this.enchantment = enchantment;
         this.unlocalizedName = unlocalizedName;
     }

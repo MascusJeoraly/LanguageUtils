@@ -676,6 +676,13 @@ public enum EnumItem {
         return result;
     }
 
+//    public static EnumItem get(ItemEntry entry) {
+//        for (EnumItem item : EnumSet.allOf(EnumItem.class))
+//            if (item.material == entry.getMaterial() && item.metadata == entry.getMetadata())
+//                return item;
+//        return null;
+//    }
+
     public static String getPlayerSkullName(ItemStack skull, String locale) {
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         if (meta.hasOwner()) {
