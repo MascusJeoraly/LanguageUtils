@@ -62,21 +62,21 @@ public class LanguageHelperTest {
             EnumLang.readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.getLocale() + ".lang"), Charset.forName("UTF-8"))));
         }
         FileConfiguration config = mock(FileConfiguration.class);
-        when(config.getString("FallbackLanguage")).thenReturn("en_US");
+        when(config.getString("FallbackLanguage")).thenReturn("en_us");
         LangUtils.plugin = mock(LangUtils.class);
         LangUtils.plugin.config = config;
     }
 
     @Test
     public void testItemDisplayName() throws Exception {
-        // Only load en_US and zh_CN(Encoding test)
+        // Only load en_us and zh_CN(Encoding test)
 
         ItemStack test = mock(ItemStack.class);
 
         when(test.hasItemMeta()).thenReturn(false);
         when(test.getType()).thenReturn(Material.STONE);
 
-        assertEquals("Stone", LanguageHelper.getItemDisplayName(test, "en_US"));
+        assertEquals("Stone", LanguageHelper.getItemDisplayName(test, "en_us"));
 
         ItemStack damageTest = mock(ItemStack.class);
 
@@ -84,7 +84,7 @@ public class LanguageHelperTest {
         when(damageTest.getType()).thenReturn(Material.STONE);
         when(damageTest.getDurability()).thenReturn((short) 2);
 
-        assertEquals("Polished Granite", LanguageHelper.getItemDisplayName(damageTest, "en_US"));
+        assertEquals("Polished Granite", LanguageHelper.getItemDisplayName(damageTest, "en_us"));
 
         ItemStack UTF8Test = mock(ItemStack.class);
 
@@ -92,7 +92,7 @@ public class LanguageHelperTest {
         when(UTF8Test.getType()).thenReturn(Material.STONE);
         when(UTF8Test.getDurability()).thenReturn((short) 1);
 
-        assertEquals("\u82b1\u5c97\u5ca9", LanguageHelper.getItemDisplayName(UTF8Test, "zh_CN"));
+        assertEquals("\u82b1\u5c97\u5ca9", LanguageHelper.getItemDisplayName(UTF8Test, "zh_cn"));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class LanguageHelperTest {
         when(metaTest.getType()).thenReturn(Material.STONE);
         when(metaTest.getItemMeta()).thenReturn(meta);
 
-        assertEquals("test Name", LanguageHelper.getItemDisplayName(metaTest, "en_US"));
+        assertEquals("test Name", LanguageHelper.getItemDisplayName(metaTest, "en_us"));
     }
 
     @Test
@@ -139,9 +139,9 @@ public class LanguageHelperTest {
         Entity entity1 = mock(Entity.class);
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
-        assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_US"));
+        assertEquals("Creeper", LanguageHelper.getEntityName(entity1, "en_us"));
 
-        assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_US"));
+        assertEquals("Arrow", LanguageHelper.getEntityName(EntityType.ARROW, "en_us"));
     }
 
     @Test
@@ -150,26 +150,26 @@ public class LanguageHelperTest {
 
         when(entity1.getType()).thenReturn(EntityType.CREEPER);
         when(entity1.getCustomName()).thenReturn("Ssssssssss");
-        assertEquals("Ssssssssss", LanguageHelper.getEntityDisplayName(entity1, "en_US"));
+        assertEquals("Ssssssssss", LanguageHelper.getEntityDisplayName(entity1, "en_us"));
 
         Entity entity2 = mock(Entity.class);
 
         when(entity2.getType()).thenReturn(EntityType.BOAT);
-        assertEquals("Boat", LanguageHelper.getEntityDisplayName(entity2, "en_US"));
+        assertEquals("Boat", LanguageHelper.getEntityDisplayName(entity2, "en_us"));
     }
 
     @Test
     public void testEnchantmentDisplayName() throws Exception {
         assertEquals("enchantment.protect.all", LanguageHelper.getEnchantmentUnlocalizedName(Enchantment.PROTECTION_ENVIRONMENTAL));
-        assertEquals("X", LanguageHelper.getEnchantmentLevelName(10, "en_US"));
-        assertEquals("Protection", LanguageHelper.getEnchantmentName(Enchantment.PROTECTION_ENVIRONMENTAL, "en_US"));
-        assertEquals("Protection IV", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 4, "en_US"));
-        assertEquals("Protection 11", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 11, "en_US"));
+        assertEquals("X", LanguageHelper.getEnchantmentLevelName(10, "en_us"));
+        assertEquals("Protection", LanguageHelper.getEnchantmentName(Enchantment.PROTECTION_ENVIRONMENTAL, "en_us"));
+        assertEquals("Protection IV", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 4, "en_us"));
+        assertEquals("Protection 11", LanguageHelper.getEnchantmentDisplayName(Enchantment.PROTECTION_ENVIRONMENTAL, 11, "en_us"));
     }
 
     @Test
     public void testTranslateToLocale() throws IOException {
-        assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_US"));
-        assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_US"));
+        assertEquals("Creeper", LanguageHelper.translateToLocal("entity.Creeper.name", "en_us"));
+        assertEquals("Stone", LanguageHelper.translateToLocal("tile.stone.stone.name", "en_us"));
     }
 }

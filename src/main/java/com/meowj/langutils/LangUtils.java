@@ -43,9 +43,9 @@ public class LangUtils extends JavaPlugin {
         if (!readme.exists())
             saveResource("lang/README.txt", false);
 
-        config.addDefault("FallbackLanguage", "en_US");
+        config.addDefault("FallbackLanguage", "en_us");
         List<String> defaultLang = new ArrayList<String>();
-        defaultLang.add("en_US");
+        defaultLang.add("en_us");
         config.addDefault("LoadLanguage", defaultLang);
         config.options().copyDefaults(true);
         saveConfig();

@@ -50,8 +50,8 @@ public class LanguageRegistryTest {
         when(test.hasItemMeta()).thenReturn(false);
         when(test.getType()).thenReturn(Material.CHEST);
 
-        assertEquals("Chest", LanguageHelper.getItemDisplayName(test, "en_US"));
+        assertEquals("Chest", LanguageHelper.getItemDisplayName(test, "en_us"));
         LanguageRegistry.INSTANCE.registerEntry(EnumLang.EN_US, "tile.chest.name", "Diamond Chest");
-        assertEquals("Diamond Chest", LanguageHelper.getItemDisplayName(test, "en_US"));
+        assertEquals("Diamond Chest", LanguageHelper.getItemDisplayName(test, "en_us"));
     }
 }
