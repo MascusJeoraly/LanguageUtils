@@ -51,7 +51,9 @@ public enum EnumEnchantment {
     ARROW_INFINITE(Enchantment.ARROW_INFINITE, "enchantment.arrowInfinite"),
     LUCK(Enchantment.LUCK, "enchantment.lootBonusFishing"),
     LURE(Enchantment.LURE, "enchantment.fishingSpeed"),
-    MENDING(Enchantment.MENDING, "enchantment.mending");
+    MENDING(Enchantment.MENDING, "enchantment.mending"),
+    BINDING_CURSE(Enchantment.BINDING_CURSE, "enchantment.binding_curse"),
+    VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.vanishing_curse");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
 

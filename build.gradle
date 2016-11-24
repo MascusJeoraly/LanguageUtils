@@ -5,9 +5,9 @@ apply plugin: 'maven-publish'
 
 group = 'com.meowj'
 archivesBaseName = 'LangUtils'
-version = '1.6.3'
+version = '1.7'
 
-final def BUKKIT_VERSION = '1.10.2-R0.1-SNAPSHOT'
+final def BUKKIT_VERSION = '1.11-R0.1-SNAPSHOT'
 
 sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

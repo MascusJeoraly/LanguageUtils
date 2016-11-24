@@ -70,7 +70,7 @@ public enum EnumEntity {
     WOLF(EntityType.WOLF, "entity.Wolf.name"),
     OCELOT(EntityType.OCELOT, "entity.Ozelot.name"),
     BAT(EntityType.BAT, "entity.Bat.name"),
-    HORSE(EntityType.HORSE, "entity.EntityHorse.name"),
+    HORSE(EntityType.HORSE, "entity.Horse.name"),
     RABBIT(EntityType.RABBIT, "entity.Rabbit.name"),
     BLOCK_OF_TNT(EntityType.PRIMED_TNT, "entity.PrimedTnt.name"),
     FALLING_BLOCK(EntityType.FALLING_BLOCK, "entity.FallingSand.name"),
@@ -78,8 +78,14 @@ public enum EnumEntity {
     MINECART_WITH_HOPPER(EntityType.MINECART_HOPPER, "entity.MinecartHopper.name"),
     MINECART_WITH_CHEST(EntityType.MINECART_CHEST, "entity.MinecartChest.name"),
     BOAT(EntityType.BOAT, "entity.Boat.name"),
-    POLAR_BEAR(EntityType.POLAR_BEAR, "entity.PolarBear.name");
-    // Subtype entities not included
+    POLAR_BEAR(EntityType.POLAR_BEAR, "entity.PolarBear.name"),
+    ZOMBIE_VILLIGER(EntityType.ZOMBIE_VILLAGER, "entity.ZombieVillager.name"),
+    ELDER_GUARDIAN(EntityType.ELDER_GUARDIAN, "entity.ElderGuardian.name"),
+    EVOKER(EntityType.EVOKER, "entity.EvocationIllager.name"),
+    VEX(EntityType.VEX, "entity.Vex.name"),
+    VINDICATOR(EntityType.VINDICATOR, "entity.VindicationIllager.name"),
+    LLAMA(EntityType.LLAMA, "entity.Llama.name");
+    // Some entity subtypes are not included
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
 

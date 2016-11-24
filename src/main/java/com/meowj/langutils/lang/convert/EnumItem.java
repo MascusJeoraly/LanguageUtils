@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public enum EnumItem {
 
-    AIR(Material.AIR, "Air"),
+    AIR(Material.AIR, "tile.air.name"),
     BARRIER(Material.BARRIER, "tile.barrier.name"),
     STONE(Material.STONE, "tile.stone.stone.name"),
     GRANITE(Material.STONE, 1, "tile.stone.granite.name"),
@@ -546,8 +546,8 @@ public enum EnumItem {
     GHAST_TEAR(Material.GHAST_TEAR, "item.ghastTear.name"),
     NETHER_WART(Material.NETHER_STALK, "item.netherStalkSeeds.name"),
     POTION(Material.POTION, "item.potion.name"),
-    TEST(Material.SPLASH_POTION, "item.potion.name"),
-    TEST2(Material.LINGERING_POTION, "item.potion.name"),
+    SPLASH_POTION(Material.SPLASH_POTION, "item.splash_potion.name"),
+    LINGERING_POTION(Material.LINGERING_POTION, "item.lingering_potion.name"),
     END_CRYSTAL(Material.END_CRYSTAL, "item.end_crystal.name"),
     GOLD_NUGGET(Material.GOLD_NUGGET, "item.goldNugget.name"),
     GLASS_BOTTLE(Material.GLASS_BOTTLE, "item.glassBottle.name"),
@@ -636,7 +636,27 @@ public enum EnumItem {
     MAGMA_BLOCK(Material.MAGMA, "tile.magma.name"),
     NETHER_WART_BLOCK(Material.NETHER_WART_BLOCK, "tile.netherWartBlock.name"),
     RED_NETHER_BRICK(Material.RED_NETHER_BRICK, "tile.redNetherBrick.name"),
-    BONE_BLOCK(Material.BONE_BLOCK, "tile.boneBlock.name");
+    BONE_BLOCK(Material.BONE_BLOCK, "tile.boneBlock.name"),
+    OBSERVER(Material.OBSERVER, "tile.observer.name"),
+    WHITE_SHULKER_BOX(Material.WHITE_SHULKER_BOX, "tile.shulkerBoxWhite.name"),
+    ORANGE_SHULKER_BOX(Material.ORANGE_SHULKER_BOX, "tile.shulkerBoxOrange.name"),
+    MAGENTA_SHULKER_BOX(Material.MAGENTA_SHULKER_BOX, "tile.shulkerBoxMagenta.name"),
+    LIGHT_BLUE_SHULKER_BOX(Material.LIGHT_BLUE_SHULKER_BOX, "tile.shulkerBoxLightBlue.name"),
+    YELLOW_SHULKER_BOX(Material.YELLOW_SHULKER_BOX, "tile.shulkerBoxYellow.name"),
+    LIME_SHULKER_BOX(Material.LIME_SHULKER_BOX, "tile.shulkerBoxLime.name"),
+    PINK_SHULKER_BOX(Material.PINK_SHULKER_BOX, "tile.shulkerBoxPink.name"),
+    GRAY_SHULKER_BOX(Material.GRAY_SHULKER_BOX, "tile.shulkerBoxGray.name"),
+    LIGHT_GRAY_SHULKER_BOX(Material.SILVER_SHULKER_BOX, "tile.shulkerBoxSilver.name"),
+    CYAN_SHULKER_BOX(Material.CYAN_SHULKER_BOX, "tile.shulkerBoxCyan.name"),
+    PURPLE_SHULKER_BOX(Material.PURPLE_SHULKER_BOX, "tile.shulkerBoxPurple.name"),
+    BLUE_SHULKER_BOX(Material.BLUE_SHULKER_BOX, "tile.shulkerBoxBlue.name"),
+    BROWN_SHULKER_BOX(Material.BROWN_SHULKER_BOX, "tile.shulkerBoxBrown.name"),
+    GREEN_SHULKER_BOX(Material.GREEN_SHULKER_BOX, "tile.shulkerBoxGreen.name"),
+    RED_SHULKER_BOX(Material.RED_SHULKER_BOX, "tile.shulkerBoxRed.name"),
+    BLACK_SHULKER_BOX(Material.BLACK_SHULKER_BOX, "tile.shulkerBoxBlack.name"),
+    SHULKER_SHELL(Material.SHULKER_SHELL, "item.shulkerShell.name"),
+    TOTEM(Material.TOTEM, "item.totem.name"),
+    ;
 
 
     private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
