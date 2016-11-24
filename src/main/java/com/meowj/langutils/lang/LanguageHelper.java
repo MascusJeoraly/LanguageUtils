@@ -309,7 +309,7 @@ public class LanguageHelper {
      * @return The localized entry. If the localized entry doesn't exist, it will first look up the fallback language map. If the entry still doesn't exist, then return the unlocalized name.
      */
     public static String translateToLocal(String unlocalizedName, String locale) {
-        String result = EnumLang.get(locale).getMap().get(unlocalizedName);
+        String result = EnumLang.get(locale.toLowerCase()).getMap().get(unlocalizedName);
         if (result != null)
             return result;
         else {
