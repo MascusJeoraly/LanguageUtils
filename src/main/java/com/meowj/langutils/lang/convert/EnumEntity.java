@@ -10,6 +10,7 @@
 
 package com.meowj.langutils.lang.convert;
 
+import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.LanguageHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
@@ -84,7 +85,14 @@ public enum EnumEntity {
     EVOKER(EntityType.EVOKER, "entity.EvocationIllager.name"),
     VEX(EntityType.VEX, "entity.Vex.name"),
     VINDICATOR(EntityType.VINDICATOR, "entity.VindicationIllager.name"),
-    LLAMA(EntityType.LLAMA, "entity.Llama.name");
+    LLAMA(EntityType.LLAMA, "entity.Llama.name"),
+    WITHER_SKELETON(EntityType.WITHER_SKELETON, "entity.WitherSkeleton.name"),
+    STRAY(EntityType.STRAY, "entity.Stray.name"),
+    HUSK(EntityType.HUSK, "entity.Husk.name"),
+    SKELETON_HORSE(EntityType.SKELETON_HORSE, "entity.SkeletonHorse.name"),
+    ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, "entity.ZombieHorse.name"),
+    DONKEY(EntityType.DONKEY, "entity.Donkey.name"),
+    MULE(EntityType.MULE, "entity.Mule.name");
     // Some entity subtypes are not included
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
@@ -146,6 +154,8 @@ public enum EnumEntity {
         Object tag = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
         Object entityTag = tag.getClass().getMethod("getCompound", String.class).invoke(tag, "EntityTag");
         String id = (String) entityTag.getClass().getMethod("getString", String.class).invoke(entityTag, "id");
+
+        LangUtils.plugin.info(id);
 
         return EntityType.fromName(id.replace("minecraft:", ""));
     }
