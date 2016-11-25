@@ -155,8 +155,6 @@ public enum EnumEntity {
         Object entityTag = tag.getClass().getMethod("getCompound", String.class).invoke(tag, "EntityTag");
         String id = (String) entityTag.getClass().getMethod("getString", String.class).invoke(entityTag, "id");
 
-        LangUtils.plugin.info(id);
-
         return EntityType.fromName(id.replace("minecraft:", ""));
     }
 
