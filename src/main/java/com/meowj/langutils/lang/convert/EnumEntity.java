@@ -147,7 +147,7 @@ public enum EnumEntity {
         Object entityTag = tag.getClass().getMethod("getCompound", String.class).invoke(tag, "EntityTag");
         String id = (String) entityTag.getClass().getMethod("getString", String.class).invoke(entityTag, "id");
 
-        return EntityType.fromName(id);
+        return EntityType.fromName(id.replace("minecraft:", ""));
     }
 
     public String getUnlocalizedName() {
