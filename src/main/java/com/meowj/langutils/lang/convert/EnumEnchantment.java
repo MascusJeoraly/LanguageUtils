@@ -53,7 +53,8 @@ public enum EnumEnchantment {
     LURE(Enchantment.LURE, "enchantment.fishingSpeed"),
     MENDING(Enchantment.MENDING, "enchantment.mending"),
     BINDING_CURSE(Enchantment.BINDING_CURSE, "enchantment.binding_curse"),
-    VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.vanishing_curse");
+    VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.vanishing_curse"),
+    SWEEPING_EDGE(Enchantment.SWEEPING_EDGE, "enchantment.sweeping");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
 

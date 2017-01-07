@@ -655,7 +655,8 @@ public enum EnumItem {
     RED_SHULKER_BOX(Material.RED_SHULKER_BOX, "tile.shulkerBoxRed.name"),
     BLACK_SHULKER_BOX(Material.BLACK_SHULKER_BOX, "tile.shulkerBoxBlack.name"),
     SHULKER_SHELL(Material.SHULKER_SHELL, "item.shulkerShell.name"),
-    TOTEM(Material.TOTEM, "item.totem.name");
+    TOTEM(Material.TOTEM, "item.totem.name"),
+    IRON_NUGGET(Material.IRON_NUGGET, "item.ironNugget.name");
 
 
     private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
