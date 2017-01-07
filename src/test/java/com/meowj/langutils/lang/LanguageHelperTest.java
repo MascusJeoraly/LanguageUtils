@@ -12,6 +12,7 @@ package com.meowj.langutils.lang;
 
 import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.EnumLang;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -54,6 +55,11 @@ public class LanguageHelperTest {
             @Override
             public boolean isInstant() {
                 return false;
+            }
+
+            @Override
+            public Color getColor() {
+                return null;
             }
         });
 
