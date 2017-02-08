@@ -417,6 +417,7 @@ splash_potion.effect.weakness=Tasg-ddiod o Wendid
 tile.acaciaFence.name=Ffens Acacia
 tile.acaciaFenceGate.name=Gât Ffens Acacia
 tile.activatorRail.name=Rheil Actifadydd
+tile.air.name=Aer
 tile.anvil.intact.name=Einion
 tile.anvil.name=Einion
 tile.anvil.slightlyDamaged.name=Einion wedi Ddifrodi Ychydig

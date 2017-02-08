@@ -296,6 +296,7 @@ potion.potency.2=III
 tile.acaciaFence.name=Akatsientuun
 tile.acaciaFenceGate.name=Akatsientuunpaort
 tile.activatorRail.name=Ankriegschine
+tile.air.name=Luft
 tile.anvil.intact.name=Ambold
 tile.anvil.name=Ambold
 tile.anvil.slightlyDamaged.name=Licht vönailter Ambold
