@@ -7,7 +7,7 @@ group = 'com.meowj'
 archivesBaseName = 'LangUtils'
 version = '1.8.1'
 
-final def BUKKIT_VERSION = '1.11.2-R0.1-SNAPSHOT'
+final def BUKKIT_VERSION = '1.12-R0.1-SNAPSHOT'
 
 sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

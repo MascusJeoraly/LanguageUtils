@@ -92,7 +92,9 @@ public enum EnumEntity {
     SKELETON_HORSE(EntityType.SKELETON_HORSE, "entity.SkeletonHorse.name"),
     ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, "entity.ZombieHorse.name"),
     DONKEY(EntityType.DONKEY, "entity.Donkey.name"),
-    MULE(EntityType.MULE, "entity.Mule.name");
+    MULE(EntityType.MULE, "entity.Mule.name"),
+	PARROT(EntityType.PARROT, "entity.Parrot.name"),
+	ILLUSIONER(EntityType.ILLUSIONER, "entity.IllusionIllager.name");
     // Some entity subtypes are not included
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
