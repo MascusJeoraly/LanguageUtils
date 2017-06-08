@@ -720,7 +720,7 @@ public enum EnumItem {
     ORANGE_CONCRETE_POWDER(Material.CONCRETE_POWDER, 1, "tile.concretePowder.orange.name"),
     WHITE_CONCRETE_POWDER(Material.CONCRETE_POWDER, "tile.concretePowder.white.name"),
     KNOWLEDGE_BOOK(Material.KNOWLEDGE_BOOK, "item.knowledgeBook.name");
-	
+
     private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
 
     static {

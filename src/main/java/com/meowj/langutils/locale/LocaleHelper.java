@@ -31,15 +31,6 @@ public class LocaleHelper {
      * @return the language of the player(in Java locale format)
      */
     public static String getPlayerLanguage(Player player) {
-        try {
-            Object handle = player.getClass().getDeclaredMethod("getHandle").invoke(player, (Object[]) null);
-            Field f = handle.getClass().getDeclaredField("locale");
-            f.setAccessible(true);
-            return (String) f.get(handle);
-        } catch (Exception e) {
-            LangUtils.plugin.warn("Cannot find the locale of " + player.getName() + ", please check your server environment.");
-            e.printStackTrace();
-            return LangUtils.plugin.config.getString("FallbackLanguage");
-        }
+        return player.getLocale();
     }
 }
