@@ -289,7 +289,7 @@ public enum EnumItem {
     NOTE_BLOCK(Material.NOTE_BLOCK, "tile.musicBlock.name"),
     CAKE_BLOCK(Material.CAKE_BLOCK, "tile.cake.name"),
     CAKE(Material.CAKE, "tile.cake.name"),
-    BED(Material.BED, "tile.bed.name"),
+    WHITE_BED(Material.BED, "item.bed.white.name"),
     BLACK_BED(Material.BED, 15, "item.bed.black.name"),
     RED_BED(Material.BED, 14, "item.bed.red.name"),
     GREEN_BED(Material.BED, 13, "item.bed.green.name"),
@@ -702,6 +702,7 @@ public enum EnumItem {
     LIGHT_BLUE_CONCRETE(Material.CONCRETE, 3, "tile.concrete.lightBlue.name"),
     MAGENTA_CONCRETE(Material.CONCRETE, 2, "tile.concrete.magenta.name"),
     ORANGE_CONCRETE(Material.CONCRETE, 1, "tile.concrete.orange.name"),
+    WHITE_CONCRETE(Material.CONCRETE, "tile.concrete.white.name"),
     BLACK_CONCRETE_POWDER(Material.CONCRETE_POWDER, 15, "tile.concretePowder.black.name"),
     RED_CONCRETE_POWDER(Material.CONCRETE_POWDER, 14, "tile.concretePowder.red.name"),
     GREEN_CONCRETE_POWDER(Material.CONCRETE_POWDER, 13, "tile.concretePowder.green.name"),
@@ -717,6 +718,7 @@ public enum EnumItem {
     LIGHT_BLUE_CONCRETE_POWDER(Material.CONCRETE_POWDER, 3, "tile.concretePowder.lightBlue.name"),
     MAGENTA_CONCRETE_POWDER(Material.CONCRETE_POWDER, 2, "tile.concretePowder.magenta.name"),
     ORANGE_CONCRETE_POWDER(Material.CONCRETE_POWDER, 1, "tile.concretePowder.orange.name"),
+    WHITE_CONCRETE_POWDER(Material.CONCRETE_POWDER, "tile.concretePowder.white.name"),
     KNOWLEDGE_BOOK(Material.KNOWLEDGE_BOOK, "item.knowledgeBook.name");
 	
     private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
