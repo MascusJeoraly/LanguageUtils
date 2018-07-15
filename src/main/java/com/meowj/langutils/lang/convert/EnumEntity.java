@@ -29,71 +29,103 @@ import java.util.Map;
  */
 public enum EnumEntity {
 
-    ITEM(EntityType.DROPPED_ITEM, "entity.Item.name"),
-    EXPERIENCE_ORB(EntityType.EXPERIENCE_ORB, "entity.XPOrb.name"),
-    SMALL_FIREBALL(EntityType.SMALL_FIREBALL, "entity.SmallFireball.name"),
-    FIREBALL(EntityType.FIREBALL, "entity.Fireball.name"),
-    DRAGON_FIREBALL(EntityType.DRAGON_FIREBALL, "entity.DragonFireball.name"),
-    POTION(EntityType.SPLASH_POTION, "entity.ThrownPotion.name"),
-    ARROW(EntityType.ARROW, "entity.Arrow.name"),
-    SNOWBALL(EntityType.SNOWBALL, "entity.Snowball.name"),
-    PAINTING(EntityType.PAINTING, "entity.Painting.name"),
-    ARMOR_STAND(EntityType.ARMOR_STAND, "entity.ArmorStand.name"),
-    CREEPER(EntityType.CREEPER, "entity.Creeper.name"),
-    SKELETON(EntityType.SKELETON, "entity.Skeleton.name"),
-    SPIDER(EntityType.SPIDER, "entity.Spider.name"),
-    GIANT(EntityType.GIANT, "entity.Giant.name"),
-    ZOMBIE(EntityType.ZOMBIE, "entity.Zombie.name"),
-    SLIME(EntityType.SLIME, "entity.Slime.name"),
-    GHAST(EntityType.GHAST, "entity.Ghast.name"),
-    ZOMBIE_PIGMAN(EntityType.PIG_ZOMBIE, "entity.PigZombie.name"),
-    ENDERMAN(EntityType.ENDERMAN, "entity.Enderman.name"),
-    ENDERMITE(EntityType.ENDERMITE, "entity.Endermite.name"),
-    SILVERFISH(EntityType.SILVERFISH, "entity.Silverfish.name"),
-    CAVE_SPIDER(EntityType.CAVE_SPIDER, "entity.CaveSpider.name"),
-    BLAZE(EntityType.BLAZE, "entity.Blaze.name"),
-    MAGMA_CUBE(EntityType.MAGMA_CUBE, "entity.LavaSlime.name"),
-    MOOSHROOM(EntityType.MUSHROOM_COW, "entity.MushroomCow.name"),
-    VILLAGER(EntityType.VILLAGER, "entity.Villager.name"),
-    IRON_GOLEM(EntityType.IRON_GOLEM, "entity.VillagerGolem.name"),
-    SNOW_GOLEM(EntityType.SNOWMAN, "entity.SnowMan.name"),
-    ENDER_DRAGON(EntityType.ENDER_DRAGON, "entity.EnderDragon.name"),
-    WITHER(EntityType.WITHER, "entity.WitherBoss.name"),
-    WITCH(EntityType.WITCH, "entity.Witch.name"),
-    GUARDIAN(EntityType.GUARDIAN, "entity.Guardian.name"),
-    SHULKER(EntityType.SHULKER, "entity.Shulker.name"),
-    PIG(EntityType.PIG, "entity.Pig.name"),
-    SHEEP(EntityType.SHEEP, "entity.Sheep.name"),
-    COW(EntityType.COW, "entity.Cow.name"),
-    CHICKEN(EntityType.CHICKEN, "entity.Chicken.name"),
-    SQUID(EntityType.SQUID, "entity.Squid.name"),
-    WOLF(EntityType.WOLF, "entity.Wolf.name"),
-    OCELOT(EntityType.OCELOT, "entity.Ozelot.name"),
-    BAT(EntityType.BAT, "entity.Bat.name"),
-    HORSE(EntityType.HORSE, "entity.Horse.name"),
-    RABBIT(EntityType.RABBIT, "entity.Rabbit.name"),
-    BLOCK_OF_TNT(EntityType.PRIMED_TNT, "entity.PrimedTnt.name"),
-    FALLING_BLOCK(EntityType.FALLING_BLOCK, "entity.FallingSand.name"),
-    MINECART(EntityType.MINECART, "entity.Minecart.name"),
-    MINECART_WITH_HOPPER(EntityType.MINECART_HOPPER, "entity.MinecartHopper.name"),
-    MINECART_WITH_CHEST(EntityType.MINECART_CHEST, "entity.MinecartChest.name"),
-    BOAT(EntityType.BOAT, "entity.Boat.name"),
-    POLAR_BEAR(EntityType.POLAR_BEAR, "entity.PolarBear.name"),
-    ZOMBIE_VILLIGER(EntityType.ZOMBIE_VILLAGER, "entity.ZombieVillager.name"),
-    ELDER_GUARDIAN(EntityType.ELDER_GUARDIAN, "entity.ElderGuardian.name"),
-    EVOKER(EntityType.EVOKER, "entity.EvocationIllager.name"),
-    VEX(EntityType.VEX, "entity.Vex.name"),
-    VINDICATOR(EntityType.VINDICATOR, "entity.VindicationIllager.name"),
-    LLAMA(EntityType.LLAMA, "entity.Llama.name"),
-    WITHER_SKELETON(EntityType.WITHER_SKELETON, "entity.WitherSkeleton.name"),
-    STRAY(EntityType.STRAY, "entity.Stray.name"),
-    HUSK(EntityType.HUSK, "entity.Husk.name"),
-    SKELETON_HORSE(EntityType.SKELETON_HORSE, "entity.SkeletonHorse.name"),
-    ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, "entity.ZombieHorse.name"),
-    DONKEY(EntityType.DONKEY, "entity.Donkey.name"),
-    MULE(EntityType.MULE, "entity.Mule.name"),
-    PARROT(EntityType.PARROT, "entity.Parrot.name"),
-    ILLUSIONER(EntityType.ILLUSIONER, "entity.IllusionIllager.name");
+    AREA_EFFECT_CLOUD(EntityType.AREA_EFFECT_CLOUD, "entity.minecraft.area_effect_cloud"),
+    ARMOR_STAND(EntityType.ARMOR_STAND, "entity.minecraft.armor_stand"),
+    ARROW(EntityType.ARROW, "entity.minecraft.arrow"),
+    BAT(EntityType.BAT, "entity.minecraft.bat"),
+    BLAZE(EntityType.BLAZE, "entity.minecraft.blaze"),
+    BOAT(EntityType.BOAT, "entity.minecraft.boat"),
+    //CAT(EntityType. , "entity.minecraft.cat"), //WHAT
+    CAVE_SPIDER(EntityType.CAVE_SPIDER, "entity.minecraft.cave_spider"),
+    MINECART_WITH_CHEST(EntityType.MINECART_CHEST, "entity.minecraft.chest_minecart"),
+    CHICKEN(EntityType.CHICKEN, "entity.minecraft.chicken"),
+    MINECART_WITH_COMMAND_BLOCK(EntityType.MINECART_COMMAND, "entity.minecraft.command_block_minecart"),
+    COD(EntityType.COD, "entity.minecraft.cod"),
+    COW(EntityType.COW, "entity.minecraft.cow"),
+    CREEPER(EntityType.CREEPER, "entity.minecraft.creeper"),
+    DOLPHIN(EntityType.DOLPHIN, "entity.minecraft.dolphin"),
+    DONKEY(EntityType.DONKEY, "entity.minecraft.donkey"),
+    DROWNED(EntityType.DROWNED, "entity.minecraft.drowned"),
+    DRAGON_FIREBALL(EntityType.DRAGON_FIREBALL, "entity.minecraft.dragon_fireball"),
+    //THROWN_EGG(EntityType. , "entity.minecraft.egg"),
+    ELDER_GUARDIAN(EntityType.ELDER_GUARDIAN, "entity.minecraft.elder_guardian"),
+    END_CRYSTAL(EntityType.ENDER_CRYSTAL, "entity.minecraft.end_crystal"),
+    ENDER_DRAGON(EntityType.ENDER_DRAGON, "entity.minecraft.ender_dragon"),
+    //THROWN_ENDER_PEARL(EntityType. , "entity.minecraft.ender_pearl"),
+    ENDERMAN(EntityType.ENDERMAN, "entity.minecraft.enderman"),
+    ENDERMITE(EntityType.ENDERMITE, "entity.minecraft.endermite"),
+    EVOKER_FANGS(EntityType.EVOKER_FANGS, "entity.minecraft.evoker_fangs"),
+    EVOKER(EntityType.EVOKER, "entity.minecraft.evoker"),
+    EYE_OF_ENDER(EntityType.ENDER_SIGNAL, "entity.minecraft.eye_of_ender"),
+    FALLING_BLOCK(EntityType.FALLING_BLOCK, "entity.minecraft.falling_block"),
+    FIREBALL(EntityType.FIREBALL, "entity.minecraft.fireball"),
+    FIREWORK_ROCKET(EntityType.FIREWORK, "entity.minecraft.firework_rocket"),
+    FISHING_BOBBER(EntityType.FISHING_HOOK, "entity.minecraft.fishing_bobber"),
+    MINECART_WITH_FURNACE(EntityType.MINECART_FURNACE, "entity.minecraft.furnace_minecart"),
+    GHAST(EntityType.GHAST, "entity.minecraft.ghast"),
+    GIANT(EntityType.GIANT, "entity.minecraft.giant"),
+    GUARDIAN(EntityType.GUARDIAN, "entity.minecraft.guardian"),
+    MINECART_WITH_HOPPER(EntityType.MINECART_HOPPER, "entity.minecraft.hopper_minecart"),
+    HORSE(EntityType.HORSE, "entity.minecraft.horse"),
+    HUSK(EntityType.HUSK, "entity.minecraft.husk"),
+    ILLUSIONER(EntityType.ILLUSIONER, "entity.minecraft.illusioner"),
+    ITEM(EntityType.DROPPED_ITEM, "entity.minecraft.item"),
+    ITEM_FRAME(EntityType.ITEM_FRAME, "entity.minecraft.item_frame"),
+    THE_KILLER_BUNNY(EntityType.RABBIT, "entity.minecraft.killer_bunny"),
+    LEASH_KNOT(EntityType.LEASH_HITCH, "entity.minecraft.leash_knot"),
+    LIGHTNING_BOLT(EntityType.LIGHTNING, "entity.minecraft.lightning_bolt"),
+    LLAMA(EntityType.LLAMA, "entity.minecraft.llama"),
+    LLAMA_SPIT(EntityType.LLAMA_SPIT, "entity.minecraft.llama_spit"),
+    MAGMA_CUBE(EntityType.MAGMA_CUBE, "entity.minecraft.magma_cube"),
+    MINECART(EntityType.MINECART, "entity.minecraft.minecart"),
+    MOOSHROOM(EntityType.MUSHROOM_COW, "entity.minecraft.mooshroom"),
+    MULE(EntityType.MULE, "entity.minecraft.mule"),
+    OCELOT(EntityType.OCELOT, "entity.minecraft.ocelot"),
+    PAINTING(EntityType.PAINTING, "entity.minecraft.painting"),
+    PARROT(EntityType.PARROT, "entity.minecraft.parrot"),
+    PHANTOM(EntityType.PHANTOM, "entity.minecraft.phantom"),
+    PIG(EntityType.PIG, "entity.minecraft.pig"),
+    PLAYER(EntityType.PLAYER, "entity.minecraft.player"),
+    POLAR_BEAR(EntityType.POLAR_BEAR, "entity.minecraft.polar_bear"),
+    POTION(EntityType.SPLASH_POTION, "entity.minecraft.potion"),
+    PUFFERFISH(EntityType.PUFFERFISH, "entity.minecraft.pufferfish"),
+    RABBIT(EntityType.RABBIT, "entity.minecraft.rabbit"),
+    SALMON(EntityType.SALMON, "entity.minecraft.salmon"),
+    SHEEP(EntityType.SHEEP, "entity.minecraft.sheep"),
+    SHULKER(EntityType.SHULKER, "entity.minecraft.shulker"),
+    SHULKER_BULLET(EntityType.SHULKER_BULLET, "entity.minecraft.shulker_bullet"),
+    SILVERFISH(EntityType.SILVERFISH, "entity.minecraft.silverfish"),
+    SKELETON(EntityType.SKELETON, "entity.minecraft.skeleton"),
+    SKELETON_HORSE(EntityType.SKELETON_HORSE, "entity.minecraft.skeleton_horse"),
+    SLIME(EntityType.SLIME, "entity.minecraft.slime"),
+    SMALL_FIREBALL(EntityType.SMALL_FIREBALL, "entity.minecraft.small_fireball"),
+    SNOWBALL(EntityType.SNOWBALL, "entity.minecraft.snowball"),
+    SNOW_GOLEM(EntityType.SNOWMAN, "entity.minecraft.snow_golem"),
+    MINECART_WITH_SPAWNER(EntityType.MINECART_MOB_SPAWNER, "entity.minecraft.spawner_minecart"),
+    SPECTRAL_ARROW(EntityType.SPECTRAL_ARROW, "entity.minecraft.spectral_arrow"),
+    SPIDER(EntityType.SPIDER, "entity.minecraft.spider"),
+    SQUID(EntityType.SQUID, "entity.minecraft.squid"),
+    STRAY(EntityType.STRAY, "entity.minecraft.stray"),
+    PRIMED_TNT(EntityType.PRIMED_TNT, "entity.minecraft.tnt"),
+    MINECART_WITH_TNT(EntityType.MINECART_TNT, "entity.minecraft.tnt_minecart"),
+    TRIDENT(EntityType.TRIDENT, "entity.minecraft.trident"),
+    TROPICAL_FISH(EntityType.TROPICAL_FISH, "entity.minecraft.tropical_fish"),
+    TURTLE(EntityType.TURTLE, "entity.minecraft.turtle"),
+    VEX(EntityType.VEX, "entity.minecraft.vex"),
+    VILLAGER(EntityType.VILLAGER, "entity.minecraft.villager"),
+    IRON_GOLEM(EntityType.IRON_GOLEM, "entity.minecraft.iron_golem"),
+    VINDICATOR(EntityType.VINDICATOR, "entity.minecraft.vindicator"),
+    WITCH(EntityType.WITCH, "entity.minecraft.witch"),
+    WITHER(EntityType.WITHER, "entity.minecraft.wither"),
+    WITHER_SKELETON(EntityType.WITHER_SKELETON, "entity.minecraft.wither_skeleton"),
+    WITHER_SKULL(EntityType.WITHER_SKULL, "entity.minecraft.wither_skull"),
+    WOLF(EntityType.WOLF, "entity.minecraft.wolf"),
+    THROWN_BOTTLE(EntityType.THROWN_EXP_BOTTLE, "entity.minecraft.experience_bottle"),
+    EXPERIENCE_ORB(EntityType.EXPERIENCE_ORB, "entity.minecraft.experience_orb"),
+    ZOMBIE(EntityType.ZOMBIE, "entity.minecraft.zombie"),
+    ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, "entity.minecraft.zombie_horse"),
+    ZOMBIE_PIGMAN(EntityType.PIG_ZOMBIE, "entity.minecraft.zombie_pigman"),
+    ZOMBIE_VILLAGER(EntityType.ZOMBIE_VILLAGER, "entity.minecraft.zombie_villager");
     // Some entity subtypes are not included
 
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
@@ -117,46 +149,6 @@ public enum EnumEntity {
      */
     public static EnumEntity get(EntityType entityType) {
         return lookup.get(entityType);
-    }
-
-    /**
-     * Get the localized name of a monster egg.
-     *
-     * @param egg    The monster egg
-     * @param locale The language of the name
-     * @return The name of the monster egg.
-     */
-    public static String getSpawnEggName(ItemStack egg, String locale) {
-        EntityType type = null;
-        try {
-            type = getEntityType(egg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        EnumEntity entity = get(type);
-        return entity != null ?
-                LanguageHelper.translateToLocal("item.monsterPlacer.name", locale) + " "
-                        + LanguageHelper.translateToLocal(entity.getUnlocalizedName(), locale)
-                : LanguageHelper.translateToLocal("item.monsterPlacer.name", locale);
-    }
-
-    /**
-     * A temporary solution to monster egg change. To be replaced with spigot API.
-     *
-     * @param egg The monster egg to be processed.
-     * @return the {@link org.bukkit.entity.EntityType} of the monster egg.
-     * @throws ClassNotFoundException    when CraftItemStack is not found.
-     * @throws NoSuchMethodException     when either of asNMSCopy(), getTag(), getCompound(), getString() is not found.
-     * @throws InvocationTargetException when either method throws an exception.
-     * @throws IllegalAccessException    when does not have access to these methods.
-     */
-    public static EntityType getEntityType(ItemStack egg) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Object nmsStack = Class.forName("org.bukkit.craftbukkit." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + "." + "inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, egg);
-        Object tag = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
-        Object entityTag = tag.getClass().getMethod("getCompound", String.class).invoke(tag, "EntityTag");
-        String id = (String) entityTag.getClass().getMethod("getString", String.class).invoke(entityTag, "id");
-
-        return EntityType.fromName(id.replace("minecraft:", ""));
     }
 
     public String getUnlocalizedName() {
