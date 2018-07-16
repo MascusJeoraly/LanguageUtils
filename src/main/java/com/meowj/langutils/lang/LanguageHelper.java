@@ -91,7 +91,7 @@ public class LanguageHelper {
      * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        EnumItem enumItem = EnumItem.get(new ItemEntry(item));
+        EnumItem enumItem = EnumItem.get(item.getType());
         return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
     }
 

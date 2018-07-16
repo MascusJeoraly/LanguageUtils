@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionType;
 
+import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,28 +29,29 @@ import java.util.Map;
  * @author Meow J
  */
 public enum EnumPotionEffect {
+    AWKWARD(PotionType.AWKWARD, "item.minecraft.potion.effect.awkward", "item.minecraft.splash_potion.effect.awkward", "item.minecraft.lingering_potion.effect.awkward", "item.minecraft.tipped_arrow.effect.awkward"),
+    FIRE_RESISTANCE(PotionType.FIRE_RESISTANCE, "item.minecraft.potion.effect.fire_resistance", "item.minecraft.splash_potion.effect.fire_resistance", "item.minecraft.lingering_potion.effect.fire_resistance", "item.minecraft.tipped_arrow.effect.fire_resistance"),
+    HARM(PotionType.INSTANT_DAMAGE, "item.minecraft.potion.effect.harming", "item.minecraft.splash_potion.effect.harming", "item.minecraft.lingering_potion.effect.harming", "item.minecraft.tipped_arrow.effect.harming"),
+    HEAL(PotionType.INSTANT_HEAL, "item.minecraft.potion.effect.healing", "item.minecraft.splash_potion.effect.healing", "item.minecraft.lingering_potion.effect.healing", "item.minecraft.tipped_arrow.effect.healing"),
+    INCREASE_DAMAGE(PotionType.STRENGTH, "item.minecraft.potion.effect.strength", "item.minecraft.splash_potion.effect.strength", "item.minecraft.lingering_potion.effect.strength", "item.minecraft.tipped_arrow.effect.strength"),
+    INVISIBILITY(PotionType.INVISIBILITY, "item.minecraft.potion.effect.invisibility", "item.minecraft.splash_potion.effect.invisibility", "item.minecraft.lingering_potion.effect.invisibility", "item.minecraft.tipped_arrow.effect.invisibility"),
+    JUMP(PotionType.JUMP, "item.minecraft.potion.effect.leaping", "item.minecraft.splash_potion.effect.leaping", "item.minecraft.lingering_potion.effect.leaping", "item.minecraft.tipped_arrow.effect.leaping"),
+    LUCK(PotionType.LUCK, "item.minecraft.potion.effect.luck", "item.minecraft.splash_potion.effect.luck", "item.minecraft.lingering_potion.effect.luck", "item.minecraft.tipped_arrow.effect.luck"),
+    MUNDANE(PotionType.MUNDANE, "item.minecraft.potion.effect.mundane", "item.minecraft.splash_potion.effect.mundane", "item.minecraft.lingering_potion.effect.mundane", "item.minecraft.tipped_arrow.effect.mundane"),
+    NIGHT_VISION(PotionType.NIGHT_VISION, "item.minecraft.potion.effect.night_vision", "item.minecraft.splash_potion.effect.night_vision", "item.minecraft.lingering_potion.effect.night_vision", "item.minecraft.tipped_arrow.effect.night_vision"),
+    POISON(PotionType.POISON, "item.minecraft.potion.effect.poison", "item.minecraft.splash_potion.effect.poison", "item.minecraft.lingering_potion.effect.poison", "item.minecraft.tipped_arrow.effect.poison"),
+    REGENERATION(PotionType.REGEN, "item.minecraft.potion.effect.regeneration", "item.minecraft.splash_potion.effect.regeneration", "item.minecraft.lingering_potion.effect.regeneration", "item.minecraft.tipped_arrow.effect.regeneration"),
+    SLOW(PotionType.SLOWNESS, "item.minecraft.potion.effect.slowness", "item.minecraft.splash_potion.effect.slowness", "item.minecraft.lingering_potion.effect.slowness", "item.minecraft.tipped_arrow.effect.slowness"),
+    SLOW_FALLING(PotionType.SLOW_FALLING, "item.minecraft.potion.effect.slow_falling", "item.minecraft.splash_potion.effect.slow_falling", "item.minecraft.lingering_potion.effect.slow_falling", "item.minecraft.tipped_arrow.effect.slow_falling"),
+    SPEED(PotionType.SPEED, "item.minecraft.potion.effect.swiftness", "item.minecraft.splash_potion.effect.swiftness", "item.minecraft.lingering_potion.effect.swiftness", "item.minecraft.tipped_arrow.effect.swiftness"),
+    THICK(PotionType.THICK, "item.minecraft.potion.effect.thick", "item.minecraft.splash_potion.effect.thick", "item.minecraft.lingering_potion.effect.thick", "item.minecraft.tipped_arrow.effect.thick"),
+    TURTLE_MASTER(PotionType.TURTLE_MASTER, "item.minecraft.potion.effect.turtle_master", "item.minecraft.splash_potion.effect.turtle_master", "item.minecraft.lingering_potion.effect.turtle_master", "item.minecraft.tipped_arrow.effect.turtle_master"),
+    UNCRAFTABLE(PotionType.UNCRAFTABLE, "item.minecraft.potion.effect.empty", "item.minecraft.splash_potion.effect.empty", "item.minecraft.lingering_potion.effect.empty", "item.minecraft.tipped_arrow.effect.empty"),
+    WATER(PotionType.WATER, "item.minecraft.potion.effect.water", "item.minecraft.splash_potion.effect.water", "item.minecraft.lingering_potion.effect.water", "item.minecraft.tipped_arrow.effect.water"),
+    WATER_BREATHING(PotionType.WATER_BREATHING, "item.minecraft.potion.effect.water_breathing", "item.minecraft.splash_potion.effect.water_breathing", "item.minecraft.lingering_potion.effect.water_breathing", "item.minecraft.tipped_arrow.effect.water_breathing"),
+    WEAKNESS(PotionType.WEAKNESS, "item.minecraft.potion.effect.weakness", "item.minecraft.splash_potion.effect.weakness", "item.minecraft.lingering_potion.effect.weakness", "item.minecraft.tipped_arrow.effect.weakness");
 
-    UNCRAFTABLE(PotionType.UNCRAFTABLE, "potion.effect.empty", "splash_potion.effect.empty", "lingering_potion.effect.empty", "tipped_arrow.effect.empty"),
-    WATER(PotionType.WATER, "potion.effect.water", "splash_potion.effect.water", "lingering_potion.effect.water", "tipped_arrow.effect.water"),
-    MUNDANE(PotionType.MUNDANE, "potion.effect.mundane", "splash_potion.effect.mundane", "lingering_potion.effect.mundane", "tipped_arrow.effect.mundane"),
-    THICK(PotionType.THICK, "potion.effect.thick", "splash_potion.effect.thick", "lingering_potion.effect.thick", "tipped_arrow.effect.thick"),
-    AWKWARD(PotionType.AWKWARD, "potion.effect.awkward", "splash_potion.effect.awkward", "lingering_potion.effect.awkward", "tipped_arrow.effect.awkward"),
-    NIGHT_VISION(PotionType.NIGHT_VISION, "potion.effect.night_vision", "splash_potion.effect.night_vision", "lingering_potion.effect.night_vision", "tipped_arrow.effect.night_vision"),
-    INVISIBILITY(PotionType.INVISIBILITY, "potion.effect.invisibility", "splash_potion.effect.invisibility", "lingering_potion.effect.invisibility", "tipped_arrow.effect.invisibility"),
-    JUMP(PotionType.JUMP, "potion.effect.leaping", "splash_potion.effect.leaping", "lingering_potion.effect.leaping", "tipped_arrow.effect.leaping"),
-    FIRE_RESISTANCE(PotionType.FIRE_RESISTANCE, "potion.effect.fire_resistance", "splash_potion.effect.fire_resistance", "lingering_potion.effect.fire_resistance", "tipped_arrow.effect.fire_resistance"),
-    SPEED(PotionType.SPEED, "potion.effect.swiftness", "splash_potion.effect.swiftness", "lingering_potion.effect.swiftness", "tipped_arrow.effect.swiftness"),
-    SLOW(PotionType.SLOWNESS, "potion.effect.slowness", "splash_potion.effect.slowness", "lingering_potion.effect.slowness", "tipped_arrow.effect.slowness"),
-    WATER_BREATHING(PotionType.WATER_BREATHING, "potion.effect.water_breathing", "splash_potion.effect.water_breathing", "lingering_potion.effect.water_breathing", "tipped_arrow.effect.water_breathing"),
-    HEAL(PotionType.INSTANT_HEAL, "potion.effect.healing", "splash_potion.effect.healing", "lingering_potion.effect.healing", "tipped_arrow.effect.healing"),
-    HARM(PotionType.INSTANT_DAMAGE, "potion.effect.harming", "splash_potion.effect.harming", "lingering_potion.effect.harming", "tipped_arrow.effect.harming"),
-    POISON(PotionType.POISON, "potion.effect.poison", "splash_potion.effect.poison", "lingering_potion.effect.poison", "tipped_arrow.effect.poison"),
-    REGENERATION(PotionType.REGEN, "potion.effect.regeneration", "splash_potion.effect.regeneration", "lingering_potion.effect.regeneration", "tipped_arrow.effect.regeneration"),
-    INCREASE_DAMAGE(PotionType.STRENGTH, "potion.effect.strength", "splash_potion.effect.strength", "lingering_potion.effect.strength", "tipped_arrow.effect.strength"),
-    WEAKNESS(PotionType.WEAKNESS, "potion.effect.weakness", "splash_potion.effect.weakness", "lingering_potion.effect.weakness", "tipped_arrow.effect.weakness"),
-    LUCK(PotionType.LUCK, "potion.effect.luck", "splash_potion.effect.luck", "lingering_potion.effect.luck", "tipped_arrow.effect.luck");
-
-    private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<PotionType, EnumPotionEffect>();
+    private static final Map<PotionType, EnumPotionEffect> lookup = new EnumMap<>(PotionType.class);
 
     static {
         for (EnumPotionEffect effect : EnumSet.allOf(EnumPotionEffect.class))

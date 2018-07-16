@@ -16,8 +16,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -343,21 +343,21 @@ public enum EnumItem {
     NOTE_BLOCK(Material.NOTE_BLOCK, "block.minecraft.note_block"),
     CAKE(Material.CAKE, "block.minecraft.cake"),
     WHITE_BED(Material.WHITE_BED, "item.bed.white.name"),
-    BLACK_BED(Material.BLACK_BED, 15, "item.bed.black.name"),
-    RED_BED(Material.RED_BED, 14, "item.bed.red.name"),
-    GREEN_BED(Material.GREEN_BED, 13, "item.bed.green.name"),
-    BROWN_BED(Material.BROWN_BED, 12, "item.bed.brown.name"),
-    BLUE_BED(Material.BLUE_BED, 11, "item.bed.blue.name"),
-    PURPLE_BED(Material.PURPLE_BED, 10, "item.bed.purple.name"),
-    CYAN_BED(Material.CYAN_BED, 9, "item.bed.cyan.name"),
-    LIGHT_GRAY_BED(Material.LIGHT_GRAY_BED, 8, "item.bed.silver.name"),
-    GRAY_BED(Material.GRAY_BED, 7, "item.bed.gray.name"),
-    PINK_BED(Material.PINK_BED, 6, "item.bed.pink.name"),
-    LIME_BED(Material.LIME_BED, 5, "item.bed.lime.name"),
-    YELLOW_BED(Material.YELLOW_BED, 4, "item.bed.yellow.name"),
-    LIGHT_BLUE_BED(Material.LIGHT_BLUE_BED, 3, "item.bed.lightBlue.name"),
-    MAGENTA_BED(Material.MAGENTA_BED, 2, "item.bed.magenta.name"),
-    ORANGE_BED(Material.ORANGE_BED, 1, "item.bed.orange.name"),
+    BLACK_BED(Material.BLACK_BED, "item.bed.black.name"),
+    RED_BED(Material.RED_BED, "item.bed.red.name"),
+    GREEN_BED(Material.GREEN_BED, "item.bed.green.name"),
+    BROWN_BED(Material.BROWN_BED, "item.bed.brown.name"),
+    BLUE_BED(Material.BLUE_BED, "item.bed.blue.name"),
+    PURPLE_BED(Material.PURPLE_BED, "item.bed.purple.name"),
+    CYAN_BED(Material.CYAN_BED, "item.bed.cyan.name"),
+    LIGHT_GRAY_BED(Material.LIGHT_GRAY_BED, "item.bed.silver.name"),
+    GRAY_BED(Material.GRAY_BED, "item.bed.gray.name"),
+    PINK_BED(Material.PINK_BED, "item.bed.pink.name"),
+    LIME_BED(Material.LIME_BED, "item.bed.lime.name"),
+    YELLOW_BED(Material.YELLOW_BED, "item.bed.yellow.name"),
+    LIGHT_BLUE_BED(Material.LIGHT_BLUE_BED, "item.bed.lightBlue.name"),
+    MAGENTA_BED(Material.MAGENTA_BED, "item.bed.magenta.name"),
+    ORANGE_BED(Material.ORANGE_BED, "item.bed.orange.name"),
     OAK_TRAPDOOR(Material.OAK_TRAPDOOR, "block.minecraft.oak_trapdoor"),
     SPRUCE_TRAPDOOR(Material.SPRUCE_TRAPDOOR, "block.minecraft.spruce_trapdoor"),
     BIRCH_TRAPDOOR(Material.BIRCH_TRAPDOOR, "block.minecraft.birch_trapdoor"),
@@ -505,7 +505,7 @@ public enum EnumItem {
     MAGENTA_CONCRETE_POWDER(Material.MAGENTA_CONCRETE_POWDER, "block.minecraft.magenta_concrete_powder"),
     ORANGE_CONCRETE_POWDER(Material.ORANGE_CONCRETE_POWDER, "block.minecraft.orange_concrete_powder"),
     WHITE_CONCRETE_POWDER(Material.WHITE_CONCRETE_POWDER, "block.minecraft.white_concrete_powder"),
-    TURTLE_EGG(Material.TURTLE_EGG, "block.minecraft.turtle_egg"),//TODO
+    TURTLE_EGG(Material.TURTLE_EGG, "block.minecraft.turtle_egg"),
     PISTON_HEAD(Material.PISTON_HEAD, "block.minecraft.piston_head"),
     MOVING_PISTON(Material.MOVING_PISTON, "block.minecraft.moving_piston"),
     RED_MUSHROOM(Material.RED_MUSHROOM, "block.minecraft.red_mushroom"),
@@ -876,41 +876,32 @@ public enum EnumItem {
     WHITE_BANNER(Material.WHITE_BANNER, "block.minecraft.white_banner"),
     SHIELD(Material.SHIELD, "item.minecraft.shield"),
     BLACK_SHIELD(Material.SHIELD, "item.minecraft.shield.black");
-    private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
+    private static final Map<Material, EnumItem> lookup = new EnumMap<>(Material.class);
 
     static {
         for (EnumItem item : EnumSet.allOf(EnumItem.class))
-            lookup.put(new ItemEntry(item.material, item.getMetadata()), item);
+            lookup.put(item.material, item);
     }
 
     private Material material;
-    private int metadata;
     private String unlocalizedName;
 
     /**
      * Create an index of an item
      */
-    EnumItem(Material material, int metadata, String unlocalizedName) {
+    EnumItem(Material material, String unlocalizedName) {
         this.material = material;
-        this.metadata = metadata;
         this.unlocalizedName = unlocalizedName;
     }
 
-    EnumItem(Material material, String unlocalizedName) {
-        this(material, 0, unlocalizedName);
-    }
-
     /**
-     * Get the index of an item based on {@link ItemEntry}.
+     * Get the index of an item based on {@link Material}.
      *
      * @param entry The entry for search.
      * @return The index of the item.
      */
-    public static EnumItem get(ItemEntry entry) {
-        EnumItem result = lookup.get(entry);
-        if (result == null)
-            result = lookup.get(new ItemEntry(entry.getMaterial()));
-        return result;
+    public static EnumItem get(Material entry) {
+        return lookup.get(entry);
     }
 
     public static String getPlayerSkullName(ItemStack skull, String locale) {
@@ -926,13 +917,6 @@ public enum EnumItem {
      */
     public String getUnlocalizedName() {
         return unlocalizedName;
-    }
-
-    /**
-     * @return The metadata(damage value, durability) of the item.
-     */
-    public int getMetadata() {
-        return metadata;
     }
 
     /**

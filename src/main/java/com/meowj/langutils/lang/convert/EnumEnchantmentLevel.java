@@ -10,10 +10,6 @@
 
 package com.meowj.langutils.lang.convert;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * This file is part of LanguageUtils
  * <p>
@@ -32,14 +28,7 @@ public enum EnumEnchantmentLevel {
     LEVEL7(7, "enchantment.level.7"),
     LEVEL8(8, "enchantment.level.8"),
     LEVEL9(9, "enchantment.level.9"),
-    LEVEL10(10, "enchantment.level.10"),;
-
-    private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<Integer, EnumEnchantmentLevel>();
-
-    static {
-        for (EnumEnchantmentLevel level : EnumSet.allOf(EnumEnchantmentLevel.class))
-            lookup.put(level.getLevel(), level);
-    }
+    LEVEL10(10, "enchantment.level.10");
 
     private int level;
     private String unlocalizedName;
@@ -56,8 +45,31 @@ public enum EnumEnchantmentLevel {
      * @param level Enchantment level.
      * @return The index of a level.
      */
-    public static EnumEnchantmentLevel get(Integer level) {
-        return lookup.get(level);
+    public static EnumEnchantmentLevel get(int level) {
+        switch (level) {
+            case 1:
+                return LEVEL1;
+            case 2:
+                return LEVEL2;
+            case 3:
+                return LEVEL3;
+            case 4:
+                return LEVEL4;
+            case 5:
+                return LEVEL5;
+            case 6:
+                return LEVEL6;
+            case 7:
+                return LEVEL7;
+            case 8:
+                return LEVEL8;
+            case 9:
+                return LEVEL9;
+            case 10:
+                return LEVEL10;
+            default:
+                throw new IndexOutOfBoundsException();
+        }
     }
 
     /**
