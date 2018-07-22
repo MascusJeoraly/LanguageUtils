@@ -67,9 +67,7 @@ public class LanguageHelper {
         // Potion & SpawnEgg & Player Skull
         if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.TIPPED_ARROW)
             return EnumPotionEffect.getLocalizedName(item, locale);
-        else if (item.getType() == Material.MONSTER_EGG)
-            return EnumEntity.getSpawnEggName(item, locale);
-        else if (item.getType() == Material.SKULL_ITEM && item.getDurability() == 3) // is player's skull
+        else if (item.getType() == Material.PLAYER_HEAD || item.getType() == Material.PLAYER_WALL_HEAD) // is player's skull
             return EnumItem.getPlayerSkullName(item, locale);
 
         return translateToLocal(getItemUnlocalizedName(item), locale);
@@ -93,7 +91,7 @@ public class LanguageHelper {
      * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        EnumItem enumItem = EnumItem.get(new ItemEntry(item));
+        EnumItem enumItem = EnumItem.get(item.getType());
         return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
     }
 
@@ -228,7 +226,7 @@ public class LanguageHelper {
      */
     public static String getEnchantmentUnlocalizedName(Enchantment enchantment) {
         EnumEnchantment enumEnch = EnumEnchantment.get(enchantment);
-        return (enumEnch != null ? enumEnch.getUnlocalizedName() : enchantment.getName());
+        return (enumEnch != null ? enumEnch.getUnlocalizedName() : enchantment.getKey().getKey());
     }
 
     /**
