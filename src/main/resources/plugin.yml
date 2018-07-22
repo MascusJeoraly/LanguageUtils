@@ -1,3 +1,4 @@
 name: LangUtils
 version: ${version}
 main: com.meowj.langutils.LangUtils
+api-version: 1.13

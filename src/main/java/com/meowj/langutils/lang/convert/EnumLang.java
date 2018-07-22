@@ -181,7 +181,7 @@ public enum EnumLang {
                 continue;
             }
             try {
-                readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale), Charset.forName("UTF-8"))));
+                readFile(enumLang, new BufferedReader(new InputStreamReader(EnumLang.class.getResourceAsStream("/lang/" + enumLang.locale + ".json"), Charset.forName("UTF-8"))));
                 LangUtils.plugin.info(enumLang.getLocale() + " has been loaded.");
             } catch (Exception e) {
                 LangUtils.plugin.warn("Fail to load language file " + enumLang.getLocale());

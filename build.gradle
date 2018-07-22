@@ -7,7 +7,7 @@ group = 'com.meowj'
 archivesBaseName = 'LangUtils'
 version = '2.0'
 
-final def BUKKIT_VERSION = '1.13-pre7-R0.1-SNAPSHOT'
+final def BUKKIT_VERSION = '1.13-R0.1-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 
