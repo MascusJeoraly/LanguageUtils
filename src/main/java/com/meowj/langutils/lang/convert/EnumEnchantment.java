@@ -56,7 +56,7 @@ public enum EnumEnchantment {
     VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.vanishing_curse"),
     SWEEPING_EDGE(Enchantment.SWEEPING_EDGE, "enchantment.sweeping");
 
-    private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<Enchantment, EnumEnchantment>();
+    private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<>();
 
     static {
         for (EnumEnchantment enchantment : EnumSet.allOf(EnumEnchantment.class))

@@ -721,7 +721,7 @@ public enum EnumItem {
     WHITE_CONCRETE_POWDER(Material.CONCRETE_POWDER, "tile.concretePowder.white.name"),
     KNOWLEDGE_BOOK(Material.KNOWLEDGE_BOOK, "item.knowledgeBook.name");
 
-    private static final Map<ItemEntry, EnumItem> lookup = new HashMap<ItemEntry, EnumItem>();
+    private static final Map<ItemEntry, EnumItem> lookup = new HashMap<>();
 
     static {
         for (EnumItem item : EnumSet.allOf(EnumItem.class))
@@ -754,7 +754,7 @@ public enum EnumItem {
     public static EnumItem get(ItemEntry entry) {
         EnumItem result = lookup.get(entry);
         if (result == null)
-            result = lookup.get(new ItemEntry(entry.getMaterial()));
+            result = lookup.get(ItemEntry.from(entry.getMaterial()));
         return result;
     }
 

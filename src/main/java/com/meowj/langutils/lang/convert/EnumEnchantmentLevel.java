@@ -34,7 +34,7 @@ public enum EnumEnchantmentLevel {
     LEVEL9(9, "enchantment.level.9"),
     LEVEL10(10, "enchantment.level.10"),;
 
-    private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<Integer, EnumEnchantmentLevel>();
+    private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<>();
 
     static {
         for (EnumEnchantmentLevel level : EnumSet.allOf(EnumEnchantmentLevel.class))

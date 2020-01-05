@@ -11,7 +11,6 @@
 package com.meowj.langutils.lang.convert;
 
 import com.meowj.langutils.lang.LanguageHelper;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionType;
@@ -49,7 +48,7 @@ public enum EnumPotionEffect {
     WEAKNESS(PotionType.WEAKNESS, "potion.effect.weakness", "splash_potion.effect.weakness", "lingering_potion.effect.weakness", "tipped_arrow.effect.weakness"),
     LUCK(PotionType.LUCK, "potion.effect.luck", "splash_potion.effect.luck", "lingering_potion.effect.luck", "tipped_arrow.effect.luck");
 
-    private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<PotionType, EnumPotionEffect>();
+    private static final Map<PotionType, EnumPotionEffect> lookup = new HashMap<>();
 
     static {
         for (EnumPotionEffect effect : EnumSet.allOf(EnumPotionEffect.class))
@@ -131,14 +130,12 @@ public enum EnumPotionEffect {
      * @return The localized name of an potion.
      */
     public static String getLocalizedName(ItemStack itemStack, String locale) {
-        if (itemStack.getType() == Material.SPLASH_POTION)
-            return LanguageHelper.translateToLocal(getUnlocalizedSplashName(itemStack), locale);
-        else if (itemStack.getType() == Material.LINGERING_POTION)
-            return LanguageHelper.translateToLocal(getUnlocalizedLingeringName(itemStack), locale);
-        else if (itemStack.getType() == Material.TIPPED_ARROW)
-            return LanguageHelper.translateToLocal(getUnlocalizedArrowName(itemStack), locale);
-        else
-            return LanguageHelper.translateToLocal(getUnlocalizedName(itemStack), locale);
+        switch (itemStack.getType()) {
+            case SPLASH_POTION: return LanguageHelper.translateToLocal(getUnlocalizedSplashName(itemStack), locale);
+            case LINGERING_POTION: return LanguageHelper.translateToLocal(getUnlocalizedLingeringName(itemStack), locale);
+            case TIPPED_ARROW: return LanguageHelper.translateToLocal(getUnlocalizedArrowName(itemStack), locale);
+            default: return LanguageHelper.translateToLocal(getUnlocalizedName(itemStack), locale);
+        }
     }
 
     /**

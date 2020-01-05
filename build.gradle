@@ -9,7 +9,7 @@ version = '1.9'
 
 final def BUKKIT_VERSION = '1.12-R0.1-SNAPSHOT'
 
-sourceCompatibility = '1.7'
+sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 //noinspection GroovyAssignabilityCheck
