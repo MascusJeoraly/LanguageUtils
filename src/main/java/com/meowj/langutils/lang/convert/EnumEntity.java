@@ -96,7 +96,7 @@ public enum EnumEntity {
     ILLUSIONER(EntityType.ILLUSIONER, "entity.IllusionIllager.name");
     // Some entity subtypes are not included
 
-    private static final Map<EntityType, EnumEntity> lookup = new HashMap<EntityType, EnumEntity>();
+    private static final Map<EntityType, EnumEntity> lookup = new HashMap<>();
 
     static {
         for (EnumEntity entity : EnumSet.allOf(EnumEntity.class))

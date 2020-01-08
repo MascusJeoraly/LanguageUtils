@@ -23,6 +23,10 @@ import org.bukkit.inventory.ItemStack;
 public class ItemEntry {
     private Material material;
     private int metadata;
+    private static ItemEntry inst = new ItemEntry();
+
+    private ItemEntry() {
+    }
 
     public ItemEntry(Material material, int meta) {
         this.material = material;
@@ -41,6 +45,51 @@ public class ItemEntry {
     public ItemEntry(ItemStack itemStack) {
         this.material = itemStack.getType();
         this.metadata = itemStack.getDurability();
+    }
+
+    /**
+     * Fast create an {@link ItemEntry} instance with {@link ItemStack}
+     *
+     * @param itemStack The ItemStack that is based on.
+     * @return ItemEntry
+     */
+    public static ItemEntry from(ItemStack itemStack) {
+        try {
+            ItemEntry result = (ItemEntry) inst.clone();
+            result.material = itemStack.getType();
+            result.metadata = itemStack.getDurability();
+            return result;
+        } catch (CloneNotSupportedException e) {
+            return new ItemEntry(itemStack);
+        }
+    }
+
+    /**
+     * Fast create an {@link ItemEntry}
+     *
+     * @param material The bukkit material
+     * @param meta     The data value
+     * @return ItemEntry
+     */
+    public static ItemEntry from(Material material, int meta) {
+        try {
+            ItemEntry result = (ItemEntry) inst.clone();
+            result.material = material;
+            result.metadata = meta;
+            return result;
+        } catch (CloneNotSupportedException e) {
+            return new ItemEntry(material, meta);
+        }
+    }
+
+    /**
+     * Fast create an {@link ItemEntry}
+     *
+     * @param material The bukkit material
+     * @return ItemEntry
+     */
+    public static ItemEntry from(Material material) {
+        return ItemEntry.from(material, 0);
     }
 
     /**

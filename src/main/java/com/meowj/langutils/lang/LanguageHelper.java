@@ -64,15 +64,20 @@ public class LanguageHelper {
      * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
      */
     public static String getItemName(ItemStack item, String locale) {
-        // Potion & SpawnEgg & Player Skull
-        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.TIPPED_ARROW)
-            return EnumPotionEffect.getLocalizedName(item, locale);
-        else if (item.getType() == Material.MONSTER_EGG)
-            return EnumEntity.getSpawnEggName(item, locale);
-        else if (item.getType() == Material.SKULL_ITEM && item.getDurability() == 3) // is player's skull
-            return EnumItem.getPlayerSkullName(item, locale);
-
-        return translateToLocal(getItemUnlocalizedName(item), locale);
+        switch (item.getType()) {
+            case POTION:
+            case SPLASH_POTION:
+            case LINGERING_POTION:
+            case TIPPED_ARROW:
+                return EnumPotionEffect.getLocalizedName(item, locale);
+            case MONSTER_EGG:
+                return EnumEntity.getSpawnEggName(item, locale);
+            case SKULL_ITEM:
+                if (item.getDurability() == 3) {
+                    return EnumItem.getPlayerSkullName(item, locale);
+                }
+            default: return translateToLocal(getItemUnlocalizedName(item), locale);
+        }
     }
 
     /**
@@ -87,14 +92,42 @@ public class LanguageHelper {
     }
 
     /**
+     * Return the localized name of the Material.
+     *
+     * @param material The material
+     * @param meta     The data value
+     * @param player   The receiver of the name
+     * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getMetaName(Material material, int meta, Player player) {
+        return translateToLocal(getItemUnlocalizedName(material, meta), LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the localized name of the Material.
+     * @param material The material
+     * @param meta     The data value
+     * @param locale   The locale
+     * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getMetaName(Material material, int meta, String locale) {
+        return translateToLocal(getItemUnlocalizedName(material, meta), locale);
+    }
+
+    /**
      * Return the unlocalized name of the item(Minecraft convention)
      *
      * @param item The item
      * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        EnumItem enumItem = EnumItem.get(new ItemEntry(item));
-        return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
+        EnumItem enumItem = EnumItem.get(ItemEntry.from(item));
+        return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().name();
+    }
+
+    public static String getItemUnlocalizedName(Material material, int meta) {
+        EnumItem enumItem = EnumItem.get(ItemEntry.from(material, meta));
+        return enumItem != null ? enumItem.getUnlocalizedName() : material.name();
     }
 
     /**
