@@ -159,9 +159,11 @@ public enum EnumLang {
      * Initialize this class, load all the languages to the corresponding HashMap.
      */
     public static void init() {
+        boolean logSkipped = LangUtils.plugin.config.getBoolean("LogSkipped",false);
         for (EnumLang enumLang : EnumLang.values()) {
             if (!LangUtils.plugin.config.getStringList("LoadLanguage").contains("all") && !LangUtils.plugin.config.getStringList("LoadLanguage").contains(enumLang.getLocale())) {
-                LangUtils.plugin.info("Skipped " + enumLang.getLocale());
+                if(logSkipped)
+                    LangUtils.plugin.info("Skipped " + enumLang.getLocale());
                 continue;
             }
             try {
