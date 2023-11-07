@@ -47,6 +47,7 @@ public class LangUtils extends JavaPlugin {
         List<String> defaultLang = new ArrayList<>();
         defaultLang.add("en_us");
         config.addDefault("LoadLanguage", defaultLang);
+        config.addDefault("LogSkipped", false);
         config.options().copyDefaults(true);
         saveConfig();
 
